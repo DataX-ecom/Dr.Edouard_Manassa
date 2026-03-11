@@ -51,11 +51,13 @@
         }
         .bg-wrap .bg-grid {
             position:absolute;inset:0;
-            background:url('https://res.cloudinary.com/dkbegf5yh/image/upload/v1770117054/automindz_grid_3000w_sx9yxh.png') center/1200px repeat;
-            opacity:0.35;
-            mix-blend-mode:screen;
-            -webkit-mask-image:radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
-            mask-image:radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+            background-image:
+                linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size:80px 80px;
+            background-position:center center;
+            -webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 50%, black 0%, rgba(0,0,0,0.5) 40%, transparent 70%);
+            mask-image:radial-gradient(ellipse 60% 55% at 50% 50%, black 0%, rgba(0,0,0,0.5) 40%, transparent 70%);
         }
 
         /* ── SIDEBAR ── */
@@ -305,25 +307,29 @@
 
     <!-- ══════════ SLIDE 2 ─ FALSCHE ANNAHME ══════════ -->
     <section class="slide">
-        <div class="split">
-            <div>
+        <div class="wide">
+            <div style="text-align:center;margin-bottom:32px">
                 <p class="label label-gold a">Die größte falsche Annahme</p>
                 <h2 class="t1 tw">Die große <span class="gold-grad">Illusion</span></h2>
                 <p class="sub a d1">„Hochwertig aussehen = funktionieren."</p>
-                <ul class="lst a d2">
-                    <li>Teures Design ≠ hohe Conversion</li>
-                    <li>Digitale Visitenkarte ≠ Patientengewinnung</li>
-                    <li>Professionell programmiert ≠ sauber geführt</li>
-                </ul>
             </div>
-            <div class="card gold-top a d3">
-                <h3 class="t2">Was Patienten <span style="color:var(--gold)">wirklich</span> suchen</h3>
-                <ul class="lst">
-                    <li><strong>Sicherheit</strong> in der Entscheidung</li>
-                    <li><strong>Orientierung</strong> & klare Antworten</li>
-                    <li><strong>Bestätigung</strong> — richtige Wahl</li>
-                    <li><strong>Führung</strong> durch den Prozess</li>
-                </ul>
+            <div class="split" style="height:auto">
+                <div>
+                    <ul class="lst a d2">
+                        <li>Teures Design ≠ hohe Conversion</li>
+                        <li>Digitale Visitenkarte ≠ Patientengewinnung</li>
+                        <li>Professionell programmiert ≠ sauber geführt</li>
+                    </ul>
+                </div>
+                <div class="card gold-top a d3">
+                    <h3 class="t2">Was Patienten <span style="color:var(--gold)">wirklich</span> suchen</h3>
+                    <ul class="lst">
+                        <li><strong>Sicherheit</strong> in der Entscheidung</li>
+                        <li><strong>Orientierung</strong> & klare Antworten</li>
+                        <li><strong>Bestätigung</strong> — richtige Wahl</li>
+                        <li><strong>Führung</strong> durch den Prozess</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -331,9 +337,11 @@
     <!-- ══════════ SLIDE 3 ─ LECK IM MARKETING ══════════ -->
     <section class="slide">
         <div class="wide">
-            <p class="label label-red a">Das eigentliche Problem</p>
-            <h2 class="t1 tw">Das Leck im <span class="red-grad">Marketing</span></h2>
-            <p class="sub a d1">Nicht die Anzeige verbrennt Ihr Budget — sondern was danach passiert.</p>
+            <div style="text-align:center;margin-bottom:8px">
+                <p class="label label-gold a">Das eigentliche Problem</p>
+                <h2 class="t1 tw">Das Leck im <span class="gold-grad">Marketing</span></h2>
+                <p class="sub a d1">Nicht die Anzeige verbrennt Ihr Budget — sondern was danach passiert.</p>
+            </div>
 
             <!-- FLOW -->
             <div class="flow a d2">
@@ -399,17 +407,9 @@
     <!-- ══════════ SLIDE 5 ─ 4 CONVERSION-KILLER ══════════ -->
     <section class="slide">
         <div class="wide">
-            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:30px">
-                <div>
-                    <p class="label label-red a">Die 4 Schwächen</p>
-                    <h2 class="t1 tw" style="margin-bottom:8px">4 massive <span class="gold-grad">Conversion-Killer</span></h2>
-                </div>
-                <div class="a d2">
-                    <a href="https://perspectivefunnel.co/69af00a1d11b74a33ceccad6/69af020908c4994a26c9edbe/" target="_blank" class="cta" style="margin:0;text-decoration:none">
-                        <div class="cta-text"><span class="cta-micro">Live Beispiel</span><span class="cta-main">Funnel ansehen</span></div>
-                        <div class="cta-ico"><i class="fas fa-arrow-right"></i></div>
-                    </a>
-                </div>
+            <div style="margin-bottom:30px">
+                <p class="label label-red a">Die 4 Schwächen</p>
+                <h2 class="t1 tw" style="margin-bottom:8px">4 massive <span class="gold-grad">Conversion-Killer</span></h2>
             </div>
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
                 <div class="card num-card a d3"><div class="num-bg">01</div><div style="position:relative;z-index:1"><h4 class="num-title">Keine Spezialisierung</h4><p class="num-text">Nicht erkennbar, worum es geht & welches Ergebnis möglich ist.</p></div></div>
@@ -482,35 +482,44 @@
                     </div>
                 </div>
             </div>
+            <div style="text-align:center" class="a d4">
+                <a href="https://perspectivefunnel.co/69af00a1d11b74a33ceccad6/69af020908c4994a26c9edbe/" target="_blank" class="cta" style="text-decoration:none">
+                    <div class="cta-text"><span class="cta-micro">Live Beispiel</span><span class="cta-main">Funnel ansehen</span></div>
+                    <div class="cta-ico"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- ══════════ SLIDE 8 ─ MOBILE ══════════ -->
     <section class="slide">
-        <div class="split">
-            <div>
+        <div class="wide">
+            <div style="text-align:center;margin-bottom:32px">
                 <p class="label label-gold a">Brutal unterschätzt</p>
                 <h2 class="t1 tw">Der <span class="gold-grad">Mobile-Faktor</span></h2>
-                <div class="div-gold a d1"></div>
-                <ul class="lst a d2">
-                    <li><strong>80%+</strong> der Klicks kommen mobil</li>
-                    <li>Mobil „lesbar" reicht <strong>nicht</strong></li>
-                    <li>Unruhig, zu viel Scrollen, generisch = <strong>weg</strong></li>
-                </ul>
             </div>
-            <div class="a d3" style="display:flex;flex-direction:column;gap:16px">
-                <div class="card red-top" style="padding:24px">
-                    <h4 style="font-size:15px;font-weight:600;margin-bottom:10px;color:var(--red)"><i class="fas fa-mobile-alt" style="margin-right:6px"></i> Was mobil Patienten verliert</h4>
-                    <ul class="lst sm">
-                        <li>Unruhiges Layout</li>
-                        <li>Zu viel scrollen</li>
-                        <li>Texte zu lang & allgemein</li>
-                        <li>Buttons kommen unlogisch</li>
+            <div class="split" style="height:auto">
+                <div>
+                    <ul class="lst a d2">
+                        <li><strong>80%+</strong> der Klicks kommen mobil</li>
+                        <li>Mobil „lesbar" reicht <strong>nicht</strong></li>
+                        <li>Unruhig, zu viel Scrollen, generisch = <strong>weg</strong></li>
                     </ul>
                 </div>
-                <div class="card gold-top" style="padding:24px;text-align:center">
-                    <div class="stat-big">80%+</div>
-                    <p class="stat-label">der Werbeklicks = mobil</p>
+                <div class="a d3" style="display:flex;flex-direction:column;gap:16px">
+                    <div class="card red-top" style="padding:24px">
+                        <h4 style="font-size:15px;font-weight:600;margin-bottom:10px;color:var(--red)"><i class="fas fa-mobile-alt" style="margin-right:6px"></i> Was mobil Patienten verliert</h4>
+                        <ul class="lst sm">
+                            <li>Unruhiges Layout</li>
+                            <li>Zu viel scrollen</li>
+                            <li>Texte zu lang & allgemein</li>
+                            <li>Buttons kommen unlogisch</li>
+                        </ul>
+                    </div>
+                    <div class="card gold-top" style="padding:24px;text-align:center">
+                        <div class="stat-big">80%+</div>
+                        <p class="stat-label">der Werbeklicks = mobil</p>
+                    </div>
                 </div>
             </div>
         </div>
