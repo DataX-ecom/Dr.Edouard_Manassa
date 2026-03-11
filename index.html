@@ -4,628 +4,639 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verum Systems - Premium Präsentation</title>
-    
-    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* =========================================
-           1. CSS VARIABLES & BASE RESET
-           ========================================= */
         :root {
-            --bg-base: #171717;
+            --bg-base: #0a0a0b;
             --text-primary: #FFFFFF;
-            --text-secondary: #FFFFFF;
-            --text-muted: #FFFFFF;
+            --text-secondary: rgba(255,255,255,0.85);
+            --text-muted: rgba(255,255,255,0.6);
             --gold: #F9C10E;
-            --border-light: rgba(255, 255, 255, 0.12);
-            --panel-bg: rgba(255, 255, 255, 0.05);
-            --sidebar-width: 280px;
+            --gold-glow: rgba(249,193,14,0.6);
+            --red: #ff4757;
+            --green: #2ed573;
+            --border: rgba(255,255,255,0.08);
+            --panel: rgba(24,24,27,0.85);
+            --sidebar-w: 280px;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            overflow: hidden; /* Prevent scrolling, app-like feel */
-            width: 100vw;
-            height: 100vh;
-            display: flex;
+            font-family:'Inter',sans-serif;
+            background:var(--bg-base);
+            color:var(--text-primary);
+            overflow:hidden;
+            width:100vw;height:100vh;
+            display:flex;
+            position:relative;
         }
 
-        /* =========================================
-           2. BACKGROUND SYSTEM (STRICT LAYERING)
-           ========================================= */
-        .bg-layer-image {
-            position: absolute;
-            inset: 0;
-            background-image: url('https://res.cloudinary.com/dkbegf5yh/image/upload/v1770119944/bgheader_ubkadw.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.3;
-            mix-blend-mode: luminosity;
-            z-index: -3;
+        /* ── BACKGROUND (fixed stacking) ── */
+        .bg-wrap {
+            position:fixed;inset:0;
+            z-index:0;
+            pointer-events:none;
+        }
+        .bg-wrap .bg-img {
+            position:absolute;inset:0;
+            background:url('https://res.cloudinary.com/dkbegf5yh/image/upload/v1770119944/bgheader_ubkadw.jpg') center/cover no-repeat;
+            opacity:0.08;
+            mix-blend-mode:luminosity;
+        }
+        .bg-wrap .bg-overlay {
+            position:absolute;inset:0;
+            background:radial-gradient(circle at 50% 50%, rgba(10,10,11,0.4) 0%, rgba(10,10,11,0.95) 100%);
+        }
+        .bg-wrap .bg-grid {
+            position:absolute;inset:0;
+            background:url('https://res.cloudinary.com/dkbegf5yh/image/upload/v1770117054/automindz_grid_3000w_sx9yxh.png') center/1200px repeat;
+            opacity:0.35;
+            mix-blend-mode:screen;
+            -webkit-mask-image:radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+            mask-image:radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
         }
 
-        .bg-layer-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(23,23,23,0.3) 0%, rgba(23,23,23,0.95) 100%);
-            z-index: -2;
-        }
-
-        .bg-layer-grid {
-            position: absolute;
-            inset: 0;
-            background-image: url('https://res.cloudinary.com/dkbegf5yh/image/upload/v1770117054/automindz_grid_3000w_sx9yxh.png');
-            background-size: 1200px;
-            background-position: center center;
-            opacity: 0.5;
-            mix-blend-mode: screen;
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-            z-index: -1;
-        }
-
-        /* =========================================
-           3. TYPOGRAPHY
-           ========================================= */
-        .title-main {
-            font-size: 56px;
-            font-weight: 300;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-            margin-bottom: 24px;
-        }
-
-        .card-title {
-            font-size: 32px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .subtitle {
-            font-size: 24px;
-            font-weight: 300;
-            margin-bottom: 24px;
-            opacity: 0.8;
-        }
-
-        .text-body {
-            font-size: 20px;
-            font-weight: 200;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .gold-gradient {
-            background: linear-gradient(90deg, #FFFFFF 0%, #F9C10E 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        /* =========================================
-           4. LAYOUT & UI COMPONENTS
-           ========================================= */
-        /* Sidebar */
+        /* ── SIDEBAR ── */
         .sidebar {
-            width: var(--sidebar-width);
-            height: 100vh;
-            background: rgba(15, 15, 15, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-right: 1px solid var(--border-light);
-            display: flex;
-            flex-direction: column;
-            z-index: 10;
-            position: relative;
+            width:var(--sidebar-w);height:100vh;
+            background:rgba(10,10,11,0.92);
+            backdrop-filter:blur(20px);
+            border-right:1px solid var(--border);
+            display:flex;flex-direction:column;
+            position:relative;z-index:10;
+        }
+        .sidebar-logo{padding:32px 30px}
+        .sidebar-logo img{width:140px;display:block}
+        .nav-list{list-style:none;display:flex;flex-direction:column;gap:3px;padding:0 12px}
+        .nav-item{
+            padding:10px 16px;border-radius:8px;cursor:pointer;
+            font-size:13px;font-weight:400;color:var(--text-muted);
+            transition:all .3s ease;border-left:3px solid transparent;line-height:1.4;
+        }
+        .nav-item:hover{color:#fff;background:rgba(255,255,255,0.04)}
+        .nav-item.active{
+            color:#fff;font-weight:500;
+            border-left:3px solid var(--gold);
+            background:linear-gradient(90deg,rgba(249,193,14,0.1) 0%,transparent 100%);
+        }
+        .sidebar-progress{margin-top:auto;padding:20px 24px;border-top:1px solid var(--border)}
+        .progress-track{width:100%;height:3px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
+        .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),#fff);border-radius:3px;transition:width .6s cubic-bezier(.16,1,.3,1);width:10%}
+        .progress-label{font-size:11px;color:var(--text-muted);margin-top:8px;letter-spacing:1px;text-transform:uppercase}
+
+        /* ── MAIN STAGE ── */
+        .main-stage{flex:1;position:relative;height:100vh;z-index:5}
+
+        .slide-counter{
+            position:absolute;top:36px;right:36px;
+            background:rgba(24,24,27,0.6);backdrop-filter:blur(12px);
+            border:1px solid var(--border);border-radius:30px;
+            padding:8px 16px;font-size:13px;color:var(--text-secondary);
+            letter-spacing:2px;z-index:20;
+        }
+        .nav-arrows{position:absolute;bottom:36px;right:36px;display:flex;gap:10px;z-index:20}
+        .nav-btn{
+            width:44px;height:44px;border-radius:50%;
+            background:rgba(24,24,27,0.6);backdrop-filter:blur(12px);
+            border:1px solid var(--border);color:var(--text-secondary);
+            display:flex;align-items:center;justify-content:center;
+            cursor:pointer;transition:all .3s;font-size:14px;
+        }
+        .nav-btn:hover{background:rgba(249,193,14,0.15);border-color:rgba(249,193,14,0.3);color:#fff}
+
+        /* ── SLIDES ── */
+        .slide{
+            position:absolute;inset:0;padding:60px 80px;
+            display:flex;flex-direction:column;justify-content:center;
+            opacity:0;pointer-events:none;
+            transition:opacity .8s cubic-bezier(.16,1,.3,1);z-index:1;
+        }
+        .slide.active{opacity:1;pointer-events:auto;z-index:5}
+
+        .centered{align-items:center;text-align:center;max-width:900px;margin:0 auto}
+        .split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;height:100%}
+        .wide{width:100%;max-width:1200px;margin:0 auto}
+
+        /* ── TYPOGRAPHY ── */
+        .t1{font-size:52px;font-weight:300;line-height:1.15;letter-spacing:-.02em;margin-bottom:20px}
+        .t2{font-size:28px;font-weight:400;margin-bottom:16px;line-height:1.3}
+        .sub{font-size:20px;font-weight:300;margin-bottom:20px;color:var(--text-secondary)}
+        .body{font-size:17px;font-weight:200;line-height:1.6;margin-bottom:12px}
+        .label{font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:14px}
+        .label-gold{color:var(--gold)}
+        .label-red{color:var(--red)}
+
+        .gold-grad{background:linear-gradient(90deg,#FFF 0%,#F9C10E 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
+        .red-grad{background:linear-gradient(90deg,#FFF 0%,#ff4757 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
+
+        /* ── CARDS ── */
+        .card{
+            border-radius:16px;background:var(--panel);
+            backdrop-filter:blur(16px);
+            box-shadow:0 10px 40px rgba(0,0,0,0.5);
+            border:1px solid var(--border);padding:32px;
+            position:relative;overflow:hidden;
+        }
+        .card.gold-top{border-top:2px solid rgba(249,193,14,0.3)}
+        .card.red-top{border-top:2px solid rgba(255,71,87,0.3)}
+
+        .num-card{padding:26px 20px;border-top:1px solid rgba(249,193,14,0.2);height:100%;display:flex;flex-direction:column}
+        .num-bg{position:absolute;top:-10px;right:12px;font-size:90px;font-weight:400;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none}
+        .num-title{
+            color:#fff;font-size:16px;font-weight:500;margin-bottom:8px;
+            display:flex;align-items:flex-start;line-height:1.3;
+        }
+        .num-title::before{
+            content:'';display:inline-block;flex-shrink:0;
+            width:6px;height:6px;border-radius:50%;background:var(--gold);
+            box-shadow:0 0 10px 1px var(--gold-glow);margin-right:10px;margin-top:7px;
+        }
+        .num-text{color:var(--text-secondary);font-size:14px;line-height:1.5;font-weight:300;padding-left:16px}
+
+        /* ── LIST ── */
+        .lst{list-style:none;padding:0;margin:0}
+        .lst li{
+            position:relative;padding-left:28px;margin-bottom:16px;
+            font-size:17px;font-weight:300;line-height:1.4;color:var(--text-secondary);
+        }
+        .lst li strong{color:#fff;font-weight:500}
+        .lst li::before{
+            content:'';position:absolute;left:0;top:9px;
+            width:6px;height:6px;border-radius:50%;
+            background:var(--gold);box-shadow:0 0 10px 1px var(--gold-glow);
+        }
+        .lst.sm li{font-size:15px;margin-bottom:12px}
+
+        /* ── FLOW DIAGRAM ── */
+        .flow{display:flex;align-items:center;justify-content:center;gap:0;margin:28px 0 16px}
+        .flow-step{text-align:center;flex-shrink:0}
+        .flow-box{
+            width:68px;height:68px;border-radius:14px;
+            display:flex;align-items:center;justify-content:center;
+            font-size:26px;margin:0 auto 8px;border:1px solid var(--border);
+        }
+        .flow-box.ok{background:rgba(46,213,115,0.1);color:var(--green)}
+        .flow-box.bad{background:rgba(255,71,87,0.1);color:var(--red);border-color:rgba(255,71,87,0.2)}
+        .flow-lbl{font-size:12px;font-weight:400;color:var(--text-muted);max-width:90px}
+        .flow-arr{font-size:18px;color:rgba(255,255,255,0.15);padding:0 14px;flex-shrink:0}
+        .flow-arr.red{color:rgba(255,71,87,0.4)}
+
+        /* ── QUESTION GRID ── */
+        .q-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+        .q-item{
+            padding:12px 14px;background:rgba(0,0,0,0.25);border-radius:10px;
+            border:1px solid var(--border);font-size:14px;font-weight:300;
+            color:var(--text-secondary);display:flex;align-items:center;gap:10px;
+        }
+        .q-item i{color:var(--gold);font-size:13px;flex-shrink:0}
+
+        /* ── VS BOX ── */
+        .vs-wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;margin-top:24px}
+        .vs-box{padding:28px;border-radius:14px;border:1px solid var(--border)}
+        .vs-box.bad{background:rgba(255,71,87,0.05);border-color:rgba(255,71,87,0.15)}
+        .vs-box.good{background:rgba(249,193,14,0.05);border-color:rgba(249,193,14,0.15)}
+        .vs-title{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+        .vs-box.bad .vs-title{color:var(--red)}
+        .vs-box.good .vs-title{color:var(--gold)}
+        .vs-box p{font-size:14px;color:var(--text-secondary);font-weight:300;line-height:1.5}
+        .vs-mid{font-size:18px;font-weight:700;color:rgba(255,255,255,0.12);text-align:center}
+
+        /* ── QUOTE ── */
+        .quote{
+            padding:16px 20px;background:rgba(0,0,0,0.25);
+            border-radius:12px;border-left:3px solid var(--gold);margin-top:16px;
+        }
+        .quote p{font-size:16px;font-style:italic;font-weight:300;line-height:1.5;color:var(--text-secondary);margin:0}
+
+        /* ── DIVIDER ── */
+        .div-gold{width:50px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:16px 0}
+        .div-gold.ctr{margin:16px auto}
+
+        /* ── STAT ── */
+        .stat-big{font-size:52px;font-weight:300;color:var(--gold);text-align:center;line-height:1}
+        .stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;text-align:center;margin-top:6px}
+
+        /* ── CTA ── */
+        .cta{
+            border-radius:60px;
+            background:linear-gradient(90deg,#FFF 0%,#FFF0B3 40%,#F9C10E 100%);
+            padding:6px 6px 6px 28px;display:inline-flex;align-items:center;gap:20px;
+            border:none;cursor:pointer;text-decoration:none;margin-top:24px;
+            transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s;
+            box-shadow:0 10px 30px rgba(249,193,14,0.15);
+        }
+        .cta:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 15px 40px rgba(249,193,14,0.3)}
+        .cta-text{display:flex;flex-direction:column;align-items:flex-start}
+        .cta-micro{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(0,0,0,0.6);font-weight:700}
+        .cta-main{font-size:17px;color:#000;font-weight:700;letter-spacing:-.5px}
+        .cta-ico{
+            width:46px;height:46px;border-radius:50%;background:#000;color:#fff;
+            display:flex;align-items:center;justify-content:center;font-size:16px;
         }
 
-        .sidebar-logo {
-            padding: 40px 30px;
-        }
+        /* ── IMAGE ── */
+        .comp-img{width:100%;max-height:42vh;object-fit:contain;border-radius:8px;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
 
-        .sidebar-logo img {
-            width: 140px;
-            height: auto;
-            display: block;
-        }
+        /* ── ANIMATIONS ── */
+        .a{transform:translateY(28px);opacity:0;transition:transform .8s cubic-bezier(.16,1,.3,1),opacity .8s ease}
+        .slide.active .a{transform:translateY(0);opacity:1}
+        .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+        .d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
 
-        .nav-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding: 0 16px;
-        }
+        .type-char{display:inline-block;transition:opacity .1s ease}
 
-        .nav-item {
-            padding: 14px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 300;
-            color: rgba(255,255,255,0.6);
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .nav-item:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.03);
-        }
-
-        .nav-item.active {
-            color: #fff;
-            font-weight: 500;
-            border-left: 3px solid var(--gold);
-            background: linear-gradient(90deg, rgba(249,193,14,0.1) 0%, transparent 100%);
-        }
-
-        /* Main Stage */
-        .main-stage {
-            flex: 1;
-            position: relative;
-            height: 100vh;
-            perspective: 1000px;
-        }
-
-        .slide-counter {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            background: var(--panel-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-light);
-            border-radius: 30px;
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            z-index: 20;
-        }
-
-        /* Slide Container */
-        .slide {
-            position: absolute;
-            inset: 0;
-            padding: 80px 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 1;
-        }
-
-        .slide.active {
-            opacity: 1;
-            pointer-events: auto;
-            z-index: 5;
-        }
-
-        /* Layout Types */
-        .centered-layout {
-            align-items: center;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .split-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            height: 100%;
-        }
-
-        /* Glass Cards */
-        .glass-card {
-            border-radius: 28px;
-            background: var(--panel-bg);
-            backdrop-filter: blur(24px) saturate(1.2);
-            -webkit-backdrop-filter: blur(24px) saturate(1.2);
-            box-shadow: 0 24px 48px rgba(0,0,0,0.3);
-            border: 1px solid var(--border-light);
-            border-top: 1px solid rgba(255,255,255,0.25);
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-card.centered {
-            text-align: center;
-        }
-
-        .image-comparison-img {
-            width: 100%;
-            max-height: 45vh;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        /* Clean List (Custom Bullets) */
-        .list-clean {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .list-clean li {
-            position: relative;
-            padding-left: 36px;
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: 200;
-            line-height: 1.6;
-        }
-
-        .list-clean li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 12px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--gold);
-            box-shadow: 0 0 12px var(--gold);
-        }
-
-        /* Premium CTA Button */
-        .premium-cta {
-            border-radius: 60px;
-            background: linear-gradient(90deg, #FFFFFF 0%, #FFF0B3 40%, #F9C10E 100%);
-            padding: 6px 6px 6px 28px;
-            display: inline-flex;
-            align-items: center;
-            gap: 20px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            text-decoration: none;
-            margin-top: 30px;
-        }
-
-        .premium-cta:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(249, 193, 14, 0.25);
-        }
-
-        .cta-text-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .cta-micro {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(0,0,0,0.6);
-            font-weight: 700;
-        }
-
-        .cta-main {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            color: #000;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .cta-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #000;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        /* =========================================
-           5. ANIMATIONS & DELAYS
-           ========================================= */
-        .anim-item {
-            transform: translateY(30px);
-            opacity: 0;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
-        }
-
-        .slide.active .anim-item {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
-        .delay-5 { transition-delay: 0.5s; }
-
-        .type-char {
-            display: inline-block;
-            transition: opacity 0.1s ease;
-        }
+        @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(249,193,14,0.3)}50%{box-shadow:0 0 0 8px rgba(249,193,14,0)}}
     </style>
 </head>
 <body>
 
-    <!-- BACKGROUND SYSTEM -->
-    <div class="bg-layer-image"></div>
-    <div class="bg-layer-overlay"></div>
-    <div class="bg-layer-grid"></div>
+<!-- BACKGROUND -->
+<div class="bg-wrap">
+    <div class="bg-img"></div>
+    <div class="bg-overlay"></div>
+    <div class="bg-grid"></div>
+</div>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <img src="https://res.cloudinary.com/dkbegf5yh/image/upload/v1769866535/Transparent-02_onkhlb.png" alt="Verum Systems Logo">
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <img src="https://res.cloudinary.com/dkbegf5yh/image/upload/v1769866535/Transparent-02_onkhlb.png" alt="Verum Systems">
+    </div>
+    <ul class="nav-list" id="nav">
+        <li class="nav-item active" data-target="0">01. Einleitung</li>
+        <li class="nav-item" data-target="1">02. Die falsche Annahme</li>
+        <li class="nav-item" data-target="2">03. Das Leck im Marketing</li>
+        <li class="nav-item" data-target="3">04. Der logische Bruch</li>
+        <li class="nav-item" data-target="4">05. 4 Conversion-Killer</li>
+        <li class="nav-item" data-target="5">06. Die Patientenreise</li>
+        <li class="nav-item" data-target="6">07. Vertrauen ist alles</li>
+        <li class="nav-item" data-target="7">08. Der Mobile-Faktor</li>
+        <li class="nav-item" data-target="8">09. Perspektivwechsel</li>
+        <li class="nav-item" data-target="9">10. Nächster Schritt</li>
+    </ul>
+    <div class="sidebar-progress">
+        <div class="progress-track"><div class="progress-fill" id="pf"></div></div>
+        <div class="progress-label" id="pl">1 / 10</div>
+    </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main-stage">
+    <div class="slide-counter" id="sc">01 / 10</div>
+    <div class="nav-arrows">
+        <button class="nav-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- ══════════ SLIDE 1 ─ INTRO ══════════ -->
+    <section class="slide active">
+        <div class="centered">
+            <p class="label label-gold a d1">An Praxisinhaber mit Selbstzahler-Behandlungen</p>
+            <h1 class="t1 tw">Warum Ihre Website aktuell nur <span class="gold-grad">Geld verbrennt</span></h1>
+            <p class="sub a d1">(Trotz teurem Marketing-Budget)</p>
+            <button class="cta a d2" onclick="nextSlide()">
+                <div class="cta-text"><span class="cta-micro">Starten</span><span class="cta-main">Präsentation beginnen</span></div>
+                <div class="cta-ico"><i class="fas fa-play"></i></div>
+            </button>
         </div>
-        <ul class="nav-list" id="chapter-list">
-            <li class="nav-item active" data-target="0">01. Status Quo</li>
-            <li class="nav-item" data-target="1">02. Die Illusion</li>
-            <li class="nav-item" data-target="2">03. Der logische Bruch</li>
-            <li class="nav-item" data-target="3">04. 4 Conversion-Killer</li>
-            <li class="nav-item" data-target="4">05. Die Patientenreise</li>
-            <li class="nav-item" data-target="5">06. Perspektivwechsel</li>
-        </ul>
-    </aside>
+    </section>
 
-    <!-- MAIN STAGE -->
-    <main class="main-stage">
-        <div class="slide-counter" id="slide-counter">1 / 6</div>
-
-        <!-- SLIDE 1: Intro -->
-        <section class="slide active">
-            <div class="centered-layout">
-                <h1 class="title-main typewriter-text">Warum Ihre Website aktuell nur <span class="gold-gradient">Geld verbrennt</span></h1>
-                <p class="subtitle anim-item delay-1" style="margin-bottom: 50px;">(Trotz teurem Marketing-Budget)</p>
-                
-                <button class="premium-cta anim-item delay-2" onclick="nextSlide()">
-                    <div class="cta-text-wrapper">
-                        <span class="cta-micro">Starten</span>
-                        <span class="cta-main">Präsentation beginnen</span>
-                    </div>
-                    <div class="cta-icon"><i class="fas fa-play"></i></div>
-                </button>
+    <!-- ══════════ SLIDE 2 ─ FALSCHE ANNAHME ══════════ -->
+    <section class="slide">
+        <div class="split">
+            <div>
+                <p class="label label-gold a">Die größte falsche Annahme</p>
+                <h2 class="t1 tw">Die große <span class="gold-grad">Illusion</span></h2>
+                <p class="sub a d1">„Hochwertig aussehen = funktionieren."</p>
+                <ul class="lst a d2">
+                    <li>Teures Design ≠ hohe Conversion</li>
+                    <li>Digitale Visitenkarte ≠ Patientengewinnung</li>
+                    <li>Professionell programmiert ≠ sauber geführt</li>
+                </ul>
             </div>
-        </section>
+            <div class="card gold-top a d3">
+                <h3 class="t2">Was Patienten <span style="color:var(--gold)">wirklich</span> suchen</h3>
+                <ul class="lst">
+                    <li><strong>Sicherheit</strong> in der Entscheidung</li>
+                    <li><strong>Orientierung</strong> & klare Antworten</li>
+                    <li><strong>Bestätigung</strong> — richtige Wahl</li>
+                    <li><strong>Führung</strong> durch den Prozess</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        <!-- SLIDE 2: Die Illusion -->
-        <section class="slide">
-            <div class="split-layout">
-                <div>
-                    <h2 class="title-main typewriter-text">Die große <span class="gold-gradient">Illusion</span></h2>
-                    <p class="subtitle anim-item delay-1">„Ein hochwertiges Design reicht aus.“ – <strong>Nein.</strong></p>
-                    <ul class="list-clean anim-item delay-2">
-                        <li>Teures Design ≠ hohe Conversion</li>
-                        <li>Eine digitale Visitenkarte gewinnt keine hochpreisigen Patienten</li>
-                        <li>Zielverfehlung trotz professioneller Programmierung</li>
+    <!-- ══════════ SLIDE 3 ─ LECK IM MARKETING ══════════ -->
+    <section class="slide">
+        <div class="wide">
+            <p class="label label-red a">Das eigentliche Problem</p>
+            <h2 class="t1 tw">Das Leck im <span class="red-grad">Marketing</span></h2>
+            <p class="sub a d1">Nicht die Anzeige verbrennt Ihr Budget — sondern was danach passiert.</p>
+
+            <!-- FLOW -->
+            <div class="flow a d2">
+                <div class="flow-step">
+                    <div class="flow-box ok"><i class="fas fa-bullhorn"></i></div>
+                    <div class="flow-lbl">Anzeige OK</div>
+                </div>
+                <div class="flow-arr"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                    <div class="flow-box ok"><i class="fas fa-mouse-pointer"></i></div>
+                    <div class="flow-lbl">Klick kommt</div>
+                </div>
+                <div class="flow-arr red"><i class="fas fa-bolt"></i></div>
+                <div class="flow-step">
+                    <div class="flow-box bad" style="box-shadow:0 0 20px rgba(255,71,87,0.25)"><i class="fas fa-window-restore"></i></div>
+                    <div class="flow-lbl" style="color:var(--red);font-weight:500">Generische Seite</div>
+                </div>
+                <div class="flow-arr red"><i class="fas fa-chevron-right"></i></div>
+                <div class="flow-step">
+                    <div class="flow-box bad"><i class="fas fa-user-slash"></i></div>
+                    <div class="flow-lbl">Absprung</div>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px">
+                <div class="card red-top a d3" style="padding:24px">
+                    <h4 style="color:var(--red);font-size:15px;font-weight:600;margin-bottom:12px"><i class="fas fa-times-circle" style="margin-right:6px"></i> Nach dem Klick</h4>
+                    <ul class="lst sm">
+                        <li>Landet auf generischer Startseite</li>
+                        <li>Zehn Themen gleichzeitig</li>
+                        <li>Keine klare Führung → <strong>Absprung</strong></li>
                     </ul>
                 </div>
-                <div class="glass-card anim-item delay-3">
-                    <h3 class="card-title">Was Patienten wirklich suchen</h3>
-                    <ul class="list-clean">
-                        <li>Sicherheit in der Entscheidung</li>
-                        <li>Klare Orientierung & Antworten</li>
-                        <li>Führung durch den Prozess</li>
-                    </ul>
-                    <p class="text-body" style="margin-top: 24px; color: var(--gold);">Die meisten Seiten sehen nett aus, aber sie führen nicht.</p>
+                <div class="card gold-top a d4" style="padding:24px">
+                    <h4 style="color:var(--gold);font-size:15px;font-weight:600;margin-bottom:12px"><i class="fas fa-lightbulb" style="margin-right:6px"></i> Der Denkfehler</h4>
+                    <p class="body" style="font-size:15px">Viele glauben: <strong>„Wir brauchen mehr Reichweite."</strong></p>
+                    <p class="body" style="font-size:15px;margin:0">Wahrheit: <strong style="color:var(--gold)">Weniger Reibung nach dem Klick.</strong></p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SLIDE 3: Der logische Bruch (Redesigned) -->
-        <section class="slide">
-            <div class="centered-layout" style="max-width: 1200px;">
-                <h2 class="title-main typewriter-text">Der <span class="gold-gradient">logische Bruch</span></h2>
-                <p class="subtitle anim-item delay-1">Das eigentliche Leck: Der Weg von der Anzeige zur Zielseite.</p>
-                
-                <div style="display: flex; flex-direction: column; gap: 30px; margin-top: 30px; text-align: left;">
-                    
-                    <!-- Bottom Cards: Die Bilder direkt nebeneinander -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                        <div class="glass-card anim-item delay-3 centered" style="padding: 25px; display: flex; flex-direction: column; justify-content: center;">
-                            <h4 style="color: #ff4757; margin-bottom: 15px; font-weight: 500; font-size: 20px;"><i class="fas fa-times-circle"></i> Falsch (Generisch)</h4>
-                            <img src="https://res.cloudinary.com/dkbegf5yh/image/upload/v1773238888/8baa7647-b163-497d-b118-7e2644c35056.png" class="image-comparison-img" style="box-shadow: 0 10px 30px rgba(0,0,0,0.3);" alt="Schlechtes Beispiel">
-                        </div>
+    <!-- ══════════ SLIDE 4 ─ LOGISCHER BRUCH ══════════ -->
+    <section class="slide">
+        <div class="centered" style="max-width:1200px">
+            <p class="label label-gold a">Anzeige ≠ Zielseite</p>
+            <h2 class="t1 tw">Der <span class="gold-grad">logische Bruch</span></h2>
+            <p class="sub a d1">Oberlidstraffung in der Anzeige → Oberlidstraffung auf der Seite. Nicht „Willkommen".</p>
 
-                        <div class="glass-card anim-item delay-4 centered" style="padding: 25px; display: flex; flex-direction: column; justify-content: center;">
-                            <h4 style="color: #2ed573; margin-bottom: 15px; font-weight: 500; font-size: 20px;"><i class="fas fa-check-circle"></i> Richtig (Spezifisch)</h4>
-                            <img src="https://res.cloudinary.com/dkbegf5yh/image/upload/v1773238502/d843d847-d8d7-4629-a659-c02334cc0f33.png" class="image-comparison-img" style="box-shadow: 0 10px 30px rgba(0,0,0,0.3);" alt="Gutes Beispiel">
-                        </div>
-                    </div>
-
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px">
+                <div class="card a d2" style="padding:20px;text-align:center">
+                    <h4 style="color:var(--red);margin-bottom:10px;font-weight:500;font-size:17px"><i class="fas fa-times-circle"></i> Falsch — Generisch</h4>
+                    <img src="https://res.cloudinary.com/dkbegf5yh/image/upload/v1773238888/8baa7647-b163-497d-b118-7e2644c35056.png" class="comp-img" alt="Generisch">
+                </div>
+                <div class="card a d3" style="padding:20px;text-align:center">
+                    <h4 style="color:var(--green);margin-bottom:10px;font-weight:500;font-size:17px"><i class="fas fa-check-circle"></i> Richtig — Spezifisch</h4>
+                    <img src="https://res.cloudinary.com/dkbegf5yh/image/upload/v1773238502/d843d847-d8d7-4629-a659-c02334cc0f33.png" class="comp-img" alt="Spezifisch">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SLIDE 4: Die 4 Schwächen -->
-        <section class="slide">
-            <div class="split-layout">
+    <!-- ══════════ SLIDE 5 ─ 4 CONVERSION-KILLER ══════════ -->
+    <section class="slide">
+        <div class="wide">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:30px">
                 <div>
-                    <h2 class="title-main typewriter-text">Die 4 massiven <span class="gold-gradient">Conversion-Killer</span></h2>
-                    <p class="subtitle anim-item delay-1">Warum aktuelle Praxis-Seiten Leads verbrennen.</p>
-
-                    <!-- CTA Button -->
-                    <a href="https://perspectivefunnel.co/69af00a1d11b74a33ceccad6/69af020908c4994a26c9edbe/" target="_blank" class="premium-cta anim-item delay-2" style="text-decoration: none;">
-                        <div class="cta-text-wrapper">
-                            <span class="cta-micro">Live Beispiel</span>
-                            <span class="cta-main">Funnel ansehen</span>
-                        </div>
-                        <div class="cta-icon"><i class="fas fa-arrow-right"></i></div>
+                    <p class="label label-red a">Die 4 Schwächen</p>
+                    <h2 class="t1 tw" style="margin-bottom:8px">4 massive <span class="gold-grad">Conversion-Killer</span></h2>
+                </div>
+                <div class="a d2">
+                    <a href="https://perspectivefunnel.co/69af00a1d11b74a33ceccad6/69af020908c4994a26c9edbe/" target="_blank" class="cta" style="margin:0;text-decoration:none">
+                        <div class="cta-text"><span class="cta-micro">Live Beispiel</span><span class="cta-main">Funnel ansehen</span></div>
+                        <div class="cta-ico"><i class="fas fa-arrow-right"></i></div>
                     </a>
                 </div>
-                <div class="glass-card anim-item delay-3">
-                    <ul class="list-clean">
-                        <li class="anim-item delay-3"><strong>Keine Spezialisierung:</strong> Nicht erkennbar, welches Ergebnis exakt möglich ist.</li>
-                        <li class="anim-item delay-4"><strong>Zu wenig Vertrauen:</strong> Fehlende Arztpräsenz und kaum sichtbare Kompetenz.</li>
-                        <li class="anim-item delay-5"><strong>Keine Führung:</strong> Patient wird mit rohen Informationen alleingelassen.</li>
-                        <li class="anim-item delay-5"><strong>Keine Vorqualifizierung:</strong> Anfragen werden nicht gefiltert – Chaos im Team ist die Folge.</li>
-                    </ul>
-                </div>
             </div>
-        </section>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+                <div class="card num-card a d3"><div class="num-bg">01</div><div style="position:relative;z-index:1"><h4 class="num-title">Keine Spezialisierung</h4><p class="num-text">Nicht erkennbar, worum es geht & welches Ergebnis möglich ist.</p></div></div>
+                <div class="card num-card a d4"><div class="num-bg">02</div><div style="position:relative;z-index:1"><h4 class="num-title">Zu wenig Vertrauen</h4><p class="num-text">Fehlende Arztpräsenz, kein Gesicht, keine sichtbare Kompetenz.</p></div></div>
+                <div class="card num-card a d5"><div class="num-bg">03</div><div style="position:relative;z-index:1"><h4 class="num-title">Keine Führung</h4><p class="num-text">Patient wird mit Informationen alleingelassen statt geführt.</p></div></div>
+                <div class="card num-card a d6"><div class="num-bg">04</div><div style="position:relative;z-index:1"><h4 class="num-title">Keine Vorqualifizierung</h4><p class="num-text">Anfragen nicht vorsortiert — Chaos im Team & Frust.</p></div></div>
+            </div>
+        </div>
+    </section>
 
-        <!-- SLIDE 5: Die Patientenreise & Mobile -->
-        <section class="slide">
-            <div class="split-layout">
-                <div>
-                    <h2 class="title-main typewriter-text">Die saubere <span class="gold-gradient">Patientenreise</span></h2>
-                    <p class="subtitle anim-item delay-1">Von der reinen Information zur psychologischen Führung.</p>
-                    <ul class="list-clean anim-item delay-2">
-                        <li>Pro Behandlung eine eigene, psychologische Route</li>
-                        <li>Problem glasklar machen & Ergebnis greifbar visualisieren</li>
-                        <li>Einwände proaktiv entschärfen</li>
-                    </ul>
+    <!-- ══════════ SLIDE 6 ─ PATIENTENREISE ══════════ -->
+    <section class="slide">
+        <div class="split">
+            <div>
+                <p class="label label-gold a">Die Lösung</p>
+                <h2 class="t1 tw">Die saubere <span class="gold-grad">Patientenreise</span></h2>
+                <div class="div-gold a d1"></div>
+                <ul class="lst a d2">
+                    <li>Pro Behandlung <strong>eine eigene Route</strong></li>
+                    <li>Problem <strong>sofort glasklar</strong> machen</li>
+                    <li>Ergebnis <strong>greifbar</strong> visualisieren</li>
+                    <li>Einwände <strong>proaktiv entschärfen</strong></li>
+                    <li>Nächster Schritt = <strong>einfach & logisch</strong></li>
+                </ul>
+            </div>
+            <div class="card gold-top a d3">
+                <h3 class="t2">Was eine starke Seite braucht</h3>
+                <ul class="lst sm">
+                    <li>Klare Headline & Nutzen</li>
+                    <li>Echte Beweise & Vorher-Nachher</li>
+                    <li>Testimonials echter Patienten</li>
+                    <li>Arzt & Team sichtbar machen</li>
+                    <li>Klarer Behandlungsablauf</li>
+                    <li>Nächster Schritt ohne Überforderung</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SLIDE 7 ─ VERTRAUEN ══════════ -->
+    <section class="slide">
+        <div class="wide">
+            <div style="text-align:center;margin-bottom:28px">
+                <p class="label label-gold a">Der entscheidende Faktor</p>
+                <h2 class="t1 tw">Vertrauen ist <span class="gold-grad">alles</span></h2>
+                <p class="sub a d1">Patienten kaufen keine Behandlung — sie kaufen Vertrauen in die Entscheidung.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+                <div class="card gold-top a d2" style="padding:28px">
+                    <h4 style="font-size:15px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px"><i class="fas fa-user" style="color:var(--gold)"></i> Was der Patient wissen will</h4>
+                    <div class="q-grid">
+                        <div class="q-item"><i class="fas fa-stethoscope"></i> Wer behandelt mich?</div>
+                        <div class="q-item"><i class="fas fa-building"></i> Wie wirkt die Praxis?</div>
+                        <div class="q-item"><i class="fas fa-images"></i> Wie sehen Ergebnisse aus?</div>
+                        <div class="q-item"><i class="fas fa-award"></i> Ist das professionell?</div>
+                        <div class="q-item"><i class="fas fa-leaf"></i> Ist das natürlich?</div>
+                        <div class="q-item"><i class="fas fa-heart"></i> Versteht man mich?</div>
+                        <div class="q-item"><i class="fas fa-list-ol"></i> Wie läuft das ab?</div>
+                        <div class="q-item"><i class="fas fa-arrow-right"></i> Was kommt als Nächstes?</div>
+                    </div>
                 </div>
-                <div class="glass-card anim-item delay-3">
-                    <h3 class="card-title"><i class="fas fa-mobile-alt" style="color: var(--gold); margin-right: 12px;"></i> Der Mobile-Faktor</h3>
-                    <ul class="list-clean">
-                        <li>Über 80% der Klicks kommen übers Smartphone</li>
-                        <li>Die Seite muss mobil nicht nur lesbar sein, sondern <strong>verkaufen</strong></li>
-                    </ul>
-                    <div style="margin-top: 24px; padding: 16px; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px solid var(--border-light);">
-                        <p class="text-body" style="margin: 0; font-style: italic;">"Eine gute mobile Seite reduziert Reibung. Eine schlechte mobile Seite vernichtet Aufmerksamkeit."</p>
+                <div class="a d3" style="display:flex;flex-direction:column;gap:16px">
+                    <div class="card red-top" style="padding:24px;flex:1">
+                        <h4 style="font-size:15px;font-weight:600;margin-bottom:10px;color:var(--red)"><i class="fas fa-exclamation-triangle" style="margin-right:6px"></i> Fragen offen → Vorsicht</h4>
+                        <p class="body" style="font-size:15px;margin:0">Vorsicht online = <strong style="color:var(--red)">Absprung, nicht Anfrage.</strong></p>
+                    </div>
+                    <div class="card" style="padding:24px;flex:1;background:rgba(249,193,14,0.06);border-color:rgba(249,193,14,0.15)">
+                        <h4 style="font-size:15px;font-weight:600;margin-bottom:10px;color:var(--gold)"><i class="fas fa-check-circle" style="margin-right:6px"></i> Vertrauen transportiert</h4>
+                        <p class="body" style="font-size:15px;margin:0"><strong style="color:var(--gold)">Qualifizierte Anfragen</strong> statt Preisanfragen.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SLIDE 6: Outro / CTA -->
-        <section class="slide">
-            <div class="centered-layout" style="max-width: 900px;">
-                <h2 class="title-main typewriter-text" style="font-size: 64px;">Der <span class="gold-gradient">Perspektivwechsel</span></h2>
-                <p class="subtitle anim-item delay-1" style="margin-bottom: 60px; font-size: 28px;">Von der digitalen Visitenkarte zum digitalen Vertriebsprozess.</p>
+    <!-- ══════════ SLIDE 8 ─ MOBILE ══════════ -->
+    <section class="slide">
+        <div class="split">
+            <div>
+                <p class="label label-gold a">Brutal unterschätzt</p>
+                <h2 class="t1 tw">Der <span class="gold-grad">Mobile-Faktor</span></h2>
+                <div class="div-gold a d1"></div>
+                <ul class="lst a d2">
+                    <li><strong>80%+</strong> der Klicks kommen mobil</li>
+                    <li>Mobil „lesbar" reicht <strong>nicht</strong></li>
+                    <li>Unruhig, zu viel Scrollen, generisch = <strong>weg</strong></li>
+                </ul>
             </div>
-        </section>
+            <div class="a d3" style="display:flex;flex-direction:column;gap:16px">
+                <div class="card red-top" style="padding:24px">
+                    <h4 style="font-size:15px;font-weight:600;margin-bottom:10px;color:var(--red)"><i class="fas fa-mobile-alt" style="margin-right:6px"></i> Was mobil Patienten verliert</h4>
+                    <ul class="lst sm">
+                        <li>Unruhiges Layout</li>
+                        <li>Zu viel scrollen</li>
+                        <li>Texte zu lang & allgemein</li>
+                        <li>Buttons kommen unlogisch</li>
+                    </ul>
+                </div>
+                <div class="card gold-top" style="padding:24px;text-align:center">
+                    <div class="stat-big">80%+</div>
+                    <p class="stat-label">der Werbeklicks = mobil</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </main>
+    <!-- ══════════ SLIDE 9 ─ PERSPEKTIVWECHSEL ══════════ -->
+    <section class="slide">
+        <div class="wide" style="max-width:1100px">
+            <div style="text-align:center;margin-bottom:28px">
+                <p class="label label-gold a">Das Umdenken</p>
+                <h2 class="t1 tw" style="font-size:54px">Der <span class="gold-grad">Perspektivwechsel</span></h2>
+            </div>
+            <div class="vs-wrap a d2">
+                <div class="vs-box bad">
+                    <div class="vs-title"><i class="fas fa-times-circle"></i> Bisher</div>
+                    <p style="font-weight:500;margin-bottom:12px">„Wir haben auch eine Website."</p>
+                    <ul class="lst sm">
+                        <li style="font-size:14px">Hauptsache modern</li>
+                        <li style="font-size:14px">Hauptsache online</li>
+                        <li style="font-size:14px">Informationen bereitstellen</li>
+                    </ul>
+                </div>
+                <div class="vs-mid">VS</div>
+                <div class="vs-box good">
+                    <div class="vs-title"><i class="fas fa-check-circle"></i> Ab jetzt</div>
+                    <p style="font-weight:500;margin-bottom:12px">„Website arbeitet mit Marketing zusammen."</p>
+                    <ul class="lst sm">
+                        <li style="font-size:14px">Richtige Leute aufwärmen</li>
+                        <li style="font-size:14px">Falsche Leute aussortieren</li>
+                        <li style="font-size:14px">Vertrauen vor dem Telefonat</li>
+                        <li style="font-size:14px">Klicks → planbar bessere Termine</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- =========================================
-         JAVASCRIPT LOGIC
-         ========================================= -->
-    <script>
-        function initApp() {
-            const slides = document.querySelectorAll('.slide');
-            const navItems = document.querySelectorAll('.nav-item');
-            const counter = document.getElementById('slide-counter');
-            
-            // Safety check
-            if (!counter) return;
+    <!-- ══════════ SLIDE 10 ─ CTA ══════════ -->
+    <section class="slide">
+        <div class="centered" style="max-width:780px">
+            <p class="label label-gold a">Ihr nächster Schritt</p>
+            <h2 class="t1 tw" style="font-size:46px">Unverbindliche <span class="gold-grad">Potenzialanalyse</span></h2>
+            <div class="div-gold ctr a d1"></div>
 
-            let currentSlideIndex = 0;
-            const totalSlides = slides.length;
+            <div class="card a d2" style="text-align:left;margin-bottom:24px;padding:28px">
+                <ul class="lst sm">
+                    <li>Wo liegen die <strong>Brüche</strong> auf Ihrer Seite?</li>
+                    <li>Wo verlieren Sie gerade <strong>Geld</strong>?</li>
+                    <li>Wie wird aus Klicks planbar <strong>bessere Termine</strong>?</li>
+                </ul>
+            </div>
 
-            // 1. Setup Robust Typewriter Effect
-            function prepareTypewriters() {
-                const titles = document.querySelectorAll('.typewriter-text');
-                titles.forEach(title => {
-                    function wrapTextNodes(node) {
-                        if (node.nodeType === 3) { // Text node
-                            let text = node.nodeValue;
-                            let frag = document.createDocumentFragment();
-                            for (let i = 0; i < text.length; i++) {
-                                let char = text[i];
-                                let span = document.createElement('span');
-                                span.className = 'type-char';
-                                span.innerHTML = char === ' ' ? '&nbsp;' : char;
-                                span.style.opacity = '0';
-                                frag.appendChild(span);
-                            }
-                            node.parentNode.replaceChild(frag, node);
-                        } else if (node.nodeType === 1) { // Element node
-                            Array.from(node.childNodes).forEach(wrapTextNodes);
-                        }
+            <a href="https://verumsystems.de" target="_blank" class="cta a d3" style="text-decoration:none">
+                <div class="cta-text"><span class="cta-micro">verumsystems.de</span><span class="cta-main">Potenzialanalyse anfragen</span></div>
+                <div class="cta-ico" style="animation:pulse 2.5s infinite"><i class="fas fa-arrow-right"></i></div>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<script>
+function initApp(){
+    const slides=document.querySelectorAll('.slide'),
+          navs=document.querySelectorAll('.nav-item'),
+          sc=document.getElementById('sc'),
+          pf=document.getElementById('pf'),
+          pl=document.getElementById('pl');
+    if(!sc)return;
+    let cur=0;const total=slides.length;
+
+    function prepTW(){
+        document.querySelectorAll('.tw').forEach(t=>{
+            (function wrap(n){
+                if(n.nodeType===3){
+                    let f=document.createDocumentFragment();
+                    for(let i=0;i<n.nodeValue.length;i++){
+                        let s=document.createElement('span');
+                        s.className='type-char';
+                        s.innerHTML=n.nodeValue[i]===' '?'&nbsp;':n.nodeValue[i];
+                        s.style.opacity='0';f.appendChild(s);
                     }
-                    wrapTextNodes(title);
-                });
-            }
+                    n.parentNode.replaceChild(f,n);
+                }else if(n.nodeType===1)Array.from(n.childNodes).forEach(wrap);
+            })(t);
+        });
+    }
 
-            function playTypewriter(slide) {
-                const chars = slide.querySelectorAll('.type-char');
-                chars.forEach(c => {
-                    c.style.opacity = '0';
-                    c.style.transition = 'none';
-                });
-                
-                void slide.offsetWidth; // Force reflow
+    function playTW(s){
+        const c=s.querySelectorAll('.type-char');
+        c.forEach(x=>{x.style.opacity='0';x.style.transition='none'});
+        void s.offsetWidth;
+        c.forEach((x,i)=>{x.style.transition='opacity .1s';setTimeout(()=>x.style.opacity='1',i*20)});
+    }
 
-                chars.forEach((c, index) => {
-                    c.style.transition = 'opacity 0.1s ease';
-                    setTimeout(() => {
-                        c.style.opacity = '1';
-                    }, index * 20); // 20ms reveal speed
-                });
-            }
+    window.goToSlide=function(i){
+        if(i<0||i>=total)return;
+        slides.forEach(s=>s.classList.remove('active'));
+        slides[i].classList.add('active');
+        navs.forEach(n=>n.classList.remove('active'));
+        navs[i].classList.add('active');
+        sc.textContent=String(i+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
+        pf.style.width=((i+1)/total*100)+'%';
+        pl.textContent=(i+1)+' / '+total;
+        playTW(slides[i]);cur=i;
+        navs[i].scrollIntoView({block:'nearest',behavior:'smooth'});
+    };
+    window.nextSlide=function(){goToSlide(cur+1)};
+    window.prevSlide=function(){goToSlide(cur-1)};
 
-            // 2. Navigation Logic
-            window.goToSlide = function(index) {
-                if (index < 0 || index >= totalSlides) return;
-                
-                slides.forEach(s => s.classList.remove('active'));
-                slides[index].classList.add('active');
+    navs.forEach((n,i)=>n.addEventListener('click',()=>goToSlide(i)));
+    window.addEventListener('keydown',e=>{
+        if(['ArrowRight','ArrowDown',' '].includes(e.key)){e.preventDefault();nextSlide()}
+        else if(['ArrowLeft','ArrowUp'].includes(e.key)){e.preventDefault();prevSlide()}
+    });
 
-                navItems.forEach(n => n.classList.remove('active'));
-                navItems[index].classList.add('active');
+    let tx=0,ty=0;
+    document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY},{passive:true});
+    document.addEventListener('touchend',e=>{
+        let dx=e.changedTouches[0].screenX-tx,dy=e.changedTouches[0].screenY-ty;
+        if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>60){dx<0?nextSlide():prevSlide()}
+    },{passive:true});
 
-                counter.textContent = `${index + 1} / ${totalSlides}`;
-                playTypewriter(slides[index]);
-                currentSlideIndex = index;
-            };
-
-            window.nextSlide = function() {
-                goToSlide(currentSlideIndex + 1);
-            };
-
-            window.prevSlide = function() {
-                goToSlide(currentSlideIndex - 1);
-            };
-
-            // 3. Event Listeners
-            navItems.forEach((item, index) => {
-                item.addEventListener('click', () => goToSlide(index));
-            });
-
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
-                    e.preventDefault();
-                    nextSlide();
-                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    prevSlide();
-                }
-            });
-
-            // 4. Initialize
-            prepareTypewriters();
-            goToSlide(0);
-        }
-
-        // Initialize immediately if DOM is ready, otherwise wait
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initApp);
-        } else {
-            initApp();
-        }
-    </script>
+    prepTW();goToSlide(0);
+}
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',initApp):initApp();
+</script>
 </body>
 </html>
