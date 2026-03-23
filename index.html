@@ -183,6 +183,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-base); color: var(
     .grid-narrative { grid-template-columns: 1fr; }
     .kpi-bar { grid-template-columns: repeat(3, 1fr); }
     .origin-grid { grid-template-columns: 1fr; gap: 0; }
+    .s3-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
 }
 @media (max-width: 640px) {
     .section { padding: 60px 24px; }
@@ -190,6 +191,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-base); color: var(
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
     .card { padding: 24px; }
     .kpi-bar { grid-template-columns: repeat(2, 1fr); }
+    .s3-grid-4 { grid-template-columns: 1fr !important; }
 }
 </style>
 </head>
@@ -383,15 +385,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-base); color: var(
     <section class="section" id="section-2">
         <div class="fade-in fd1"><div class="section-divider"></div><span class="label">Bereich 02</span></div>
         <h2 class="t1 fade-in fd2" style="margin:20px 0 16px;">Vorschlag für den <span class="gold-text">Testaufbau</span> in Hamburg</h2>
-        <p class="sub fade-in fd3" style="max-width:920px;margin-bottom:20px;">Ein klar abgegrenzter, messbarer Kampagnentest – zugeschnitten auf PAAU Hamburg, mit Fokus auf eine konkrete Behandlung, eine klar definierte Zielgruppe, einen passenden Kanalansatz und eine nachvollziehbare Funnel-Logik.</p>
+        <p class="sub fade-in fd3" style="max-width:700px;margin-bottom:40px;">Ein klar abgegrenzter, messbarer Ersttest für PAAU Hamburg.</p>
 
-        <!-- Intro-Absatz -->
-        <div class="card fade-in fd4" style="margin-bottom:36px;padding:28px 34px;border-left:3px solid var(--gold-border);">
-            <p style="font-size:clamp(15px,1.2vw,18px);font-weight:300;color:var(--text-secondary);line-height:1.55;">Für den Hamburger Testmarkt wird ein bewusst <strong style="font-weight:500;color:var(--text-primary);">klar abgegrenztes Setup</strong> empfohlen. Ziel ist ein operativ sauberer Kampagnentest mit nachvollziehbarer Messbarkeit, bevor weitere Behandlungen oder Zielgruppensegmente ergänzt werden.</p>
-        </div>
-
-        <!-- 4 Karten Grid (2×2) -->
-        <div class="grid-2 fade-in fd5" style="margin-bottom:0;">
+        <div class="grid-2 fade-in fd4">
 
             <!-- 1. Behandlungsfokus -->
             <div class="card gold-top">
@@ -399,12 +395,12 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-base); color: var(
                     <div class="kpi-icon" style="margin:0;width:42px;height:42px;border-radius:12px;font-size:18px;flex-shrink:0;"><i class="fas fa-syringe"></i></div>
                     <div>
                         <div class="label" style="margin-bottom:2px;">Behandlungsfokus</div>
-                        <div style="font-size:clamp(20px,2vw,28px);font-weight:400;line-height:1.2;">Lippenunterspritzung mit Hyaluron</div>
+                        <div style="font-size:clamp(18px,1.8vw,26px);font-weight:400;line-height:1.2;">Lippenunterspritzung mit Hyaluron</div>
                     </div>
                 </div>
-                <div class="story-item" style="margin-bottom:12px;"><div class="story-dot"></div><div class="story-text">Klar verständliche, visuell gut kommunizierbare und stark nachgefragte Behandlung – ideal für den Einstieg.</div></div>
-                <div class="story-item" style="margin-bottom:12px;"><div class="story-dot"></div><div class="story-text">Bewusster Fokus auf <strong>nur eine Behandlung</strong>, damit der Test sauber messbar bleibt und keine Streuverluste entstehen.</div></div>
-                <div class="story-item" style="margin-bottom:0;"><div class="story-dot"></div><div class="story-text">Wird als klarer <strong>Entry-Point</strong> für die erste Kampagne genutzt.</div></div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Visuell gut kommunizierbar und stark nachgefragt – ideal als Einstieg.</div></div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Bewusst <strong>eine Behandlung</strong>, damit der Test sauber messbar bleibt.</div></div>
+                <div class="story-item" style="margin-bottom:0;"><div class="story-dot"></div><div class="story-text">Klarer <strong>Entry-Point</strong> für die erste Kampagne.</div></div>
             </div>
 
             <!-- 2. Zielgruppe -->
@@ -413,57 +409,60 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-base); color: var(
                     <div class="kpi-icon" style="margin:0;width:42px;height:42px;border-radius:12px;font-size:18px;flex-shrink:0;"><i class="fas fa-crosshairs"></i></div>
                     <div>
                         <div class="label" style="margin-bottom:2px;">Zielgruppe</div>
-                        <div style="font-size:clamp(20px,2vw,28px);font-weight:400;line-height:1.2;">Lokal Hamburg · Frauen · 20+</div>
+                        <div style="font-size:clamp(18px,1.8vw,26px);font-weight:400;line-height:1.2;">Hamburg · Frauen · 20+</div>
                     </div>
                 </div>
-                <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
-                    <span style="padding:6px 16px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.03);font-size:14px;font-weight:400;color:var(--text-secondary);"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:6px;"></i>Hamburg</span>
-                    <span style="padding:6px 16px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.03);font-size:14px;font-weight:400;color:var(--text-secondary);"><i class="fas fa-venus" style="color:var(--gold);margin-right:6px;"></i>Weiblich</span>
-                    <span style="padding:6px 16px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.03);font-size:14px;font-weight:400;color:var(--text-secondary);"><i class="fas fa-calendar" style="color:var(--gold);margin-right:6px;"></i>Alter: 20+</span>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+                    <span style="padding:5px 14px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.03);font-size:13px;font-weight:400;color:var(--text-secondary);"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:6px;"></i>Hamburg</span>
+                    <span style="padding:5px 14px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.03);font-size:13px;font-weight:400;color:var(--text-secondary);"><i class="fas fa-venus" style="color:var(--gold);margin-right:6px;"></i>Weiblich</span>
+                    <span style="padding:5px 14px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.03);font-size:13px;font-weight:400;color:var(--text-secondary);"><i class="fas fa-calendar" style="color:var(--gold);margin-right:6px;"></i>20+</span>
                 </div>
-                <p style="font-size:14px;font-weight:300;color:var(--text-muted);line-height:1.5;padding:14px 18px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);"><i class="fas fa-info-circle" style="color:var(--gold);margin-right:8px;"></i>Weitere Zielgruppensegmente und Verfeinerungen werden im nächsten Schritt ergänzt.</p>
+                <!-- Zielgruppen-Screenshot -->
+                <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:12px;cursor:pointer;" onclick="openLightbox(this)">
+                    <img src="https://res.cloudinary.com/dkbegf5yh/image/upload/v1774273152/02422397-4aa0-453d-85cd-c6f17706e3e1.png" alt="Meta Reichweitenabschätzung Hamburg" style="width:100%;height:auto;display:block;">
+                </div>
+                <p style="font-size:12px;font-weight:400;color:var(--text-muted);font-style:italic;">Beispielhafte Meta-Reichweitenabschätzung für Frauen 20+ im Raum Hamburg.</p>
             </div>
 
-            <!-- 3. Kanaleinsatz -->
+            <!-- 3. Kanäle -->
             <div class="card gold-top">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
                     <div class="kpi-icon" style="margin:0;width:42px;height:42px;border-radius:12px;font-size:18px;flex-shrink:0;"><i class="fas fa-bullhorn"></i></div>
                     <div>
-                        <div class="label" style="margin-bottom:2px;">Kanaleinsatz</div>
-                        <div style="font-size:clamp(20px,2vw,28px);font-weight:400;line-height:1.2;">Meta Ads · Facebook · Instagram</div>
+                        <div class="label" style="margin-bottom:2px;">Kanäle</div>
+                        <div style="font-size:clamp(18px,1.8vw,26px);font-weight:400;line-height:1.2;">Facebook & Instagram</div>
                     </div>
                 </div>
-                <div style="display:flex;gap:16px;margin-bottom:20px;">
-                    <div style="flex:1;padding:18px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);text-align:center;">
-                        <i class="fab fa-facebook" style="font-size:28px;color:#1877F2;margin-bottom:8px;display:block;"></i>
-                        <div style="font-size:14px;font-weight:500;color:var(--text-secondary);">Facebook</div>
+                <div style="display:flex;gap:14px;margin-bottom:18px;">
+                    <div style="flex:1;padding:16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);text-align:center;">
+                        <i class="fab fa-facebook" style="font-size:24px;color:#1877F2;margin-bottom:6px;display:block;"></i>
+                        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);">Facebook</div>
                     </div>
-                    <div style="flex:1;padding:18px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);text-align:center;">
-                        <i class="fab fa-instagram" style="font-size:28px;color:#E4405F;margin-bottom:8px;display:block;"></i>
-                        <div style="font-size:14px;font-weight:500;color:var(--text-secondary);">Instagram</div>
-                    </div>
-                    <div style="flex:1;padding:18px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);text-align:center;">
-                        <i class="fab fa-meta" style="font-size:28px;color:#0668E1;margin-bottom:8px;display:block;"></i>
-                        <div style="font-size:14px;font-weight:500;color:var(--text-secondary);">Meta Ads</div>
+                    <div style="flex:1;padding:16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);text-align:center;">
+                        <i class="fab fa-instagram" style="font-size:24px;color:#E4405F;margin-bottom:6px;display:block;"></i>
+                        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);">Instagram</div>
                     </div>
                 </div>
-                <p style="font-size:14px;font-weight:300;color:var(--text-muted);line-height:1.45;">Der Fokus liegt auf einem lokal ausgerichteten Paid-Social-Test mit klarer Messbarkeit – Sichtbarkeit und qualifizierte Anfragen über bezahlte Reichweite.</p>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Getestet werden <strong>Videoanzeigen</strong> und <strong>statische Bildanzeigen</strong> im direkten Vergleich.</div></div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Ziel: früh erkennen, welches Creative-Format in diesem Markt besser anspricht.</div></div>
+                <div class="story-item" style="margin-bottom:0;"><div class="story-dot"></div><div class="story-text">Die Kampagne wird <strong>iterativ optimiert</strong>, nicht starr durchlaufen.</div></div>
             </div>
 
-            <!-- 4. Landingpage / Funnel-Logik -->
+            <!-- 4. Funnel / Qualifizierungslogik -->
             <div class="card gold-top">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
                     <div class="kpi-icon" style="margin:0;width:42px;height:42px;border-radius:12px;font-size:18px;flex-shrink:0;"><i class="fas fa-filter"></i></div>
                     <div>
-                        <div class="label" style="margin-bottom:2px;">Landingpage / Funnel-Logik</div>
-                        <div style="font-size:clamp(20px,2vw,28px);font-weight:400;line-height:1.2;">Dedizierter Behandlungs-Funnel</div>
+                        <div class="label" style="margin-bottom:2px;">Funnel / Qualifizierung</div>
+                        <div style="font-size:clamp(18px,1.8vw,26px);font-weight:400;line-height:1.2;">Dedizierte Qualifizierungsseite</div>
                     </div>
                 </div>
-                <div class="story-item" style="margin-bottom:12px;"><div class="story-dot"></div><div class="story-text">Für den Test wird eine <strong>dedizierte Funnel-Strecke</strong> aufgebaut, die inhaltlich und visuell direkt auf die Behandlung Lippenunterspritzung mit Hyaluron zugeschnitten ist.</div></div>
-                <div class="story-item" style="margin-bottom:20px;"><div class="story-dot"></div><div class="story-text">Klare, conversion-orientierte Strecke vom Anzeigenkontakt bis zur Anfrage – keine generische Landingpage, sondern <strong>behandlungsspezifisch</strong> aufgebaut.</div></div>
-                <a href="https://perspectivefunnel.co/69af00a1d11b74a33ceccad6/69af020908c4994a26c9edbe/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(249,193,14,0.12) 0%,rgba(249,193,14,0.04) 100%);border:1px solid var(--gold-border);color:var(--gold);font-size:15px;font-weight:500;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(249,193,14,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                    <i class="fas fa-external-link-alt" style="font-size:13px;"></i>
-                    So könnte der Funnel konkret aussehen
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Für die Lippenunterspritzung wird eine <strong>separate Qualifizierungsseite</strong> aufgebaut – dediziert auf genau diese Behandlung zugeschnitten.</div></div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Die Struktur orientiert sich am bestehenden Beispiel-Funnel zur Oberlidstraffung und wird <strong>individuell angepasst</strong>.</div></div>
+                <div class="story-item" style="margin-bottom:20px;"><div class="story-dot"></div><div class="story-text">Das Beispiel dient als Referenz für den grundsätzlichen Aufbau.</div></div>
+                <a href="https://perspectivefunnel.co/69af00a1d11b74a33ceccad6/69af020908c4994a26c9edbe/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(249,193,14,0.12) 0%,rgba(249,193,14,0.04) 100%);border:1px solid var(--gold-border);color:var(--gold);font-size:14px;font-weight:500;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(249,193,14,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <i class="fas fa-external-link-alt" style="font-size:12px;"></i>
+                    Beispielhafter Funnel-Aufbau ansehen
                 </a>
             </div>
 
@@ -474,28 +473,164 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-base); color: var(
     <section class="section" id="section-3">
         <div class="fade-in fd1"><div class="section-divider"></div><span class="label">Bereich 03</span></div>
         <h2 class="t1 fade-in fd2" style="margin:20px 0 16px;">Budget, erwartbare <span class="gold-text">Leads</span> & KPIs</h2>
-        <p class="sub fade-in fd3" style="max-width:780px;margin-bottom:12px;">Transparente Modellierung von Testbudget, Kampagnenstruktur und erwartbaren Ergebnissen.</p>
-        <div class="placeholder-grid fade-in fd4">
-            <div class="placeholder-card"><div class="ph-icon"><i class="fas fa-wallet"></i></div><div class="ph-title">Testbudget</div><div class="ph-desc">Empfehlung für ein realistisches Budget, das aussagekräftige Daten liefert.</div></div>
-            <div class="placeholder-card"><div class="ph-icon"><i class="fas fa-layer-group"></i></div><div class="ph-title">Kampagnenstruktur</div><div class="ph-desc">Aufbau der Kampagnen-Architektur: Adsets, Zielgruppen, Creatives.</div></div>
-            <div class="placeholder-card"><div class="ph-icon"><i class="fas fa-lightbulb"></i></div><div class="ph-title">Erwartbare Learnings</div><div class="ph-desc">Welche Erkenntnisse der Test liefern wird – unabhängig vom Ergebnis.</div></div>
-            <div class="placeholder-card"><div class="ph-icon"><i class="fas fa-chart-pie"></i></div><div class="ph-title">Ziel-KPIs</div><div class="ph-desc">Klare Metriken, an denen der Erfolg des Tests gemessen wird.</div></div>
+        <p class="sub fade-in fd3" style="max-width:780px;margin-bottom:40px;">Ein realistischer erster Testrahmen für einen 14-tägigen Kampagnenlauf in Hamburg.</p>
+
+        <!-- A) 4 KPI-Karten -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px;" class="fade-in fd4 s3-grid-4">
+            <div class="card stat-card">
+                <div class="stat-icon"><i class="fas fa-wallet"></i></div>
+                <div class="stat-value">700 €</div>
+                <div class="stat-label">Testbudget<br>gesamt</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="stat-value">14 Tage</div>
+                <div class="stat-label">Testdauer</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <div class="stat-value">~50 €</div>
+                <div class="stat-label">Tagesbudget<br>(700 € / 14 Tage)</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-icon"><i class="fas fa-tag"></i></div>
+                <div class="stat-value">20–30 €</div>
+                <div class="stat-label">Zielkorridor CPL<br><span style="font-size:11px;color:var(--text-muted);">(Schätzwert)</span></div>
+            </div>
         </div>
-        <div class="coming-badge fade-in fd5"><i class="fas fa-clock"></i> Wird auf Basis des ausgewählten Test-Setups modelliert</div>
+
+        <!-- B) Operative Testführung (Prozess) -->
+        <div class="card fade-in fd5" style="margin-bottom:36px;">
+            <span class="label" style="display:block;margin-bottom:20px;">Wie der Test operativ geführt wird</span>
+            <p style="font-size:clamp(14px,1.1vw,17px);font-weight:300;color:var(--text-secondary);line-height:1.5;margin-bottom:24px;">Die Anzeigen laufen nicht 14 Tage starr durch. Stattdessen erfolgt eine iterative Optimierung – schwächere Creatives werden früh erkannt, erfolgreiche Varianten weiter ausgebaut.</p>
+            <div style="display:flex;align-items:stretch;gap:0;">
+                <!-- Step 1 -->
+                <div style="flex:1;text-align:center;padding:20px 12px;border-radius:12px 0 0 12px;background:rgba(249,193,14,0.06);border:1px solid var(--gold-border);">
+                    <div style="font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.06em;margin-bottom:6px;">TAG 1–3</div>
+                    <div style="font-size:14px;font-weight:300;color:var(--text-secondary);line-height:1.4;">Erster Datencheck<br>& Baseline</div>
+                </div>
+                <!-- Arrow -->
+                <div style="display:flex;align-items:center;padding:0 4px;color:var(--gold);font-size:18px;">→</div>
+                <!-- Step 2 -->
+                <div style="flex:1;text-align:center;padding:20px 12px;background:rgba(249,193,14,0.04);border:1px solid var(--gold-border);border-left:none;">
+                    <div style="font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.06em;margin-bottom:6px;">TAG 4–7</div>
+                    <div style="font-size:14px;font-weight:300;color:var(--text-secondary);line-height:1.4;">Erste Anpassungen<br>& Creative-Auswahl</div>
+                </div>
+                <!-- Arrow -->
+                <div style="display:flex;align-items:center;padding:0 4px;color:var(--gold);font-size:18px;">→</div>
+                <!-- Step 3 -->
+                <div style="flex:1;text-align:center;padding:20px 12px;border-radius:0 12px 12px 0;background:rgba(249,193,14,0.02);border:1px solid var(--gold-border);border-left:none;">
+                    <div style="font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.06em;margin-bottom:6px;">TAG 8–14</div>
+                    <div style="font-size:14px;font-weight:300;color:var(--text-secondary);line-height:1.4;">Iteration auf Basis<br>der besten Performer</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- C) Lead-Korridor -->
+        <div class="card gold-top fade-in fd6" style="margin-bottom:36px;">
+            <span class="label" style="display:block;margin-bottom:16px;">Schätzwert für mögliche Lead-Menge</span>
+            <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;text-align:center;padding:20px 16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);">
+                    <div style="font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:6px;">bei 20 € CPL</div>
+                    <div style="font-size:clamp(24px,2.5vw,36px);font-weight:300;color:var(--gold);">~35</div>
+                    <div style="font-size:12px;font-weight:400;color:var(--text-muted);">Leads</div>
+                </div>
+                <div style="flex:1;min-width:140px;text-align:center;padding:20px 16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);">
+                    <div style="font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:6px;">bei 25 € CPL</div>
+                    <div style="font-size:clamp(24px,2.5vw,36px);font-weight:300;color:var(--gold);">~28</div>
+                    <div style="font-size:12px;font-weight:400;color:var(--text-muted);">Leads</div>
+                </div>
+                <div style="flex:1;min-width:140px;text-align:center;padding:20px 16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);">
+                    <div style="font-size:12px;font-weight:500;color:var(--text-muted);margin-bottom:6px;">bei 30 € CPL</div>
+                    <div style="font-size:clamp(24px,2.5vw,36px);font-weight:300;color:var(--gold);">~23</div>
+                    <div style="font-size:12px;font-weight:400;color:var(--text-muted);">Leads</div>
+                </div>
+            </div>
+            <p style="font-size:clamp(13px,1vw,15px);font-weight:300;color:var(--text-muted);line-height:1.5;">Auf Basis des Testbudgets ergibt sich ein möglicher Zielkorridor von ca. <strong style="font-weight:500;color:var(--text-secondary);">23 bis 35 Leads</strong>, abhängig von Angebotsresonanz, Lokalität, Creative-Qualität und Funnel-Conversion.</p>
+        </div>
+
+        <!-- D) Einordnung -->
+        <div class="fade-in fd7" style="padding:22px 28px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid var(--border);">
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+                <i class="fas fa-info-circle" style="color:var(--gold);font-size:16px;margin-top:3px;flex-shrink:0;"></i>
+                <div>
+                    <div style="font-size:14px;font-weight:500;color:var(--text-primary);margin-bottom:6px;">Einordnung der Zahlen</div>
+                    <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.5;">Alle Werte sind Schätzwerte für einen ersten Test. Die tatsächlichen Ergebnisse hängen von Lokalität, Angebot, Creative-Qualität, Funnel-Conversion und Reaktionsgeschwindigkeit im Follow-up ab. Ziel des ersten Tests ist nicht nur Lead-Einkauf, sondern vor allem belastbare Marktdaten für die nächste Iteration.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- ═══ SECTION 4 ═══ -->
     <section class="section" id="section-4">
         <div class="fade-in fd1"><div class="section-divider"></div><span class="label">Bereich 04</span></div>
         <h2 class="t1 fade-in fd2" style="margin:20px 0 16px;">Reporting, <span class="gold-text">Datenhoheit</span> & Zugriffe</h2>
-        <p class="sub fade-in fd3" style="max-width:780px;margin-bottom:12px;">Volle Transparenz über Daten, Konten und Zugriffsstrukturen – von Anfang an klar geregelt.</p>
-        <div class="placeholder-grid fade-in fd4">
-            <div class="placeholder-card"><div class="ph-icon"><i class="fas fa-database"></i></div><div class="ph-title">Transparente Datennutzung</div><div class="ph-desc">Jederzeit nachvollziehbar, welche Daten erhoben, gespeichert und genutzt werden.</div></div>
-            <div class="placeholder-card"><div class="ph-icon"><i class="fas fa-users-cog"></i></div><div class="ph-title">Klare Rollen & Zugriffe</div><div class="ph-desc">Wer hat Zugriff auf welche Konten – sauber definiert und dokumentiert.</div></div>
-            <div class="placeholder-card"><div class="ph-icon"><i class="fas fa-file-alt"></i></div><div class="ph-title">Reporting-Struktur</div><div class="ph-desc">Regelmäßige, verständliche Reports – keine Vanity Metrics, sondern relevante Kennzahlen.</div></div>
-            <div class="placeholder-card"><div class="ph-icon"><i class="fas fa-shield-alt"></i></div><div class="ph-title">Eigentum an Daten & Konten</div><div class="ph-desc">Alle Werbekonten, Pixel und Daten gehören PAAU – ohne Einschränkung.</div></div>
+        <p class="sub fade-in fd3" style="max-width:780px;margin-bottom:40px;">Klare Rollen, transparente Datenstruktur und volle Kontrolle auf Kundenseite.</p>
+
+        <div class="grid-2 fade-in fd4">
+
+            <!-- 1. Account-Zugriffe -->
+            <div class="card gold-top">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+                    <div class="kpi-icon" style="margin:0;width:42px;height:42px;border-radius:12px;font-size:18px;flex-shrink:0;"><i class="fas fa-key"></i></div>
+                    <div>
+                        <div class="label" style="margin-bottom:2px;">Account-Zugriffe</div>
+                        <div style="font-size:clamp(18px,1.8vw,24px);font-weight:400;line-height:1.2;">Volle Kontrolle bei PAAU</div>
+                    </div>
+                </div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Der Zugriff auf den Ads Manager erfolgt über eine <strong>reguläre Agenturfreigabe</strong> im Business Manager.</div></div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">PAAU behält bestehende Logins und die <strong>volle Kontrolle</strong> über alle Konten.</div></div>
+                <div class="story-item" style="margin-bottom:0;"><div class="story-dot"></div><div class="story-text">Es werden nur die <strong>nötigen Berechtigungen</strong> für die operative Arbeit freigegeben – kein Kontrollverlust.</div></div>
+            </div>
+
+            <!-- 2. Reporting / Lead-Übersicht -->
+            <div class="card gold-top">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+                    <div class="kpi-icon" style="margin:0;width:42px;height:42px;border-radius:12px;font-size:18px;flex-shrink:0;"><i class="fas fa-chart-bar"></i></div>
+                    <div>
+                        <div class="label" style="margin-bottom:2px;">Reporting & Lead-Übersicht</div>
+                        <div style="font-size:clamp(18px,1.8vw,24px);font-weight:400;line-height:1.2;">Transparentes Dashboard</div>
+                    </div>
+                </div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Reporting über ein <strong>separates, übersichtliches Dashboard</strong> – jederzeit einsehbar.</div></div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Eingehende Leads werden in einer <strong>zentralen Funnel-/Lead-Übersicht</strong> gesammelt (via Perspective Funnel).</div></div>
+                <div class="story-item" style="margin-bottom:0;"><div class="story-dot"></div><div class="story-text">Interessenten können systematisch <strong>nachverfolgt und bearbeitet</strong> werden.</div></div>
+            </div>
+
+            <!-- 3. Operativer Follow-up -->
+            <div class="card gold-top">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+                    <div class="kpi-icon" style="margin:0;width:42px;height:42px;border-radius:12px;font-size:18px;flex-shrink:0;"><i class="fas fa-phone-alt"></i></div>
+                    <div>
+                        <div class="label" style="margin-bottom:2px;">Operativer Follow-up</div>
+                        <div style="font-size:clamp(18px,1.8vw,24px);font-weight:400;line-height:1.2;">Schnelle Reaktionszeit</div>
+                    </div>
+                </div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text">Leads werden an die <strong>Hamburger Location übergeben</strong>, damit zeitnah zurückgerufen werden kann.</div></div>
+                <div class="story-item" style="margin-bottom:10px;"><div class="story-dot"></div><div class="story-text"><strong>Schnelle Reaktionszeit</strong> ist entscheidend – Interessenten informieren sich parallel bei anderen Anbietern.</div></div>
+                <div class="story-item" style="margin-bottom:0;"><div class="story-dot"></div><div class="story-text">Ziel: möglichst wenig Nachfrage durch langsames Follow-up verlieren.</div></div>
+            </div>
+
+            <!-- 4. Optionale KI-Automatisierung -->
+            <div class="card" style="border-top:2px solid rgba(255,255,255,0.1);">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+                    <div class="kpi-icon" style="margin:0;width:42px;height:42px;border-radius:12px;font-size:18px;flex-shrink:0;"><i class="fas fa-robot"></i></div>
+                    <div>
+                        <div class="label" style="margin-bottom:2px;">Optional: KI-gestützter Follow-up</div>
+                        <div style="font-size:clamp(18px,1.8vw,24px);font-weight:400;line-height:1.2;">Automatisierte Vorqualifizierung</div>
+                    </div>
+                </div>
+                <p style="font-size:clamp(14px,1.1vw,16px);font-weight:300;color:var(--text-secondary);line-height:1.5;margin-bottom:16px;">Optional kann der Follow-up-Prozess durch einen individuell eingerichteten KI-Chatbot unterstützt werden:</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;">
+                    <div style="padding:10px 14px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);font-size:13px;font-weight:300;color:var(--text-muted);"><i class="fas fa-comment-dots" style="color:var(--gold);margin-right:8px;"></i>Erste Rückfragen beantworten</div>
+                    <div style="padding:10px 14px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);font-size:13px;font-weight:300;color:var(--text-muted);"><i class="fas fa-filter" style="color:var(--gold);margin-right:8px;"></i>Einwände vorqualifizieren</div>
+                    <div style="padding:10px 14px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);font-size:13px;font-weight:300;color:var(--text-muted);"><i class="fas fa-calendar-check" style="color:var(--gold);margin-right:8px;"></i>Termininteresse abfragen</div>
+                    <div style="padding:10px 14px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);font-size:13px;font-weight:300;color:var(--text-muted);"><i class="fas fa-route" style="color:var(--gold);margin-right:8px;"></i>In Terminlogik überführen</div>
+                </div>
+                <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.5;font-style:italic;">Die konkrete Ausgestaltung des Follow-up-Prozesses kann im gemeinsamen Gespräch individuell festgelegt werden.</p>
+            </div>
+
         </div>
-        <div class="coming-badge fade-in fd5"><i class="fas fa-clock"></i> Wird im finalen Vorschlag operativ konkretisiert</div>
     </section>
 
     <!-- Footer -->
