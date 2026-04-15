@@ -7,52 +7,161 @@
 <meta name="description" content="Augenlidstraffung in Stuttgart – Schlupflider & Tränensäcke korrigieren. Facharzt Dr. med. Hodorkovski. Natürliche Ergebnisse, persönliche Beratung." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
+
 /* ============================================================
-   RESET & ROOT
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --bg-deep:    #0E0C0A;
+  --bg-dark:    #161310;
+  --bg-dark-2:  #1C1916;
+  --bg-mid:     #241F18;
+  --bg-warm:    #F7F3EE;
+  --bg-cream:   #F0EBE2;
+  --bg-card:    #FFFFFF;
+
+  --gold:       #C59A52;
+  --gold-light: #DFC08A;
+  --gold-pale:  #EDD9B0;
+  --gold-dim:   rgba(197,154,82,0.14);
+  --gold-line:  rgba(197,154,82,0.28);
+
+  --text-dark:   #1E1810;
+  --text-body:   #3A2E22;
+  --text-muted:  #8A7A68;
+  --text-soft:   #B5A898;
+  --text-light:  rgba(243,238,231,0.92);
+  --text-faint:  rgba(243,238,231,0.50);
+
+  --border-card: rgba(197,154,82,0.13);
+  --border-warm: rgba(197,154,82,0.26);
+
+  --shadow-sm: 0 2px 14px rgba(20,14,6,0.06);
+  --shadow-md: 0 6px 28px rgba(20,14,6,0.10);
+
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   24px;
+  --r-xl:   30px;
+  --r-pill: 100px;
+}
+
+/* ============================================================
+   RESET & BASE
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
-:root {
-  --cream: #F5F0E8;
-  --warm-white: #FDFAF5;
-  --gold: #C4A882;
-  --gold-light: #D4BEA0;
-  --brown-dark: #2A1F14;
-  --brown-mid: #4A3728;
-  --brown-light: #7A6050;
-  --text-body: #3D2E22;
-  --text-muted: #8A7060;
-  --border: rgba(196,168,130,0.25);
-  --shadow: 0 4px 32px rgba(42,31,20,0.10);
-  --radius: 12px;
-  --radius-lg: 20px;
-}
-
 body {
   font-family: 'Cormorant Garamond', serif;
-  background: var(--warm-white);
+  background: var(--bg-warm);
   color: var(--text-body);
   font-size: 16px;
   line-height: 1.65;
   max-width: 430px;
   margin: 0 auto;
-  position: relative;
-  box-shadow: 0 0 60px rgba(0,0,0,0.12);
-  min-height: 100vh;
   overflow-x: hidden;
+  min-height: 100vh;
 }
-
-h1, h2, h3, h4 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  line-height: 1.2;
-}
-
-a { text-decoration: none; }
+h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.15; }
+a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
+
+/* ============================================================
+   TYPOGRAPHY TOKENS
+   ============================================================ */
+.t-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.t-eyebrow::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.t-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.75rem,5.5vw,2.1rem);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--text-dark);
+}
+.t-em { font-style: italic; color: var(--gold-light); }
+.t-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15.5px;
+  line-height: 1.70;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* ============================================================
+   BUTTON SYSTEM
+   ============================================================ */
+.btn-primary-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 17px 22px;
+  background: linear-gradient(105deg, #B8832E 0%, #DFBC82 50%, #B8832E 100%);
+  color: var(--bg-deep);
+  border-radius: var(--r-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), 0 10px 28px rgba(0,0,0,0.35);
+  transition: transform 0.15s, opacity 0.15s;
+}
+.btn-primary-hero:active { transform: scale(0.98); opacity: 0.9; }
+
+.btn-ghost-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 24px;
+  background: transparent;
+  color: var(--gold-light);
+  border: 1px solid rgba(197,154,82,0.30);
+  border-radius: var(--r-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.btn-ghost-dark:active { transform: scale(0.98); background: rgba(197,154,82,0.06); border-color: var(--gold); }
+
+.btn-outline-light {
+  display: block;
+  text-align: center;
+  border: 1px solid var(--gold-line);
+  color: var(--gold);
+  padding: 15px 24px;
+  border-radius: var(--r-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+.btn-outline-light:active { background: rgba(197,154,82,0.08); }
 
 /* ============================================================
    NAV
@@ -63,1712 +172,822 @@ img { display: block; max-width: 100%; }
   transform: translateX(-50%);
   width: 100%; max-width: 430px;
   z-index: 100;
-  background: rgba(26,22,20,0.95);
-  backdrop-filter: blur(12px);
-  padding: 14px 20px;
+  background: rgba(14,12,10,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 13px 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(196,168,130,0.15);
-  transition: transform 0.4s ease;
+  border-bottom: 1px solid rgba(197,154,82,0.10);
+  transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
 }
-
 .ua-nav.hidden { transform: translateX(-50%) translateY(-100%); }
-
 .nav-logo {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'DM Sans', sans-serif;
   color: var(--gold-light);
-  font-size: 12px;
-  letter-spacing: 3px;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
 }
-
 .nav-cta {
   background: var(--gold);
-  color: var(--brown-dark);
-  padding: 9px 18px;
-  border-radius: 50px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
+  color: var(--bg-deep);
+  padding: 9px 20px;
+  border-radius: var(--r-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   white-space: nowrap;
-  letter-spacing: 0.5px;
 }
+.nav-cta:active { opacity: 0.85; }
 
 /* ============================================================
-   HERO
+   HERO  —  1:1 PRESERVED, only adds smooth exit at bottom
    ============================================================ */
 .hero-wrap {
   background: #0b0908;
   padding-top: 75px;
+  position: relative;
 }
-
+.hero-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 52px;
+  background: linear-gradient(to bottom, transparent, var(--bg-warm));
+  pointer-events: none;
+  z-index: 5;
+}
 .hero-image-area {
   position: relative;
   width: 100%;
   height: 460px;
   overflow: hidden;
 }
-
-.hero-image-area img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
+.hero-image-area img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 .hero-img-fade-bottom {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: linear-gradient(to top, #0b0908 0%, rgba(11,9,8,0.3) 50%, transparent 100%);
 }
-
 .hero-img-fade-top {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: linear-gradient(to bottom, rgba(11,9,8,0.1) 0%, transparent 40%);
 }
-
 .hero-content {
-  position: relative;
-  z-index: 20;
-  padding: 0 24px 32px;
+  position: relative; z-index: 20;
+  padding: 0 24px 40px;
   margin-top: -160px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  display: flex; flex-direction: column; gap: 18px;
 }
-
 .hero-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 7px 14px;
-  border-radius: 50px;
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.08);
-  width: fit-content;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 14px; border-radius: var(--r-pill);
+  background: rgba(255,255,255,0.03); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08); width: fit-content;
 }
-
 .hero-pill-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 10px rgba(212,185,140,0.8);
-  animation: pulse 2s infinite;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 0 10px rgba(197,154,82,0.8);
+  animation: dotpulse 2.4s ease infinite;
 }
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+@keyframes dotpulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.45; transform:scale(0.82); }
 }
-
 .hero-pill span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  color: #e5ceaa;
-  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 400;
+  letter-spacing: 0.22em; color: #e5ceaa; text-transform: uppercase;
 }
-
 .hero-h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: #fff;
-  line-height: 1.05;
-  letter-spacing: -0.5px;
+  font-size: 2.5rem; font-weight: 300; color: #fff;
+  line-height: 1.05; letter-spacing: -0.02em;
 }
-
-.hero-h1 em {
-  font-style: italic;
-  color: var(--gold);
-  display: block;
-  margin-top: 4px;
-}
-
-.hero-h1 span {
-  display: block;
-  margin-top: 4px;
-  font-size: 2.1rem;
-  color: rgba(255,255,255,0.95);
-}
-
+.hero-h1 em { font-style: italic; color: var(--gold-light); display: block; margin-top: 4px; }
+.hero-h1 span { display: block; margin-top: 4px; font-size: 2.1rem; color: rgba(255,255,255,0.92); }
 .hero-lead {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
-  color: rgba(255,255,255,0.62);
-  line-height: 1.6;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 17px;
+  color: rgba(255,255,255,0.58); line-height: 1.65; font-weight: 300;
 }
-
-.hero-cta-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 8px;
-}
-
-.btn-hero-primary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 22px;
-  background: linear-gradient(to right, #e3cca0, #eedbb5, #e3cca0);
-  color: #14110f;
-  border-radius: 50px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  font-weight: 600;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,0.6), 0 8px 20px rgba(0,0,0,0.4);
-  transition: transform 0.15s;
-  letter-spacing: 0.3px;
-}
-
-.btn-hero-primary:active { transform: scale(0.98); }
-
-.hero-trust-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.trust-avatars {
-  display: flex;
-  flex-direction: row;
-}
-
+.hero-cta-wrap { display: flex; flex-direction: column; gap: 12px; padding-top: 6px; }
+.hero-trust-row { display: flex; align-items: center; gap: 12px; }
+.trust-avatars { display: flex; }
 .trust-avatars img {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  border: 1.5px solid #0b0908;
-  object-fit: cover;
-  margin-left: -8px;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid #0b0908; object-fit: cover; margin-left: -8px;
 }
-
 .trust-avatars img:first-child { margin-left: 0; }
-
-.trust-score {
-  display: flex;
-  flex-direction: column;
-}
-
-.trust-score-top {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.trust-score-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
-}
-
-.trust-stars-gold {
-  color: var(--gold);
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
-.trust-score-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  color: rgba(255,255,255,0.5);
-  margin-top: 3px;
-}
+.trust-score { display: flex; flex-direction: column; }
+.trust-score-top { display: flex; align-items: center; gap: 6px; }
+.trust-score-num { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: #fff; line-height: 1; }
+.trust-stars-gold { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+.trust-score-sub { font-family: 'DM Sans', sans-serif; font-size: 10px; color: rgba(255,255,255,0.42); margin-top: 3px; letter-spacing: 0.02em; }
 
 /* ============================================================
-   TRUST ROW
+   SECTION SEPARATORS — arch technique
+   Each dark→light or light→dark gets a 28px "shelf"
    ============================================================ */
-.ua-trust-section {
-  background: var(--cream);
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.ua-trust-row {
-  display: flex;
-  gap: 0;
-  padding: 0 20px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.ua-trust-row::-webkit-scrollbar { display: none; }
-
-.ua-trust-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 135px;
-  flex-shrink: 0;
-  padding: 6px 14px 6px 0;
-  border-right: 1px solid var(--border);
-  margin-right: 14px;
-}
-.ua-trust-item:last-child { border-right: none; margin-right: 0; }
-
-.ua-trust-icon {
-  width: 32px; height: 32px;
-  background: rgba(196,168,130,0.12);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--gold);
-  font-size: 13px;
-}
-
-.ua-trust-item strong {
+.arch-from-dark::before {
+  content: '';
   display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 12px;
-  color: var(--brown-dark);
-  font-weight: 600;
-  line-height: 1.2;
+  height: 28px;
+  border-radius: 0 0 28px 28px;
+  margin-bottom: 36px;
+}
+.arch-from-warm::before {
+  content: '';
+  display: block;
+  height: 28px;
+  background: var(--bg-warm);
+  border-radius: 0 0 28px 28px;
+  margin-bottom: 36px;
+}
+.arch-from-cream::before {
+  content: '';
+  display: block;
+  height: 28px;
+  background: var(--bg-cream);
+  border-radius: 0 0 28px 28px;
+  margin-bottom: 36px;
 }
 
-.ua-trust-item span {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  color: var(--text-muted);
-  line-height: 1.3;
-}
+/* Shared scroll header */
+.scroll-header { padding: 0 24px; margin-bottom: 28px; }
+.scroll-header .t-body { margin-top: 12px; }
 
 /* ============================================================
    KENNEN SIE DAS
    ============================================================ */
-.kennen-section {
-  background: var(--warm-white);
-  padding: 44px 0 32px;
-}
-
-.kennen-header {
-  padding: 0 24px;
-  margin-bottom: 24px;
-}
-
-.section-eyebrow {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 12px;
-}
-
-.section-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 300;
-  color: var(--brown-dark);
-  line-height: 1.15;
-  margin-bottom: 14px;
-}
-
-.section-h2 em {
-  font-style: italic;
-  color: var(--gold);
-}
-
-.section-lead {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  color: var(--text-muted);
-  line-height: 1.65;
-  font-weight: 300;
-}
-
+.kennen-section { background: var(--bg-warm); padding: 52px 0 40px; }
 .kennen-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 4px 24px 16px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
+  display: flex; overflow-x: auto; gap: 14px;
+  padding: 4px 24px 18px;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 .kennen-scroll::-webkit-scrollbar { display: none; }
-
 .kennen-card {
-  flex-shrink: 0;
-  width: 86%;
-  scroll-snap-align: start;
-  background: #fff;
-  border: 1px solid #eae4d9;
-  border-radius: 28px;
-  padding: 22px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  transition: transform 0.2s;
+  flex-shrink: 0; width: 86%; scroll-snap-align: start;
+  background: var(--bg-card); border: 1px solid var(--border-card);
+  border-radius: var(--r-xl); padding: 22px;
+  box-shadow: var(--shadow-md); transition: transform 0.2s;
 }
 .kennen-card:active { transform: scale(0.98); }
-
 .kennen-card-img {
-  width: 100%;
-  height: 150px;
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 18px;
-  background: #f4f1eb;
+  width: 100%; height: 148px; border-radius: var(--r-md);
+  overflow: hidden; margin-bottom: 18px; background: var(--bg-cream);
 }
-
-.kennen-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(15%);
+.kennen-card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(12%); }
+.card-eyebrow {
+  font-family: 'DM Sans', sans-serif; font-size: 9.5px; font-weight: 400;
+  letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase;
+  display: block; margin-bottom: 8px;
 }
-
-.card-tag {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  color: var(--gold);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 8px;
-}
-
 .card-h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
-  color: var(--brown-dark);
-  line-height: 1.25;
-  margin-bottom: 12px;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500;
+  color: var(--text-dark); line-height: 1.2; margin-bottom: 10px;
 }
-
-.card-divider {
-  width: 36px;
-  height: 1.5px;
-  background: linear-gradient(to right, var(--gold), transparent);
-  margin-bottom: 12px;
-}
-
-.card-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  color: var(--text-muted);
-  line-height: 1.65;
-  font-weight: 300;
+.card-rule { width: 30px; height: 1px; background: linear-gradient(to right, var(--gold), transparent); margin-bottom: 10px; }
+.card-body {
+  font-family: 'Cormorant Garamond', serif; font-size: 15px;
+  color: var(--text-muted); line-height: 1.68; font-weight: 300;
 }
 
 /* ============================================================
-   ELIGIBLE / VERFAHREN
+   VERFAHREN / ELIGIBLE
    ============================================================ */
-.eligible-section {
-  background: var(--warm-white);
-  padding: 40px 0 24px;
+.eligible-section { background: var(--bg-warm); padding: 8px 0 36px; }
+.eligible-section-rule {
+  height: 1px; margin: 0 24px 44px;
+  background: linear-gradient(to right, transparent, var(--border-warm), transparent);
 }
-
-.eligible-header {
-  padding: 0 24px;
-  margin-bottom: 24px;
-}
-
 .eligible-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 4px 24px 16px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
+  display: flex; overflow-x: auto; gap: 14px;
+  padding: 4px 24px 18px;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
 }
 .eligible-scroll::-webkit-scrollbar { display: none; }
-
 .eligible-card {
-  flex-shrink: 0;
-  width: 88%;
-  scroll-snap-align: start;
-  background: #fff;
-  border: 1px solid #f0ebe1;
-  border-radius: 32px;
-  padding: 26px;
-  box-shadow: 0 12px 36px rgba(212,185,140,0.07);
-  position: relative;
-  overflow: hidden;
+  flex-shrink: 0; width: 88%; scroll-snap-align: start;
+  background: var(--bg-card); border: 1px solid var(--border-card);
+  border-radius: var(--r-xl); padding: 26px;
+  box-shadow: var(--shadow-md); position: relative; overflow: hidden;
   transition: transform 0.2s;
 }
 .eligible-card:active { transform: scale(0.98); }
-
-.eligible-card-num {
-  position: absolute;
-  top: -10px; right: 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 6rem;
-  font-weight: 700;
-  color: rgba(212,185,140,0.04);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
+.eligible-card-bg-num {
+  position: absolute; top: -8px; right: -2px;
+  font-family: 'Cormorant Garamond', serif; font-size: 7rem; font-weight: 700;
+  color: rgba(197,154,82,0.04); line-height: 1; pointer-events: none; user-select: none;
 }
-
 .eligible-card-tag {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
-  color: var(--gold);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 9.5px; font-weight: 400;
+  letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase;
+  display: block; margin-bottom: 10px;
 }
-
 .eligible-card-h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 21px;
-  color: var(--brown-dark);
-  line-height: 1.2;
-  margin-bottom: 14px;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500;
+  color: var(--text-dark); line-height: 1.2; margin-bottom: 14px;
 }
-
 .eligible-card-desc {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  color: var(--text-muted);
-  line-height: 1.65;
-  font-weight: 300;
-  margin-bottom: 18px;
+  font-family: 'Cormorant Garamond', serif; font-size: 15px;
+  color: var(--text-muted); line-height: 1.68; font-weight: 300; margin-bottom: 18px;
 }
-
-.eligible-suitable {
-  margin-bottom: 14px;
-}
-
+.eligible-suitable { margin-bottom: 14px; }
 .eligible-suitable-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--brown-dark);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-body);
+  display: flex; align-items: center; gap: 7px; margin-bottom: 6px;
 }
-
 .eligible-suitable-label::before {
-  content: '';
-  display: inline-block;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
 }
-
 .eligible-suitable p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.55;
-  padding-left: 14px;
-  border-left: 1px solid rgba(196,168,130,0.2);
+  font-family: 'Cormorant Garamond', serif; font-size: 14px;
+  color: var(--text-muted); line-height: 1.55;
+  padding-left: 12px; border-left: 1px solid rgba(197,154,82,0.18);
 }
-
 .eligible-benefit {
-  background: #fdfbf7;
-  border: 1px solid rgba(240,235,225,0.5);
-  border-radius: 16px;
-  padding: 14px;
-  margin-bottom: 18px;
+  background: var(--bg-warm); border: 1px solid var(--border-card);
+  border-radius: var(--r-md); padding: 14px 16px; margin-bottom: 18px;
 }
-
 .eligible-benefit-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--gold);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 5px;
+  font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500;
+  letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase;
+  display: block; margin-bottom: 5px;
 }
-
 .eligible-benefit p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  color: rgba(26,22,20,0.8);
-  line-height: 1.55;
-  font-style: italic;
+  font-family: 'Cormorant Garamond', serif; font-size: 14px;
+  color: var(--text-body); line-height: 1.55; font-style: italic;
 }
-
 .eligible-price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 16px;
-  border-top: 1px solid #f0ebe1;
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 16px; border-top: 1px solid var(--border-card);
 }
-
 .eligible-price-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  color: rgba(179,175,168,1);
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif; font-size: 9.5px; color: var(--text-soft);
+  letter-spacing: 0.14em; text-transform: uppercase;
 }
-
 .eligible-price-badge {
-  padding: 6px 16px;
-  border-radius: 50px;
-  background: rgba(196,168,130,0.1);
-  border: 1px solid rgba(196,168,130,0.2);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--brown-dark);
+  padding: 6px 16px; border-radius: var(--r-pill);
+  background: var(--gold-dim); border: 1px solid rgba(197,154,82,0.20);
+  font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 600; color: var(--text-dark);
 }
-
 .eligible-note {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  color: rgba(179,175,168,0.7);
-  text-align: center;
-  font-style: italic;
-  padding: 8px 24px 0;
-  line-height: 1.5;
+  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 300;
+  color: var(--text-soft); text-align: center; font-style: italic;
+  padding: 10px 24px 0; line-height: 1.5; opacity: 0.65;
 }
 
 /* ============================================================
-   DR. HODORKOVSKI (MidCtaBand)
+   DOCTOR BAND
    ============================================================ */
 .doctor-band {
-  background: #1a1614;
-  padding-bottom: 40px;
-}
-
-.doctor-img-area {
+  background: var(--bg-dark);
+  padding-bottom: 48px;
   position: relative;
-  width: 100%;
-  height: 440px;
-  overflow: hidden;
 }
-
-.doctor-img-area img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.doctor-img-fade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, #1a1614 0%, rgba(26,22,20,0.2) 50%, transparent 100%);
-}
-
-.doctor-content {
-  padding: 0 26px;
-  margin-top: -80px;
-  position: relative;
-  z-index: 10;
-}
-
-.doctor-eyebrow {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 10px;
-}
-
-.doctor-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 300;
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: 6px;
-}
-
-.doctor-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
-  display: block;
-}
-
-.doctor-bio {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  color: rgba(179,175,168,1);
-  line-height: 1.65;
-  font-weight: 300;
-  margin-bottom: 22px;
-}
-
-.doctor-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 26px;
-}
-
-.doctor-pill {
-  padding: 7px 14px;
-  border-radius: 50px;
-  border: 1px solid rgba(196,168,130,0.3);
-  background: rgba(196,168,130,0.05);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  color: var(--gold);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.doctor-vita-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: none;
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 18px 0 0;
-  cursor: pointer;
-  text-align: left;
-}
-
-.doctor-vita-toggle span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.vita-arrow {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.6);
-  transition: transform 0.3s;
-  flex-shrink: 0;
-}
-
-.vita-arrow.open { transform: rotate(180deg); }
-
-.vita-list {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.5s ease, opacity 0.4s ease;
-  opacity: 0;
-}
-
-.vita-list.open {
-  max-height: 600px;
-  opacity: 1;
-  padding-top: 22px;
-}
-
-.vita-entry {
-  display: flex;
-  gap: 20px;
-  position: relative;
-  padding-bottom: 20px;
-}
-
-.vita-entry:not(:last-child)::after {
+/* Cream shelf at top — smooth light→dark transition */
+.doctor-band::before {
   content: '';
-  position: absolute;
-  left: 37px;
-  top: 18px;
-  bottom: 0;
-  width: 1px;
-  background: rgba(196,168,130,0.2);
+  display: block;
+  height: 28px;
+  background: var(--bg-warm);
+  border-radius: 0 0 28px 28px;
 }
-
+.doctor-img-area { position: relative; width: 100%; height: 440px; overflow: hidden; }
+.doctor-img-area img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.doctor-img-fade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--bg-dark) 0%, rgba(22,19,16,0.15) 55%, transparent 100%);
+}
+.doctor-content { padding: 0 26px; margin-top: -80px; position: relative; z-index: 10; }
+.doctor-eyebrow {
+  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 10px;
+}
+.doctor-h2 {
+  font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300;
+  color: var(--text-light); line-height: 1.1; margin-bottom: 4px;
+}
+.doctor-role {
+  font-family: 'DM Sans', sans-serif; font-size: 9.5px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(197,154,82,0.55); margin-bottom: 22px; display: block;
+}
+.doctor-bio {
+  font-family: 'Cormorant Garamond', serif; font-size: 16px;
+  color: var(--text-faint); line-height: 1.68; font-weight: 300; margin-bottom: 24px;
+}
+.doctor-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.doctor-pill {
+  padding: 7px 14px; border-radius: var(--r-pill);
+  border: 1px solid rgba(197,154,82,0.22); background: rgba(197,154,82,0.05);
+  font-family: 'DM Sans', sans-serif; font-size: 10px; color: var(--gold-light); font-weight: 400;
+}
+.doctor-vita-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; background: none; border: none;
+  border-top: 1px solid rgba(197,154,82,0.10); padding: 18px 0 0;
+  cursor: pointer; text-align: left;
+}
+.doctor-vita-toggle span {
+  font-family: 'DM Sans', sans-serif; font-size: 10.5px; font-weight: 400;
+  color: var(--text-light); letter-spacing: 0.12em; text-transform: uppercase;
+}
+.vita-arrow {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid rgba(197,154,82,0.18);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(197,154,82,0.65); transition: transform 0.35s ease; flex-shrink: 0;
+}
+.vita-arrow.open { transform: rotate(180deg); }
+.vita-list { overflow: hidden; max-height: 0; transition: max-height 0.55s ease, opacity 0.4s ease; opacity: 0; }
+.vita-list.open { max-height: 600px; opacity: 1; padding-top: 24px; }
+.vita-entry { display: flex; gap: 18px; position: relative; padding-bottom: 20px; }
+.vita-entry:not(:last-child)::after {
+  content: ''; position: absolute; left: 36px; top: 16px; bottom: 0;
+  width: 1px; background: rgba(197,154,82,0.14);
+}
 .vita-year {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--gold);
-  min-width: 52px;
-  flex-shrink: 0;
-  padding-top: 2px;
+  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500;
+  color: var(--gold); min-width: 52px; flex-shrink: 0; padding-top: 2px; letter-spacing: 0.04em;
 }
-
 .vita-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  color: rgba(179,175,168,1);
-  line-height: 1.55;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 14.5px;
+  color: var(--text-faint); line-height: 1.55; font-weight: 300;
 }
-
-.btn-doctor-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  padding: 16px;
-  margin-top: 24px;
-  background: transparent;
-  border: 1px solid rgba(196,168,130,0.4);
-  color: var(--gold);
-  border-radius: 50px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: background 0.2s, transform 0.15s;
-}
-.btn-doctor-cta:active { transform: scale(0.98); background: rgba(196,168,130,0.05); }
 
 /* ============================================================
    FAKTEN
    ============================================================ */
 .fakten-section {
-  background: var(--cream);
-  padding: 40px 24px 36px;
+  background: var(--bg-cream);
+  padding: 52px 24px 48px;
+  position: relative;
 }
-
-.fakten-section .section-h2 {
-  margin-bottom: 20px;
+/* Dark shelf at top */
+.fakten-section::before {
+  content: '';
+  display: block;
+  height: 28px;
+  background: var(--bg-dark);
+  border-radius: 0 0 28px 28px;
+  margin: -52px -24px 36px;
 }
-
-.fakten-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
+.fakten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .fakt-card {
-  background: #fff;
-  border-radius: var(--radius);
-  padding: 15px 13px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  background: var(--bg-card); border-radius: var(--r-md);
+  padding: 16px 14px; border: 1px solid var(--border-card); box-shadow: var(--shadow-sm);
 }
-
 .fakt-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-  display: block;
-  font-weight: 500;
+  font-family: 'DM Sans', sans-serif; font-size: 9.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-soft); margin-bottom: 4px;
+  display: block; font-weight: 400;
 }
-
 .fakt-value {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  color: var(--brown-dark);
-  font-weight: 500;
-  line-height: 1.2;
-  display: block;
+  font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--text-dark);
+  font-weight: 500; line-height: 1.2; display: block;
+}
+.fakt-sub {
+  font-family: 'DM Sans', sans-serif; font-size: 10px; color: var(--text-soft);
+  margin-top: 3px; display: block; line-height: 1.4; font-weight: 300; opacity: 0.8;
 }
 
-.fakt-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-top: 2px;
-  display: block;
-  line-height: 1.4;
+/* ============================================================
+   EINBLICK / UNSER ANSATZ
+   ============================================================ */
+.einblick-section { background: var(--bg-warm); padding: 52px 24px 48px; }
+.einblick-items { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.einblick-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 20px; background: var(--bg-card);
+  border-radius: var(--r-lg); border: 1px solid var(--border-card); box-shadow: var(--shadow-sm);
+}
+.einblick-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+  color: var(--gold); font-weight: 300; min-width: 32px; flex-shrink: 0;
+  line-height: 1; padding-top: 3px;
+}
+.einblick-item h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  color: var(--text-dark); font-weight: 500; margin-bottom: 5px;
+}
+.einblick-item p {
+  font-family: 'Cormorant Garamond', serif; font-size: 14.5px;
+  color: var(--text-muted); line-height: 1.62; font-weight: 300;
 }
 
 /* ============================================================
    ABLAUF
    ============================================================ */
 .ablauf-section {
-  background: #1a1614;
-  padding: 44px 24px 40px;
+  background: var(--bg-dark-2);
+  padding: 52px 24px 48px;
+  position: relative;
 }
-
-.ablauf-section .section-eyebrow { color: rgba(212,185,140,0.9); }
-
+.ablauf-section::before {
+  content: ''; display: block; height: 28px;
+  background: var(--bg-warm); border-radius: 0 0 28px 28px;
+  margin: -52px -24px 36px;
+}
 .ablauf-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 300;
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: 28px;
+  font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300;
+  color: var(--text-light); line-height: 1.1; margin-bottom: 32px;
 }
-
-.ablauf-h2 em {
-  font-style: italic;
-  color: var(--gold);
-}
-
-.ablauf-timeline {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
-}
-
+.ablauf-h2 em { font-style: italic; color: var(--gold-light); }
+.ablauf-timeline { position: relative; display: flex; flex-direction: column; gap: 24px; }
 .ablauf-timeline::before {
-  content: '';
-  position: absolute;
-  left: 19px;
-  top: 36px;
-  bottom: 36px;
+  content: ''; position: absolute; left: 17px; top: 32px; bottom: 32px;
   width: 1px;
-  background: linear-gradient(to bottom, rgba(212,185,140,0.4), rgba(212,185,140,0.1), transparent);
+  background: linear-gradient(to bottom, var(--gold-line) 0%, rgba(197,154,82,0.06) 100%);
 }
-
-.ablauf-step {
-  display: flex;
-  gap: 22px;
-  position: relative;
-}
-
+.ablauf-step { display: flex; gap: 20px; position: relative; }
 .ablauf-num {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: #1a1614;
-  border: 1px solid rgba(212,185,140,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 0 20px rgba(212,185,140,0.1);
+  width: 35px; height: 35px; border-radius: 50%;
+  background: var(--bg-dark-2); border: 1px solid var(--gold-line);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; position: relative; z-index: 2;
+  box-shadow: 0 0 16px rgba(197,154,82,0.07);
 }
-
 .ablauf-num span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--gold);
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; color: var(--gold);
 }
-
 .ablauf-step-content { padding-top: 4px; }
-
 .ablauf-step-content h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
-  color: #fff;
-  font-weight: 400;
-  margin-bottom: 6px;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+  color: var(--text-light); font-weight: 400; margin-bottom: 5px;
 }
-
 .ablauf-step-content p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  color: rgba(161,156,150,1);
-  line-height: 1.6;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 15px;
+  color: rgba(185,178,168,0.82); line-height: 1.62; font-weight: 300;
 }
-
-.ablauf-cta {
-  margin-top: 32px;
-}
-
+.ablauf-cta { margin-top: 36px; }
 .btn-ablauf {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 64px;
-  background: var(--gold);
-  color: var(--brown-dark);
-  border-radius: 20px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-  transition: transform 0.15s, background 0.15s;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 60px; background: var(--gold);
+  color: var(--bg-deep); border-radius: var(--r-pill);
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  box-shadow: 0 12px 32px rgba(197,154,82,0.22);
+  transition: opacity 0.2s, transform 0.15s;
 }
-.btn-ablauf:active { transform: scale(0.97); background: var(--gold-light); }
-
+.btn-ablauf:active { transform: scale(0.97); opacity: 0.88; }
 .ablauf-sub-note {
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  color: rgba(212,185,140,0.4);
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-top: 12px;
+  text-align: center; font-family: 'DM Sans', sans-serif; font-size: 9.5px;
+  color: rgba(197,154,82,0.32); letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 400; margin-top: 12px;
 }
 
 /* ============================================================
    NACHSORGE
    ============================================================ */
-.nachsorge-section {
-  background: var(--warm-white);
-  padding: 44px 0 32px;
+.nachsorge-section { background: var(--bg-warm); padding: 52px 0 44px; position: relative; }
+.nachsorge-section::before {
+  content: ''; display: block; height: 28px;
+  background: var(--bg-dark-2); border-radius: 0 0 28px 28px;
+  margin-bottom: 36px;
 }
-
-.nachsorge-header {
-  padding: 0 24px;
-  margin-bottom: 24px;
-}
-
 .nachsorge-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 4px 24px 16px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
+  display: flex; overflow-x: auto; gap: 14px;
+  padding: 4px 24px 18px;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
 }
 .nachsorge-scroll::-webkit-scrollbar { display: none; }
-
 .nachsorge-card {
-  flex-shrink: 0;
-  width: 85%;
-  scroll-snap-align: start;
-  background: #fff;
-  border: 1px solid #f0ebe1;
-  border-radius: 28px;
-  padding: 24px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s;
+  flex-shrink: 0; width: 85%; scroll-snap-align: start;
+  background: var(--bg-card); border: 1px solid var(--border-card);
+  border-radius: var(--r-xl); padding: 24px; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-md); transition: transform 0.2s;
 }
 .nachsorge-card:active { transform: scale(0.98); }
-
-.nachsorge-card-num {
-  position: absolute;
-  top: -10px; right: 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 5.5rem;
-  font-weight: 700;
-  color: rgba(212,185,140,0.04);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
+.nc-bg-num {
+  position: absolute; top: -8px; right: -2px;
+  font-family: 'Cormorant Garamond', serif; font-size: 5.5rem; font-weight: 700;
+  color: rgba(197,154,82,0.04); line-height: 1; pointer-events: none; user-select: none;
 }
-
-.nachsorge-period {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+.nc-period { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
+.nc-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.nc-period-label {
+  font-family: 'DM Sans', sans-serif; font-size: 9.5px; font-weight: 400;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
 }
-
-.nachsorge-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-}
-
-.nachsorge-period-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
 .nachsorge-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  color: var(--brown-dark);
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+  color: var(--text-dark); font-weight: 500; margin-bottom: 10px;
 }
-
 .nachsorge-card p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14.5px;
-  color: var(--text-muted);
-  line-height: 1.65;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 14.5px;
+  color: var(--text-muted); line-height: 1.65; font-weight: 300;
 }
-
 .nachsorge-note {
-  margin: 16px 24px 0;
-  background: #f9f6f1;
-  border: 1px solid #f0ebe1;
-  border-radius: 24px;
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  margin: 18px 24px 0; background: var(--bg-cream);
+  border: 1px solid var(--border-card); border-radius: var(--r-lg);
+  padding: 22px; display: flex; flex-direction: column; align-items: center; text-align: center;
 }
-
 .nachsorge-note-avatar {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(196,168,130,0.2);
-  margin-bottom: 14px;
+  width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
+  border: 2px solid rgba(197,154,82,0.18); margin-bottom: 12px;
 }
-
-.nachsorge-note-avatar img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
+.nachsorge-note-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .nachsorge-note h4 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  color: var(--brown-dark);
-  font-weight: 600;
-  margin-bottom: 6px;
+  font-family: 'Cormorant Garamond', serif; font-size: 1rem;
+  color: var(--text-dark); font-weight: 600; margin-bottom: 5px;
 }
-
 .nachsorge-note p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 13.5px;
+  color: var(--text-muted); line-height: 1.62; font-weight: 300;
 }
 
 /* ============================================================
    REVIEWS
    ============================================================ */
-.reviews-section {
-  background: var(--warm-white);
-  padding: 40px 0 32px;
+.reviews-section { background: var(--bg-warm); padding: 52px 0 44px; }
+.reviews-section-rule {
+  height: 1px; margin: 0 24px 44px;
+  background: linear-gradient(to right, transparent, var(--border-warm), transparent);
 }
-
-.reviews-header {
-  padding: 0 24px 20px;
-}
-
-.reviews-rating-bar {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 10px;
-}
-
+.reviews-header { padding: 0 24px 22px; }
+.reviews-rating-bar { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
 .reviews-rating-big {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 44px;
-  color: var(--brown-dark);
-  line-height: 1;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 44px;
+  color: var(--text-dark); line-height: 1; font-weight: 300;
 }
-
-.reviews-stars { color: #C4A050; font-size: 16px; letter-spacing: 2px; }
+.reviews-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; }
 .reviews-meta {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 3px;
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  color: var(--text-muted); margin-top: 3px; font-weight: 300;
 }
-
 .reviews-scroll {
-  display: flex;
-  gap: 14px;
-  padding: 4px 24px 18px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  display: flex; gap: 14px; padding: 4px 24px 20px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
 }
 .reviews-scroll::-webkit-scrollbar { display: none; }
-
 .review-card {
-  flex-shrink: 0;
-  width: 280px;
-  scroll-snap-align: start;
-  background: #fff;
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
+  flex-shrink: 0; width: 83%; scroll-snap-align: start;
+  background: var(--bg-card); border-radius: var(--r-xl);
+  padding: 22px; box-shadow: var(--shadow-md); border: 1px solid var(--border-card);
 }
-
-.review-stars { color: #C4A050; font-size: 13px; margin-bottom: 10px; }
+.review-stars { color: var(--gold); font-size: 11px; margin-bottom: 12px; letter-spacing: 2px; }
 .review-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  color: var(--text-body);
-  line-height: 1.65;
-  margin-bottom: 14px;
-  font-style: italic;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 14.5px;
+  color: var(--text-body); line-height: 1.68; margin-bottom: 16px;
+  font-style: italic; font-weight: 300;
 }
-.review-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--brown-dark);
-}
+.review-name { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12.5px; color: var(--text-dark); }
 .review-treatment {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  color: var(--gold);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-top: 3px;
+  font-family: 'DM Sans', sans-serif; font-size: 9.5px; color: var(--gold);
+  letter-spacing: 0.10em; text-transform: uppercase; margin-top: 3px; font-weight: 400;
 }
-
 .reviews-footer { padding: 4px 24px 0; }
-
-.btn-outline-reviews {
-  display: block;
-  text-align: center;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  padding: 14px 24px;
-  border-radius: 50px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: background 0.2s;
-}
-.btn-outline-reviews:active { background: rgba(196,168,130,0.07); }
 
 /* ============================================================
    PRAXIS
    ============================================================ */
-.praxis-section {
-  background: var(--warm-white);
-  padding: 40px 0 28px;
-}
-
-.praxis-header { padding: 0 24px; margin-bottom: 22px; }
-
+.praxis-section { background: var(--bg-cream); padding: 52px 0 44px; }
 .praxis-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 14px;
-  padding: 4px 24px 16px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
+  display: flex; overflow-x: auto; gap: 14px;
+  padding: 4px 24px 18px;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
 }
 .praxis-scroll::-webkit-scrollbar { display: none; }
-
 .praxis-img-wrap {
-  flex-shrink: 0;
-  width: 85%;
-  scroll-snap-align: start;
-  aspect-ratio: 4/3;
-  border-radius: 28px;
-  overflow: hidden;
-  border: 1px solid #f0ebe1;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  flex-shrink: 0; width: 85%; scroll-snap-align: start;
+  aspect-ratio: 4/3; border-radius: var(--r-xl); overflow: hidden;
+  border: 1px solid var(--border-card); box-shadow: var(--shadow-md);
 }
-
-.praxis-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s;
-}
-.praxis-img-wrap:hover img { transform: scale(1.04); }
-
-.praxis-divider {
-  height: 1px;
-  margin: 14px 24px 0;
-  background: linear-gradient(to right, transparent, rgba(196,168,130,0.2), transparent);
-}
+.praxis-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.praxis-img-wrap:active img { transform: scale(1.03); }
 
 /* ============================================================
    FAQ
    ============================================================ */
-.faq-section {
-  background: #2F2317;
-  padding: 44px 0 32px;
+.faq-section { background: var(--bg-mid); padding: 52px 0 44px; position: relative; }
+.faq-section::before {
+  content: ''; display: block; height: 28px;
+  background: var(--bg-cream); border-radius: 0 0 28px 28px;
+  margin-bottom: 36px;
 }
-
-.faq-header {
-  padding: 0 26px;
-  margin-bottom: 22px;
-}
-
-.faq-section .section-eyebrow { color: var(--gold); }
-
+.faq-header { padding: 0 26px; margin-bottom: 24px; }
 .faq-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 300;
-  color: #fff;
-  line-height: 1.1;
+  font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300;
+  color: var(--text-light); line-height: 1.1;
 }
-
-.faq-h2 em {
-  font-style: italic;
-  color: var(--gold);
-}
-
-.faq-list {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 0 26px;
-}
-
-.faq-item {
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: background 0.3s;
-}
-
-.faq-item.open { background: rgba(255,255,255,0.02); }
-
+.faq-h2 em { font-style: italic; color: var(--gold-light); }
+.faq-list { border-top: 1px solid rgba(197,154,82,0.09); padding: 0 26px; }
+.faq-item { border-bottom: 1px solid rgba(197,154,82,0.06); transition: background 0.3s; }
+.faq-item.open { background: rgba(197,154,82,0.03); }
 .faq-q-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 22px 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  gap: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 20px 0; background: none; border: none;
+  cursor: pointer; text-align: left; gap: 14px;
 }
-
 .faq-q-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.4;
-  font-weight: 300;
-  transition: color 0.3s;
+  font-family: 'Cormorant Garamond', serif; font-size: 17px;
+  color: rgba(243,238,231,0.82); line-height: 1.4; font-weight: 300; transition: color 0.3s;
 }
-
-.faq-item.open .faq-q-text {
-  color: var(--gold);
-  font-weight: 400;
-}
-
+.faq-item.open .faq-q-text { color: var(--gold-light); font-weight: 400; }
 .faq-icon-wrap {
-  flex-shrink: 0;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.4);
-  transition: all 0.4s;
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid rgba(197,154,82,0.20);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(197,154,82,0.48); transition: all 0.35s;
 }
-
-.faq-item.open .faq-icon-wrap {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: #2F2317;
-  transform: scale(1.08);
-}
-
+.faq-item.open .faq-icon-wrap { background: var(--gold); border-color: var(--gold); color: var(--bg-mid); }
 .faq-answer {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
+  overflow: hidden; max-height: 0; opacity: 0;
   transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.3s ease;
 }
-
-.faq-item.open .faq-answer {
-  max-height: 1200px;
-  opacity: 1;
-  padding-bottom: 22px;
-}
-
+.faq-item.open .faq-answer { max-height: 1200px; opacity: 1; padding-bottom: 22px; }
 .faq-answer-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15.5px;
-  color: rgba(179,175,168,1);
-  line-height: 1.65;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 15.5px;
+  color: rgba(183,172,158,0.9); line-height: 1.70; font-weight: 300;
 }
-
 .faq-answer-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--gold);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  border-bottom: 1px solid rgba(196,168,130,0.3);
-  padding-bottom: 3px;
-  margin-top: 12px;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--gold); font-family: 'DM Sans', sans-serif; font-size: 10px;
+  font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  border-bottom: 1px solid rgba(197,154,82,0.22); padding-bottom: 2px; margin-top: 12px;
 }
-
-/* Risk cards */
 .faq-intro {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  color: rgba(179,175,168,1);
-  font-style: italic;
-  line-height: 1.6;
-  border-left: 2px solid rgba(212,185,140,0.4);
-  padding-left: 16px;
-  margin-bottom: 18px;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 15.5px;
+  color: rgba(183,172,158,0.9); font-style: italic; line-height: 1.65;
+  border-left: 2px solid var(--gold-line); padding-left: 16px; margin-bottom: 18px; font-weight: 300;
 }
-
 .faq-risk-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 14px;
-  scrollbar-width: none;
-  padding-bottom: 6px;
-  -webkit-overflow-scrolling: touch;
+  display: flex; overflow-x: auto; gap: 12px;
+  scrollbar-width: none; padding-bottom: 4px;
 }
 .faq-risk-scroll::-webkit-scrollbar { display: none; }
-
 .faq-risk-card {
-  flex-shrink: 0;
-  width: 84%;
-  background: #1a140e;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 28px;
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-shrink: 0; width: 84%; background: var(--bg-deep);
+  border: 1px solid rgba(197,154,82,0.09); border-radius: var(--r-xl);
+  padding: 22px; display: flex; flex-direction: column; gap: 10px;
 }
-
 .faq-risk-cat {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif; font-size: 9.5px; font-weight: 400;
+  color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase;
 }
-
 .faq-risk-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
-  color: rgba(255,255,255,0.95);
-  font-weight: 400;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+  color: rgba(243,238,231,0.90); font-weight: 400;
 }
-
 .faq-risk-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  color: rgba(140,136,130,1);
-  line-height: 1.6;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 14px;
+  color: rgba(138,128,116,0.9); line-height: 1.62; font-weight: 300;
 }
 
 /* ============================================================
    CONTACT
    ============================================================ */
 .contact-section {
-  background: linear-gradient(160deg, var(--brown-dark) 0%, #3A2515 100%);
-  padding: 44px 24px 40px;
+  background: var(--bg-dark);
+  padding: 52px 24px 48px;
   text-align: center;
+  position: relative;
 }
-
-.contact-section .section-eyebrow { color: rgba(196,168,130,0.8); }
-
+.contact-section::before {
+  content: ''; display: block; height: 28px;
+  background: var(--bg-mid); border-radius: 0 0 28px 28px;
+  margin: -52px -24px 36px;
+}
 .contact-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 300;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 12px;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 300;
+  color: var(--text-light); line-height: 1.15; margin-bottom: 12px;
 }
-
-.contact-h2 em {
-  font-style: italic;
-  color: var(--gold-light);
-}
-
+.contact-h2 em { font-style: italic; color: var(--gold-light); }
 .contact-intro {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.65;
-  margin-bottom: 28px;
-  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: 16px;
+  color: var(--text-faint); line-height: 1.68; margin-bottom: 30px; font-weight: 300;
 }
-
 .contact-success {
-  background: rgba(196,168,130,0.12);
-  border: 1px solid rgba(196,168,130,0.35);
-  border-radius: var(--radius);
-  padding: 28px;
-  margin-bottom: 20px;
-  color: var(--gold-light);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  text-align: center;
-  display: none;
+  background: rgba(197,154,82,0.09); border: 1px solid var(--gold-line);
+  border-radius: var(--r-lg); padding: 28px; margin-bottom: 20px;
+  color: var(--gold-light); font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; text-align: center; display: none;
 }
-
 .contact-success.visible { display: block; }
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  text-align: left;
-  margin-bottom: 20px;
-}
-
+.contact-form { display: flex; flex-direction: column; gap: 12px; text-align: left; margin-bottom: 20px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
 .form-group label {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 6px;
-  font-weight: 500;
+  display: block; font-family: 'DM Sans', sans-serif; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light);
+  margin-bottom: 6px; font-weight: 400; opacity: 0.75;
 }
-
 .form-group input,
 .form-group select,
 .form-group textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(196,168,130,0.22);
-  border-radius: var(--radius);
-  padding: 13px 16px;
-  color: #fff;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s;
-  -webkit-appearance: none;
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(197,154,82,0.16);
+  border-radius: var(--r-sm); padding: 13px 15px;
+  color: var(--text-light); font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; outline: none; transition: border-color 0.2s; -webkit-appearance: none;
 }
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: rgba(255,255,255,0.28);
-  font-family: 'Cormorant Garamond', serif;
+.form-group input::placeholder, .form-group textarea::placeholder {
+  color: rgba(255,255,255,0.20); font-family: 'Cormorant Garamond', serif;
 }
-
-.form-group select option { background: #2A1F14; color: #fff; }
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--gold);
-}
-
+.form-group select option { background: var(--bg-mid); color: #fff; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
 .btn-submit {
-  width: 100%;
-  background: var(--gold);
-  color: var(--brown-dark);
-  padding: 17px;
-  border-radius: 50px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 0.5px;
-  transition: background 0.2s, transform 0.15s;
+  width: 100%; background: var(--gold); color: var(--bg-deep);
+  padding: 17px; border-radius: var(--r-pill);
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  border: none; cursor: pointer; letter-spacing: 0.12em; text-transform: uppercase;
+  box-shadow: 0 8px 28px rgba(197,154,82,0.18);
+  transition: opacity 0.2s, transform 0.15s;
 }
-.btn-submit:active { transform: scale(0.98); background: var(--gold-light); }
-
-.contact-alt {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 16px;
-}
-
+.btn-submit:active { transform: scale(0.98); opacity: 0.88; }
+.contact-alt { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
 .contact-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: rgba(255,255,255,0.6);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
-  padding: 14px;
-  border: 1px solid rgba(196,168,130,0.18);
-  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  color: rgba(255,255,255,0.52); font-family: 'Cormorant Garamond', serif;
+  font-size: 15.5px; padding: 14px;
+  border: 1px solid rgba(197,154,82,0.12); border-radius: var(--r-sm);
   transition: border-color 0.2s, color 0.2s;
 }
-.contact-link:hover { border-color: var(--gold); color: var(--gold-light); }
+.contact-link:hover, .contact-link:active { border-color: var(--gold-line); color: var(--gold-light); }
 
 /* ============================================================
    FOOTER
    ============================================================ */
 .treat-footer {
-  background: #150E06;
-  padding: 32px 24px 90px;
+  background: var(--bg-deep); padding: 32px 24px 96px;
+  border-top: 1px solid rgba(197,154,82,0.07);
 }
-
 .footer-logo {
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--gold-light);
-  font-size: 14px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  font-weight: 500;
+  font-family: 'DM Sans', sans-serif; color: var(--gold-light);
+  font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  margin-bottom: 4px; font-weight: 400;
 }
-
 .footer-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 18px;
-  letter-spacing: 0.5px;
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  color: rgba(255,255,255,0.22); margin-bottom: 16px; font-weight: 300;
 }
-
 .footer-address {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 12px;
-  color: rgba(255,255,255,0.3);
-  margin-bottom: 20px;
-  line-height: 1.7;
+  font-family: 'Cormorant Garamond', serif; font-size: 13px;
+  color: rgba(255,255,255,0.26); margin-bottom: 20px; line-height: 1.7;
 }
-
-.footer-address a { color: rgba(255,255,255,0.45); }
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
+.footer-address a { color: rgba(255,255,255,0.38); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
 .footer-links a {
-  font-family: 'Cormorant Garamond', serif;
-  color: rgba(255,255,255,0.4);
-  font-size: 12px;
-  letter-spacing: 0.5px;
+  font-family: 'DM Sans', sans-serif; color: rgba(255,255,255,0.32);
+  font-size: 11px; font-weight: 300;
 }
-
 .footer-copy {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  color: rgba(255,255,255,0.2);
-  border-top: 1px solid rgba(255,255,255,0.07);
-  padding-top: 18px;
-  line-height: 1.8;
+  font-family: 'DM Sans', sans-serif; font-size: 10px; color: rgba(255,255,255,0.16);
+  border-top: 1px solid rgba(255,255,255,0.05); padding-top: 18px; line-height: 1.9; font-weight: 300;
 }
 
 /* ============================================================
    STICKY BAR
    ============================================================ */
 .sticky-cta {
-  position: fixed;
-  bottom: 0; left: 50%;
+  position: fixed; bottom: 0; left: 50%;
   transform: translateX(-50%);
-  width: 100%; max-width: 430px;
-  z-index: 99;
-  background: rgba(21,14,6,0.97);
-  backdrop-filter: blur(20px);
-  padding: 12px 20px;
-  border-top: 1px solid rgba(196,168,130,0.18);
-  display: flex;
-  gap: 10px;
-  transition: transform 0.3s ease;
+  width: 100%; max-width: 430px; z-index: 99;
+  background: rgba(10,8,6,0.97); backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 12px 20px 14px;
+  border-top: 1px solid rgba(197,154,82,0.12);
+  display: flex; gap: 10px;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
 }
-
-.sticky-cta.hidden {
-  transform: translateX(-50%) translateY(100%);
+.sticky-cta.hidden { transform: translateX(-50%) translateY(100%); }
+.sticky-main {
+  flex: 1; text-align: center; padding: 14px 16px;
+  background: var(--gold); color: var(--bg-deep); border-radius: var(--r-pill);
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  letter-spacing: 0.10em; text-transform: uppercase; transition: opacity 0.15s;
 }
-
-.sticky-cta a {
-  flex: 1;
-  text-align: center;
-  padding: 13px 16px;
-  border-radius: 50px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+.sticky-main:active { opacity: 0.85; }
+.sticky-call {
+  flex: 0.7; text-align: center; padding: 14px 16px;
+  border: 1px solid rgba(197,154,82,0.26); color: var(--gold-light);
+  border-radius: var(--r-pill); font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 400; transition: border-color 0.15s;
 }
+.sticky-call:active { border-color: var(--gold); }
 
-.sticky-main { background: var(--gold); color: var(--brown-dark); }
-.sticky-call { border: 1px solid rgba(196,168,130,0.35); color: var(--gold-light); }
-
-/* ============================================================
-   EINBLICK (Unser Ansatz)
-   ============================================================ */
-.einblick-section {
-  background: var(--warm-white);
-  padding: 40px 24px 36px;
-}
-
-.einblick-items {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 22px;
-}
-
-.einblick-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 18px;
-  background: #fff;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-
-.einblick-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  color: var(--gold);
-  font-weight: 300;
-  min-width: 36px;
-  flex-shrink: 0;
-  line-height: 1;
-  padding-top: 2px;
-}
-
-.einblick-item h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  color: var(--brown-dark);
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.einblick-item p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  font-weight: 300;
-}
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     NAV
-     ============================================================ -->
+<!-- NAV -->
 <nav class="ua-nav" id="main-nav">
-  <div class="nav-logo">UNIKAT ÄSTHETIK</div>
+  <div class="nav-logo">Unikat Ästhetik</div>
   <a href="#kontakt" class="nav-cta">Beratung</a>
 </nav>
 
 
 <!-- ============================================================
-     HERO
+     HERO — 1:1 preserved
      ============================================================ -->
 <div class="hero-wrap" id="top">
   <div class="hero-image-area">
@@ -1780,37 +999,32 @@ img { display: block; max-width: 100%; }
     <div class="hero-img-fade-bottom"></div>
     <div class="hero-img-fade-top"></div>
   </div>
-
   <div class="hero-content">
     <div class="hero-pill">
       <div class="hero-pill-dot"></div>
       <span>Gesichtschirurgie · Stuttgart</span>
     </div>
-
     <h1 class="hero-h1">
       Augenlidstraffung –
       <em>frischer Blick,</em>
       <span>natürlich verjüngt</span>
     </h1>
-
     <p class="hero-lead">
       Schlupflider und Tränensäcke können das Gesicht müde und älter wirken lassen. Ziel ist ein wacher, natürlicher Ausdruck – mit einem Eingriff, der kaum sichtbare Narben hinterlässt.
     </p>
-
     <div class="hero-cta-wrap">
-      <a href="#kontakt" class="btn-hero-primary" id="beratung">
+      <a href="#kontakt" class="btn-primary-hero" id="beratung">
         <span style="display:flex;align-items:center;gap:10px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           Unverbindlich beraten lassen
         </span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-
       <div class="hero-trust-row">
         <div class="trust-avatars">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100&h=100" alt="Patientin" />
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100&h=100" alt="Patient" />
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100&h=100" alt="Patientin" />
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100&h=100" alt="" />
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100&h=100" alt="" />
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100&h=100" alt="" />
         </div>
         <div class="trust-score">
           <div class="trust-score-top">
@@ -1825,67 +1039,54 @@ img { display: block; max-width: 100%; }
 </div>
 
 
-
-
-
 <!-- ============================================================
      KENNEN SIE DAS
      ============================================================ -->
 <section class="kennen-section">
-  <div class="kennen-header">
-    <span class="section-eyebrow">Kennen Sie das?</span>
-    <h2 class="section-h2">Wenn der Spiegel nicht mehr <br/><em>Ihr wahres Ich</em> zeigt</h2>
-    <p class="section-lead">Viele Patientinnen und Patienten wirken erschöpft, obwohl sie es nicht sind. Der Blick verrät ein Alter, das nicht stimmt. Das lässt sich ändern – <strong>natürlich und dezent.</strong></p>
+  <div class="scroll-header">
+    <span class="t-eyebrow">Kennen Sie das?</span>
+    <h2 class="t-h2">Wenn der Spiegel nicht mehr <br/><em class="t-em">Ihr wahres Ich</em> zeigt</h2>
+    <p class="t-body">Viele Patientinnen und Patienten wirken erschöpft, obwohl sie es nicht sind. Der Blick verrät ein Alter, das nicht stimmt. Das lässt sich ändern – natürlich und dezent.</p>
   </div>
-
   <div class="kennen-scroll" id="kennen-carousel">
     <div class="kennen-card">
-      <div class="kennen-card-img">
-        <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&q=80&w=600&h=400" alt="Müder Blick" loading="lazy" />
-      </div>
-      <span class="card-tag">Problem 01</span>
+      <div class="kennen-card-img"><img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&q=80&w=600&h=400" alt="Müder Blick" loading="lazy" /></div>
+      <span class="card-eyebrow">Problem 01</span>
       <h3 class="card-h3">Müder Blick</h3>
-      <div class="card-divider"></div>
-      <p class="card-text">Ein erschöpfter Ausdruck lässt Sie oft müde wirken, obwohl Sie sich eigentlich fit und wach fühlen. Gerade die Augenpartie kann dem Gesicht ungewollt Schwere nehmen.</p>
+      <div class="card-rule"></div>
+      <p class="card-body">Ein erschöpfter Ausdruck lässt Sie oft müde wirken, obwohl Sie sich eigentlich fit und wach fühlen. Gerade die Augenpartie kann dem Gesicht ungewollt Schwere nehmen.</p>
     </div>
-
     <div class="kennen-card">
-      <div class="kennen-card-img">
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600&h=400" alt="Schwere Oberlider" loading="lazy" />
-      </div>
-      <span class="card-tag">Problem 02</span>
+      <div class="kennen-card-img"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600&h=400" alt="Schwere Oberlider" loading="lazy" /></div>
+      <span class="card-eyebrow">Problem 02</span>
       <h3 class="card-h3">Schwere Oberlider</h3>
-      <div class="card-divider"></div>
-      <p class="card-text">Wenn Oberlider absinken, wirkt der Blick schnell gedrückt und weniger offen. Das verändert die Ausstrahlung oft stärker, als vielen bewusst ist.</p>
+      <div class="card-rule"></div>
+      <p class="card-body">Wenn Oberlider absinken, wirkt der Blick schnell gedrückt und weniger offen. Das verändert die Ausstrahlung oft stärker, als vielen bewusst ist.</p>
     </div>
-
     <div class="kennen-card">
-      <div class="kennen-card-img">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600&h=400" alt="Tränensäcke" loading="lazy" />
-      </div>
-      <span class="card-tag">Problem 03</span>
+      <div class="kennen-card-img"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600&h=400" alt="Tränensäcke" loading="lazy" /></div>
+      <span class="card-eyebrow">Problem 03</span>
       <h3 class="card-h3">Tränensäcke &amp; Unterlidtaschen</h3>
-      <div class="card-divider"></div>
-      <p class="card-text">Ausgeprägte Unterlidtaschen lassen das Gesicht häufig älter und abgespannter erscheinen – obwohl es nicht Ihrem tatsächlichen Befinden entspricht.</p>
+      <div class="card-rule"></div>
+      <p class="card-body">Ausgeprägte Unterlidtaschen lassen das Gesicht häufig älter und abgespannter erscheinen – obwohl es nicht Ihrem tatsächlichen Befinden entspricht.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     VERFAHREN (ELIGIBLE)
+     VERFAHREN
      ============================================================ -->
 <section class="eligible-section">
-  <div class="eligible-header">
-    <span class="section-eyebrow">Vier Verfahren, ein Ziel</span>
-    <h2 class="section-h2">Die passende Lösung für <br/><em>Ihre Augenpartie</em></h2>
-    <p class="section-lead">Ob Schlupflider, Tränensäcke, Asymmetrien oder eine kombinierte Korrektur: Entscheidend ist eine Behandlung, die zu Ihrer Anatomie passt.</p>
+  <div class="eligible-section-rule"></div>
+  <div class="scroll-header">
+    <span class="t-eyebrow">Vier Verfahren, ein Ziel</span>
+    <h2 class="t-h2">Die passende Lösung für <br/><em class="t-em">Ihre Augenpartie</em></h2>
+    <p class="t-body">Ob Schlupflider, Tränensäcke, Asymmetrien oder eine kombinierte Korrektur: Entscheidend ist eine Behandlung, die zu Ihrer Anatomie passt.</p>
   </div>
-
   <div class="eligible-scroll">
-    <!-- Card 1 -->
     <div class="eligible-card">
-      <span class="eligible-card-num">01</span>
+      <span class="eligible-card-bg-num">01</span>
       <span class="eligible-card-tag">Häufig · Ambulant</span>
       <h3 class="eligible-card-h3">Oberlidstraffung bei Schlupflidern</h3>
       <p class="eligible-card-desc">Überschüssige Haut am Oberlid kann den Blick müde, schwer oder weniger offen wirken lassen. Bei einer Oberlidstraffung wird die Augenpartie gezielt geglättet, sodass der Ausdruck wieder frischer und wacher erscheint.</p>
@@ -1893,19 +1094,11 @@ img { display: block; max-width: 100%; }
         <span class="eligible-suitable-label">Besonders geeignet bei:</span>
         <p>Schlupflidern, schwer wirkendem Blick und Hautüberschuss am Oberlid.</p>
       </div>
-      <div class="eligible-benefit">
-        <span class="eligible-benefit-label">Vorteil:</span>
-        <p>Die feine Narbe liegt später meist unauffällig in der natürlichen Lidfalte.</p>
-      </div>
-      <div class="eligible-price-row">
-        <span class="eligible-price-label">Investition</span>
-        <span class="eligible-price-badge">ab 2.900 €*</span>
-      </div>
+      <div class="eligible-benefit"><span class="eligible-benefit-label">Vorteil:</span><p>Die feine Narbe liegt später meist unauffällig in der natürlichen Lidfalte.</p></div>
+      <div class="eligible-price-row"><span class="eligible-price-label">Investition</span><span class="eligible-price-badge">ab 2.900 €*</span></div>
     </div>
-
-    <!-- Card 2 -->
     <div class="eligible-card">
-      <span class="eligible-card-num">02</span>
+      <span class="eligible-card-bg-num">02</span>
       <span class="eligible-card-tag">Tränensäcke · Ambulant</span>
       <h3 class="eligible-card-h3">Unterlidstraffung bei Tränensäcken</h3>
       <p class="eligible-card-desc">Tränensäcke und Unterlidtaschen lassen die Augenpartie häufig älter und abgespannter wirken. Durch eine gezielte Korrektur kann das Unterlid geglättet und der Blick insgesamt erholter erscheinen.</p>
@@ -1913,19 +1106,11 @@ img { display: block; max-width: 100%; }
         <span class="eligible-suitable-label">Besonders geeignet bei:</span>
         <p>Tränensäcken, erschlafftem Unterlid und sichtbar müder Augenpartie.</p>
       </div>
-      <div class="eligible-benefit">
-        <span class="eligible-benefit-label">Vorteil:</span>
-        <p>Je nach Befund verläuft der Schnitt sehr unauffällig direkt unterhalb des Wimpernkranzes oder von innen.</p>
-      </div>
-      <div class="eligible-price-row">
-        <span class="eligible-price-label">Investition</span>
-        <span class="eligible-price-badge">ab 3.100 €*</span>
-      </div>
+      <div class="eligible-benefit"><span class="eligible-benefit-label">Vorteil:</span><p>Je nach Befund verläuft der Schnitt sehr unauffällig direkt unterhalb des Wimpernkranzes oder von innen.</p></div>
+      <div class="eligible-price-row"><span class="eligible-price-label">Investition</span><span class="eligible-price-badge">ab 3.100 €*</span></div>
     </div>
-
-    <!-- Card 3 -->
     <div class="eligible-card">
-      <span class="eligible-card-num">03</span>
+      <span class="eligible-card-bg-num">03</span>
       <span class="eligible-card-tag">Symmetrie · Individuell</span>
       <h3 class="eligible-card-h3">Ausgleich von Lid-Asymmetrien</h3>
       <p class="eligible-card-desc">Wenn Ober- oder Unterlider unterschiedlich ausgeprägt sind, kann die Augenpartie unruhig wirken. Eine individuell geplante Korrektur kann die Symmetrie verbessern und das Gesamtbild harmonisieren.</p>
@@ -1933,19 +1118,11 @@ img { display: block; max-width: 100%; }
         <span class="eligible-suitable-label">Besonders geeignet bei:</span>
         <p>Angeborenen oder altersbedingten Unterschieden im Bereich der Lider.</p>
       </div>
-      <div class="eligible-benefit">
-        <span class="eligible-benefit-label">Wichtig:</span>
-        <p>Die Behandlung wird immer nach genauer Analyse Ihrer Anatomie und Lidfunktion geplant.</p>
-      </div>
-      <div class="eligible-price-row">
-        <span class="eligible-price-label">Investition</span>
-        <span class="eligible-price-badge">je nach Befund</span>
-      </div>
+      <div class="eligible-benefit"><span class="eligible-benefit-label">Wichtig:</span><p>Die Behandlung wird immer nach genauer Analyse Ihrer Anatomie und Lidfunktion geplant.</p></div>
+      <div class="eligible-price-row"><span class="eligible-price-label">Investition</span><span class="eligible-price-badge">je nach Befund</span></div>
     </div>
-
-    <!-- Card 4 -->
     <div class="eligible-card">
-      <span class="eligible-card-num">04</span>
+      <span class="eligible-card-bg-num">04</span>
       <span class="eligible-card-tag">Kombiniert · Effizient</span>
       <h3 class="eligible-card-h3">Kombinierte Ober- und Unterlidstraffung</h3>
       <p class="eligible-card-desc">Wenn sowohl Schlupflider als auch Tränensäcke bestehen, kann eine kombinierte Korrektur sinnvoll sein. So lassen sich Ober- und Unterlid in einem Eingriff behandeln.</p>
@@ -1953,14 +1130,8 @@ img { display: block; max-width: 100%; }
         <span class="eligible-suitable-label">Besonders geeignet bei:</span>
         <p>Gleichzeitig ausgeprägten Oberlid- und Unterlidveränderungen.</p>
       </div>
-      <div class="eligible-benefit">
-        <span class="eligible-benefit-label">Vorteil:</span>
-        <p>Nur ein Eingriff, eine gemeinsame Heilungsphase und ein stimmiges Gesamtbild der Augenpartie.</p>
-      </div>
-      <div class="eligible-price-row">
-        <span class="eligible-price-label">Investition</span>
-        <span class="eligible-price-badge">auf Anfrage</span>
-      </div>
+      <div class="eligible-benefit"><span class="eligible-benefit-label">Vorteil:</span><p>Nur ein Eingriff, eine gemeinsame Heilungsphase und ein stimmiges Gesamtbild der Augenpartie.</p></div>
+      <div class="eligible-price-row"><span class="eligible-price-label">Investition</span><span class="eligible-price-badge">auf Anfrage</span></div>
     </div>
   </div>
   <p class="eligible-note">*Die tatsächlichen Kosten werden nach GOÄ individuell ermittelt.</p>
@@ -1972,23 +1143,14 @@ img { display: block; max-width: 100%; }
      ============================================================ -->
 <div class="doctor-band">
   <div class="doctor-img-area">
-    <img
-      src="https://unikataesthetik.de/wp-content/uploads/2025/07/dr-hodorkovski-stuttgart-plastische-aesthetische-chirurgie-unikat-aesthetik_kk-1.webp"
-      alt="Dr. med. Igor Hodorkovski"
-      loading="lazy"
-    />
+    <img src="https://unikataesthetik.de/wp-content/uploads/2025/07/dr-hodorkovski-stuttgart-plastische-aesthetische-chirurgie-unikat-aesthetik_kk-1.webp" alt="Dr. med. Igor Hodorkovski" loading="lazy" />
     <div class="doctor-img-fade"></div>
   </div>
-
   <div class="doctor-content">
     <span class="doctor-eyebrow">Ihr Arzt in Stuttgart</span>
     <h2 class="doctor-h2">Dr. med. Igor Hodorkovski</h2>
-    <span class="doctor-subtitle">Chefarzt &amp; Gründer · Unikat Ästhetik Stuttgart</span>
-
-    <p class="doctor-bio">
-      Mit über 16 Jahren Erfahrung in der Plastischen und Ästhetischen Chirurgie steht Dr. Hodorkovski für natürliche Ergebnisse, absolute Transparenz und persönliche Betreuung – von der Beratung bis zur letzten Nachkontrolle.
-    </p>
-
+    <span class="doctor-role">Chefarzt &amp; Gründer · Unikat Ästhetik Stuttgart</span>
+    <p class="doctor-bio">Mit über 16 Jahren Erfahrung in der Plastischen und Ästhetischen Chirurgie steht Dr. Hodorkovski für natürliche Ergebnisse, absolute Transparenz und persönliche Betreuung – von der Beratung bis zur letzten Nachkontrolle.</p>
     <div class="doctor-pills">
       <span class="doctor-pill">Facharzt DGPRÄC</span>
       <span class="doctor-pill">16+ Jahre Erfahrung</span>
@@ -1996,44 +1158,23 @@ img { display: block; max-width: 100%; }
       <span class="doctor-pill">Promotion 2012 Tübingen</span>
       <span class="doctor-pill">Gründer seit 2018</span>
     </div>
-
-    <button class="doctor-vita-toggle" onclick="toggleVita(this)">
+    <button class="doctor-vita-toggle" onclick="toggleVita()">
       <span>Vollständige Vita anzeigen</span>
       <div class="vita-arrow" id="vita-arrow">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
     </button>
-
     <div class="vita-list" id="vita-list">
-      <div class="vita-entry">
-        <span class="vita-year">1994</span>
-        <p class="vita-text">Studium Humanmedizin, Tübingen &amp; Berlin</p>
-      </div>
-      <div class="vita-entry">
-        <span class="vita-year">2003</span>
-        <p class="vita-text">Spezialisierung Mamachirurgie, Berlin</p>
-      </div>
-      <div class="vita-entry">
-        <span class="vita-year">2004</span>
-        <p class="vita-text">Fortbildung Cutaneous Surgery, Sydney</p>
-      </div>
-      <div class="vita-entry">
-        <span class="vita-year">2012</span>
-        <p class="vita-text">Promotion, Uni Tübingen – Praxisgründung Stuttgart</p>
-      </div>
-      <div class="vita-entry">
-        <span class="vita-year">2012–22</span>
-        <p class="vita-text">Belegarzt Klinik Charlottenhaus Stuttgart</p>
-      </div>
-      <div class="vita-entry">
-        <span class="vita-year">2018</span>
-        <p class="vita-text">Gründung UNIKAT ÄSTHETIK Stuttgart-Mitte</p>
-      </div>
+      <div class="vita-entry"><span class="vita-year">1994</span><p class="vita-text">Studium Humanmedizin, Tübingen &amp; Berlin</p></div>
+      <div class="vita-entry"><span class="vita-year">2003</span><p class="vita-text">Spezialisierung Mamachirurgie, Berlin</p></div>
+      <div class="vita-entry"><span class="vita-year">2004</span><p class="vita-text">Fortbildung Cutaneous Surgery, Sydney</p></div>
+      <div class="vita-entry"><span class="vita-year">2012</span><p class="vita-text">Promotion, Uni Tübingen – Praxisgründung Stuttgart</p></div>
+      <div class="vita-entry"><span class="vita-year">2012–22</span><p class="vita-text">Belegarzt Klinik Charlottenhaus Stuttgart</p></div>
+      <div class="vita-entry"><span class="vita-year">2018</span><p class="vita-text">Gründung UNIKAT ÄSTHETIK Stuttgart-Mitte</p></div>
     </div>
-
-    <a href="#kontakt" class="btn-doctor-cta">
+    <a href="#kontakt" class="btn-ghost-dark" style="margin-top:28px;">
       Persönliche Beratung anfragen
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 </div>
@@ -2043,8 +1184,8 @@ img { display: block; max-width: 100%; }
      FAKTEN
      ============================================================ -->
 <section class="fakten-section" id="fakten">
-  <span class="section-eyebrow">Auf einen Blick</span>
-  <h2 class="section-h2">Fakten zur<br /><em>Augenlidstraffung</em></h2>
+  <span class="t-eyebrow">Auf einen Blick</span>
+  <h2 class="t-h2" style="margin-bottom:24px;">Fakten zur <em class="t-em">Augenlidstraffung</em></h2>
   <div class="fakten-grid">
     <div class="fakt-card"><span class="fakt-label">Dauer</span><span class="fakt-value">30–90 Min.</span><span class="fakt-sub">je nach Umfang</span></div>
     <div class="fakt-card"><span class="fakt-label">Anästhesie</span><span class="fakt-value">Lokal / Dämmerschlaf</span><span class="fakt-sub">ambulant möglich</span></div>
@@ -2059,32 +1200,23 @@ img { display: block; max-width: 100%; }
 
 
 <!-- ============================================================
-     UNSER ANSATZ (EINBLICK)
+     UNSER ANSATZ
      ============================================================ -->
 <section class="einblick-section">
-  <span class="section-eyebrow">Unser Ansatz</span>
-  <h2 class="section-h2">Was eine Augenlidstraffung<br /><em>bei uns besonders macht.</em></h2>
+  <span class="t-eyebrow">Unser Ansatz</span>
+  <h2 class="t-h2">Was eine Augenlidstraffung<br /><em class="t-em">bei uns besonders macht.</em></h2>
   <div class="einblick-items">
     <div class="einblick-item">
       <div class="einblick-num">01</div>
-      <div>
-        <h3>Präzision statt Routine</h3>
-        <p>Dr. Hodorkovski plant jeden Eingriff individuell – angepasst an Ihre Anatomie, Ihre Hautstruktur und Ihre persönlichen Ziele. Kein Standardprotokoll.</p>
-      </div>
+      <div><h3>Präzision statt Routine</h3><p>Dr. Hodorkovski plant jeden Eingriff individuell – angepasst an Ihre Anatomie, Ihre Hautstruktur und Ihre persönlichen Ziele. Kein Standardprotokoll.</p></div>
     </div>
     <div class="einblick-item">
       <div class="einblick-num">02</div>
-      <div>
-        <h3>Natürlichkeit als Maßstab</h3>
-        <p>Das Ergebnis soll ausgeruhter, frischer und jünger wirken – nicht operiert. Wir entfernen so wenig wie nötig und so präzise wie möglich.</p>
-      </div>
+      <div><h3>Natürlichkeit als Maßstab</h3><p>Das Ergebnis soll ausgeruhter, frischer und jünger wirken – nicht operiert. Wir entfernen so wenig wie nötig und so präzise wie möglich.</p></div>
     </div>
     <div class="einblick-item">
       <div class="einblick-num">03</div>
-      <div>
-        <h3>Sicherheit auf Klinikniveau</h3>
-        <p>Zertifizierte OP-Räumlichkeiten, erfahrenes Anästhesie-Team und lückenlose Nachsorge. Sie sind gut aufgehoben – von der ersten Minute bis zum finalen Ergebnis.</p>
-      </div>
+      <div><h3>Sicherheit auf Klinikniveau</h3><p>Zertifizierte OP-Räumlichkeiten, erfahrenes Anästhesie-Team und lückenlose Nachsorge. Sie sind gut aufgehoben – von der ersten Minute bis zum finalen Ergebnis.</p></div>
     </div>
   </div>
 </section>
@@ -2094,47 +1226,15 @@ img { display: block; max-width: 100%; }
      ABLAUF
      ============================================================ -->
 <section class="ablauf-section" id="ablauf">
-  <span class="section-eyebrow">So läuft es ab</span>
-  <h2 class="ablauf-h2">Ihr Weg zu <br/><em>Ihrem Ergebnis</em></h2>
-
+  <span class="t-eyebrow" style="color:rgba(197,154,82,0.80);">So läuft es ab</span>
+  <h2 class="ablauf-h2">Ihr Weg zu <em>Ihrem Ergebnis</em></h2>
   <div class="ablauf-timeline">
-    <div class="ablauf-step">
-      <div class="ablauf-num"><span>1</span></div>
-      <div class="ablauf-step-content">
-        <h3>Persönliche Beratung</h3>
-        <p>Im ersten Gespräch hören wir zu. Keine Verkaufsabsicht – nur ein ehrliches Bild Ihrer Optionen und Möglichkeiten.</p>
-      </div>
-    </div>
-    <div class="ablauf-step">
-      <div class="ablauf-num"><span>2</span></div>
-      <div class="ablauf-step-content">
-        <h3>Individuelle Planung</h3>
-        <p>Dr. Hodorkovski plant den Eingriff exakt auf Ihre Anatomie abgestimmt – mit realistischen Erwartungen und klaren Zielen.</p>
-      </div>
-    </div>
-    <div class="ablauf-step">
-      <div class="ablauf-num"><span>3</span></div>
-      <div class="ablauf-step-content">
-        <h3>Der Eingriff</h3>
-        <p>Modernste Operationstechnik, zertifizierte Materialien, erfahrenes Anästhesie-Team. Sie sind in sicheren Händen.</p>
-      </div>
-    </div>
-    <div class="ablauf-step">
-      <div class="ablauf-num"><span>4</span></div>
-      <div class="ablauf-step-content">
-        <h3>Nachsorge &amp; Begleitung</h3>
-        <p>Regelmäßige Kontrolltermine mit Dr. Hodorkovski persönlich – bis das finale Ergebnis vollständig erreicht ist.</p>
-      </div>
-    </div>
-    <div class="ablauf-step">
-      <div class="ablauf-num"><span>5</span></div>
-      <div class="ablauf-step-content">
-        <h3>Ihr Ergebnis</h3>
-        <p>Natürlich, harmonisch, dauerhaft. Ein Ergebnis, das zu Ihnen passt und Ihr Selbstbewusstsein stärkt.</p>
-      </div>
-    </div>
+    <div class="ablauf-step"><div class="ablauf-num"><span>1</span></div><div class="ablauf-step-content"><h3>Persönliche Beratung</h3><p>Im ersten Gespräch hören wir zu. Keine Verkaufsabsicht – nur ein ehrliches Bild Ihrer Optionen und Möglichkeiten.</p></div></div>
+    <div class="ablauf-step"><div class="ablauf-num"><span>2</span></div><div class="ablauf-step-content"><h3>Individuelle Planung</h3><p>Dr. Hodorkovski plant den Eingriff exakt auf Ihre Anatomie abgestimmt – mit realistischen Erwartungen und klaren Zielen.</p></div></div>
+    <div class="ablauf-step"><div class="ablauf-num"><span>3</span></div><div class="ablauf-step-content"><h3>Der Eingriff</h3><p>Modernste Operationstechnik, zertifizierte Materialien, erfahrenes Anästhesie-Team. Sie sind in sicheren Händen.</p></div></div>
+    <div class="ablauf-step"><div class="ablauf-num"><span>4</span></div><div class="ablauf-step-content"><h3>Nachsorge &amp; Begleitung</h3><p>Regelmäßige Kontrolltermine mit Dr. Hodorkovski persönlich – bis das finale Ergebnis vollständig erreicht ist.</p></div></div>
+    <div class="ablauf-step"><div class="ablauf-num"><span>5</span></div><div class="ablauf-step-content"><h3>Ihr Ergebnis</h3><p>Natürlich, harmonisch, dauerhaft. Ein Ergebnis, das zu Ihnen passt und Ihr Selbstbewusstsein stärkt.</p></div></div>
   </div>
-
   <div class="ablauf-cta">
     <a href="#kontakt" class="btn-ablauf">Schritt 1 machen</a>
     <p class="ablauf-sub-note">Unverbindlich &amp; Diskret</p>
@@ -2146,54 +1246,20 @@ img { display: block; max-width: 100%; }
      NACHSORGE
      ============================================================ -->
 <section class="nachsorge-section" id="nachsorge">
-  <div class="nachsorge-header">
-    <span class="section-eyebrow">Nachsorge</span>
-    <h2 class="section-h2">Was nach dem<br /><em>Eingriff passiert</em></h2>
+  <div class="scroll-header">
+    <span class="t-eyebrow">Nachsorge</span>
+    <h2 class="t-h2">Was nach dem <em class="t-em">Eingriff passiert</em></h2>
   </div>
-
   <div class="nachsorge-scroll">
-    <div class="nachsorge-card">
-      <span class="nachsorge-card-num">01</span>
-      <div class="nachsorge-period"><div class="nachsorge-dot"></div><span class="nachsorge-period-label">Direkt nach dem Eingriff</span></div>
-      <h3>Erste Erholungsphase</h3>
-      <p>Kühlung und eine kurze Ruhephase direkt in der Praxis. Sie werden anschließend von einer Begleitperson abgeholt. Leichte Schwellungen und Hämatome sind in dieser Phase völlig normal.</p>
-    </div>
-    <div class="nachsorge-card">
-      <span class="nachsorge-card-num">02</span>
-      <div class="nachsorge-period"><div class="nachsorge-dot"></div><span class="nachsorge-period-label">Tag 1 – 5</span></div>
-      <h3>Schonung &amp; Kühlung</h3>
-      <p>Regelmäßiges Kühlen, körperliche Schonung und Schlafen mit erhöhtem Oberkörper. Vermeiden Sie Anstrengung. Die Fäden sind stabil – dennoch sollten Sie Zug oder Reibung strikt vermeiden.</p>
-    </div>
-    <div class="nachsorge-card">
-      <span class="nachsorge-card-num">03</span>
-      <div class="nachsorge-period"><div class="nachsorge-dot"></div><span class="nachsorge-period-label">Tag 5 – 7</span></div>
-      <h3>Fadenentfernung</h3>
-      <p>Ihr erster Kontrolltermin bei Dr. Hodorkovski. Die Fäden werden schmerzfrei entfernt und der bisherige Heilungsverlauf wird bewertet. Die meisten Patienten sind bereits beschwerdefrei.</p>
-    </div>
-    <div class="nachsorge-card">
-      <span class="nachsorge-card-num">04</span>
-      <div class="nachsorge-period"><div class="nachsorge-dot"></div><span class="nachsorge-period-label">Woche 2 – 3</span></div>
-      <h3>Rückkehr in den Alltag</h3>
-      <p>Die Schwellungen klingen deutlich ab. Make-up im Bereich der Narbe darf nach ausdrücklicher Freigabe wieder verwendet werden. Leichte Alltagsaktivitäten sind nun wieder möglich.</p>
-    </div>
-    <div class="nachsorge-card">
-      <span class="nachsorge-card-num">05</span>
-      <div class="nachsorge-period"><div class="nachsorge-dot"></div><span class="nachsorge-period-label">Monat 1 – 3</span></div>
-      <h3>Regeneration der Narben</h3>
-      <p>Die Narben verblassen zusehends und das Ergebnis wird immer deutlicher sichtbar. Konsequenter UV-Schutz ist essenziell. Ein weiterer Kontrolltermin findet nach ca. 6 Wochen statt.</p>
-    </div>
-    <div class="nachsorge-card">
-      <span class="nachsorge-card-num">06</span>
-      <div class="nachsorge-period"><div class="nachsorge-dot"></div><span class="nachsorge-period-label">Finales Ergebnis</span></div>
-      <h3>Dauerhafte Frische</h3>
-      <p>Nach 3–6 Monaten ist die Narbenreife vollständig abgeschlossen. Das endgültige Ergebnis präsentiert sich: ein frischer, ausgeruhter und absolut natürlicher Blick.</p>
-    </div>
+    <div class="nachsorge-card"><span class="nc-bg-num">01</span><div class="nc-period"><div class="nc-dot"></div><span class="nc-period-label">Direkt nach dem Eingriff</span></div><h3>Erste Erholungsphase</h3><p>Kühlung und eine kurze Ruhephase direkt in der Praxis. Sie werden anschließend von einer Begleitperson abgeholt. Leichte Schwellungen und Hämatome sind in dieser Phase völlig normal.</p></div>
+    <div class="nachsorge-card"><span class="nc-bg-num">02</span><div class="nc-period"><div class="nc-dot"></div><span class="nc-period-label">Tag 1 – 5</span></div><h3>Schonung &amp; Kühlung</h3><p>Regelmäßiges Kühlen, körperliche Schonung und Schlafen mit erhöhtem Oberkörper. Vermeiden Sie Anstrengung. Die Fäden sind stabil – dennoch sollten Sie Zug oder Reibung strikt vermeiden.</p></div>
+    <div class="nachsorge-card"><span class="nc-bg-num">03</span><div class="nc-period"><div class="nc-dot"></div><span class="nc-period-label">Tag 5 – 7</span></div><h3>Fadenentfernung</h3><p>Ihr erster Kontrolltermin bei Dr. Hodorkovski. Die Fäden werden schmerzfrei entfernt und der bisherige Heilungsverlauf wird bewertet. Die meisten Patienten sind bereits beschwerdefrei.</p></div>
+    <div class="nachsorge-card"><span class="nc-bg-num">04</span><div class="nc-period"><div class="nc-dot"></div><span class="nc-period-label">Woche 2 – 3</span></div><h3>Rückkehr in den Alltag</h3><p>Die Schwellungen klingen deutlich ab. Make-up im Bereich der Narbe darf nach ausdrücklicher Freigabe wieder verwendet werden. Leichte Alltagsaktivitäten sind nun wieder möglich.</p></div>
+    <div class="nachsorge-card"><span class="nc-bg-num">05</span><div class="nc-period"><div class="nc-dot"></div><span class="nc-period-label">Monat 1 – 3</span></div><h3>Regeneration der Narben</h3><p>Die Narben verblassen zusehends und das Ergebnis wird immer deutlicher sichtbar. Konsequenter UV-Schutz ist essenziell. Ein weiterer Kontrolltermin findet nach ca. 6 Wochen statt.</p></div>
+    <div class="nachsorge-card"><span class="nc-bg-num">06</span><div class="nc-period"><div class="nc-dot"></div><span class="nc-period-label">Finales Ergebnis</span></div><h3>Dauerhafte Frische</h3><p>Nach 3–6 Monaten ist die Narbenreife vollständig abgeschlossen. Das endgültige Ergebnis präsentiert sich: ein frischer, ausgeruhter und absolut natürlicher Blick.</p></div>
   </div>
-
   <div class="nachsorge-note">
-    <div class="nachsorge-note-avatar">
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/07/dr-hodorkovski-stuttgart-plastische-aesthetische-chirurgie-unikat-aesthetik_kk-1.webp" alt="Dr. Hodorkovski" loading="lazy" />
-    </div>
+    <div class="nachsorge-note-avatar"><img src="https://unikataesthetik.de/wp-content/uploads/2025/07/dr-hodorkovski-stuttgart-plastische-aesthetische-chirurgie-unikat-aesthetik_kk-1.webp" alt="Dr. Hodorkovski" loading="lazy" /></div>
     <h4>Persönliche Begleitung</h4>
     <p>Dr. Hodorkovski und sein Team sind während der gesamten Heilungsphase jederzeit für Sie erreichbar.</p>
   </div>
@@ -2204,9 +1270,10 @@ img { display: block; max-width: 100%; }
      REVIEWS
      ============================================================ -->
 <section class="reviews-section" id="bewertungen">
+  <div class="reviews-section-rule"></div>
   <div class="reviews-header">
-    <span class="section-eyebrow">Echte Erfahrungen</span>
-    <h2 class="section-h2">Was Patientinnen sagen</h2>
+    <span class="t-eyebrow">Echte Erfahrungen</span>
+    <h2 class="t-h2">Was Patientinnen sagen</h2>
     <div class="reviews-rating-bar">
       <span class="reviews-rating-big">5,0</span>
       <div>
@@ -2215,42 +1282,15 @@ img { display: block; max-width: 100%; }
       </div>
     </div>
   </div>
-
   <div class="reviews-scroll">
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">„Ich bin mit meiner Oberlidstraffung sehr zufrieden – mit der Beratung, der OP und dem Ergebnis. Ich habe mich sehr wohlgefühlt und alles lief professionell ab. Klare Empfehlung!"</p>
-      <div class="review-name">Nastaran A.</div>
-      <div class="review-treatment">Augenlidstraffung</div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">„Von der ersten Beratung bis zur Nachbesprechung habe ich mich rundum gut aufgehoben gefühlt. Das Ergebnis wirkt sehr natürlich – genau so, wie ich es mir erhofft habe."</p>
-      <div class="review-name">Daniela</div>
-      <div class="review-treatment">Augenlidstraffung · Augenbrauenlifting</div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">„Bei der Beratung mit Dr. Hodorkovski hatte ich sofort das Gefühl, in sehr professionellen Händen zu sein. Das Ergebnis ist wunderschön: harmonisch, natürlich und sehr ästhetisch."</p>
-      <div class="review-name">Margarita N.</div>
-      <div class="review-treatment">Brustvergrößerung</div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">„Seit mehr als 20 Jahren kenne ich Dr. Hodorkovski. Er überzeugt durch höchste Präzision und stets natürliche Ergebnisse. Ich fühle mich seit zwei Jahrzehnten bestens aufgehoben."</p>
-      <div class="review-name">Tanya</div>
-      <div class="review-treatment">Langjährige Patientin</div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">„Dr. Hodorkovski ist für mich die Nummer 1 in der plastisch-ästhetischen Chirurgie – fachlich wie menschlich nicht zu toppen. Man fühlt sich jederzeit ernst genommen und in besten Händen."</p>
-      <div class="review-name">Irina G.</div>
-      <div class="review-treatment">Bauchdeckenstraffung · Brustvergrößerung</div>
-    </div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">„Ich bin mit meiner Oberlidstraffung sehr zufrieden – mit der Beratung, der OP und dem Ergebnis. Ich habe mich sehr wohlgefühlt und alles lief professionell ab. Klare Empfehlung!"</p><div class="review-name">Nastaran A.</div><div class="review-treatment">Augenlidstraffung</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">„Von der ersten Beratung bis zur Nachbesprechung habe ich mich rundum gut aufgehoben gefühlt. Das Ergebnis wirkt sehr natürlich – genau so, wie ich es mir erhofft habe."</p><div class="review-name">Daniela</div><div class="review-treatment">Augenlidstraffung · Augenbrauenlifting</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">„Bei der Beratung mit Dr. Hodorkovski hatte ich sofort das Gefühl, in sehr professionellen Händen zu sein. Das Ergebnis ist wunderschön: harmonisch, natürlich und sehr ästhetisch."</p><div class="review-name">Margarita N.</div><div class="review-treatment">Brustvergrößerung</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">„Seit mehr als 20 Jahren kenne ich Dr. Hodorkovski. Er überzeugt durch höchste Präzision und stets natürliche Ergebnisse. Ich fühle mich seit zwei Jahrzehnten bestens aufgehoben."</p><div class="review-name">Tanya</div><div class="review-treatment">Langjährige Patientin</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">„Dr. Hodorkovski ist für mich die Nummer 1 in der plastisch-ästhetischen Chirurgie – fachlich wie menschlich nicht zu toppen. Man fühlt sich jederzeit ernst genommen und in besten Händen."</p><div class="review-name">Irina G.</div><div class="review-treatment">Bauchdeckenstraffung · Brustvergrößerung</div></div>
   </div>
-
   <div class="reviews-footer">
-    <a href="https://www.provenexpert.com/plastische-chirurgie-unikat-aesthetik-dr-hodorkovski/" target="_blank" rel="noreferrer" class="btn-outline-reviews">Alle 340+ Bewertungen lesen</a>
+    <a href="https://www.provenexpert.com/plastische-chirurgie-unikat-aesthetik-dr-hodorkovski/" target="_blank" rel="noreferrer" class="btn-outline-light">Alle 340+ Bewertungen lesen</a>
   </div>
 </section>
 
@@ -2259,30 +1299,18 @@ img { display: block; max-width: 100%; }
      PRAXIS
      ============================================================ -->
 <section class="praxis-section" id="praxis">
-  <div class="praxis-header">
-    <span class="section-eyebrow">Unsere Praxis</span>
-    <h2 class="section-h2">Modernes Ambiente im<br /><em>Herzen Stuttgarts</em></h2>
-    <p class="section-lead" style="margin-top:12px;">Mitten in Stuttgart erwartet Sie eine modern gestaltete Praxis mit ruhiger, diskreter Atmosphäre. Helle Räume, hochwertiges Ambiente und persönliche Betreuung schaffen den passenden Rahmen.</p>
+  <div class="scroll-header">
+    <span class="t-eyebrow">Unsere Praxis</span>
+    <h2 class="t-h2">Modernes Ambiente im <em class="t-em">Herzen Stuttgarts</em></h2>
+    <p class="t-body">Mitten in Stuttgart erwartet Sie eine modern gestaltete Praxis mit ruhiger, diskreter Atmosphäre. Helle Räume und persönliche Betreuung schaffen den passenden Rahmen.</p>
   </div>
-
   <div class="praxis-scroll" id="praxis-carousel">
-    <div class="praxis-img-wrap">
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/empfangsbereich-facharztpraxis-unikataesthetik-stuttgart.webp" alt="Empfangsbereich" loading="lazy" />
-    </div>
-    <div class="praxis-img-wrap">
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/beratung-plastische-aesthetische-chirurgie-dr-hodorkovski.webp" alt="Beratungszimmer" loading="lazy" />
-    </div>
-    <div class="praxis-img-wrap">
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/warteraum-praxis-aesthetische-medizin-dr-hodorkovski-stuttgart.webp" alt="Wartebereich" loading="lazy" />
-    </div>
-    <div class="praxis-img-wrap">
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/aesthetische-behandlung-dr-hodorkovski-stuttgart-unikat-aesthetik.webp" alt="Behandlungszimmer" loading="lazy" />
-    </div>
-    <div class="praxis-img-wrap">
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/aesthetische-medizin-beratung-plastischer-aesthetischer-chirurg-dr-hodorkovski-stuttgart.webp" alt="Medizinische Beratung" loading="lazy" />
-    </div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/empfangsbereich-facharztpraxis-unikataesthetik-stuttgart.webp" alt="Empfangsbereich" loading="lazy" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/beratung-plastische-aesthetische-chirurgie-dr-hodorkovski.webp" alt="Beratungszimmer" loading="lazy" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/warteraum-praxis-aesthetische-medizin-dr-hodorkovski-stuttgart.webp" alt="Wartebereich" loading="lazy" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/aesthetische-behandlung-dr-hodorkovski-stuttgart-unikat-aesthetik.webp" alt="Behandlungszimmer" loading="lazy" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/aesthetische-medizin-beratung-plastischer-aesthetischer-chirurg-dr-hodorkovski-stuttgart.webp" alt="Medizinische Beratung" loading="lazy" /></div>
   </div>
-  <div class="praxis-divider"></div>
 </section>
 
 
@@ -2291,18 +1319,15 @@ img { display: block; max-width: 100%; }
      ============================================================ -->
 <section class="faq-section" id="faq">
   <div class="faq-header">
-    <span class="section-eyebrow">Häufig gestellte Fragen</span>
+    <span class="t-eyebrow" style="color:var(--gold);">Häufig gestellte Fragen</span>
     <h2 class="faq-h2">FAQ zur <em>Augenlidstraffung</em></h2>
   </div>
-
   <div class="faq-list">
 
     <div class="faq-item">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Wie erfolgt eine Lidstraffung?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-answer-text">Den vollständigen Ablauf in fünf Schritten finden Sie in der Schritt-für-Schritt-Übersicht weiter oben auf dieser Seite.</p>
@@ -2313,9 +1338,7 @@ img { display: block; max-width: 100%; }
     <div class="faq-item open">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Wann übernimmt die Krankenkasse die Kosten für eine Augenlidstraffung?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-answer-text">Da es sich bei einer Augenlidstraffung meist um einen ästhetischen Eingriff handelt, wird die Behandlung in den meisten Fällen nicht von der Krankenkasse übernommen. Liegt ein medizinischer Grund vor – wie z. B. eine Sehfeldeinschränkung – ist eine anteilige oder vollständige Übernahme möglich. Die medizinische Indikation muss von einem Augenarzt geprüft und bestätigt werden.</p>
@@ -2325,9 +1348,7 @@ img { display: block; max-width: 100%; }
     <div class="faq-item">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Darf ich nach der Behandlung ohne Begleitung nach Hause fahren?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-answer-text">Da Ihr Sichtfeld unmittelbar nach der Augenlidstraffung eingeschränkt ist, empfehlen wir Ihnen, sich von einer Begleitperson nach Hause fahren zu lassen. Bei einer Operation mit Dämmerschlaf oder Vollnarkose ist eine Begleitperson Pflicht, da Sie in den nächsten 24 Stunden nicht aktiv am Straßenverkehr teilnehmen dürfen.</p>
@@ -2337,9 +1358,7 @@ img { display: block; max-width: 100%; }
     <div class="faq-item">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Sind die Narben nach einer Lidkorrektur sichtbar?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-answer-text">Bei einer Lidkorrektur heilen die Narben meist sehr schnell und gut ab, sodass sie später kaum sichtbar sind. Der Schnitt wird so gesetzt, dass er fast unsichtbar in der Oberlidfalte liegt oder sich ca. 3 mm unter dem Wimpernkranz befindet. Nach wenigen Wochen verändern sie sich zu einem weißlichen, unauffälligen Strich.</p>
@@ -2349,9 +1368,7 @@ img { display: block; max-width: 100%; }
     <div class="faq-item">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Wie lange hält die Schwellung nach einer Lidstraffung an?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-answer-text">Jeder Körper reagiert anders auf operative Eingriffe. Schwellungen und Blutergüsse können innerhalb weniger Tage abklingen oder 1 bis 2 Wochen überdauern. Regelmäßiges Kühlen wirkt dem positiv entgegen. Nach 1–2 Wochen sind auffälligere Schwellungen meist abgeklungen und unsere Patienten sind wieder gesellschafts- und arbeitsfähig.</p>
@@ -2361,9 +1378,7 @@ img { display: block; max-width: 100%; }
     <div class="faq-item">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Was ist nach einer Schlupflider OP zu beachten?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-answer-text">Die wichtigsten Nachsorge-Hinweise finden Sie ausführlich in der Nachsorge-Übersicht weiter oben auf dieser Seite. Grundsätzlich gilt: Schonen Sie sich in den ersten 2 Wochen, vermeiden Sie Wärme (Sauna, Solarium) und direkte Sonneneinstrahlung für die ersten Monate.</p>
@@ -2374,9 +1389,7 @@ img { display: block; max-width: 100%; }
     <div class="faq-item">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Wie lange dauert die Heilung nach einer Lidstraffung?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-answer-text">In den ersten Tagen nach der Operation sind die Augenlider häufig geschwollen und Blutergüsse zu sehen. Nach 1–2 Wochen sind auffälligere Schwellungen meist abgeklungen. Das endgültige Ergebnis ist nach etwa 2–3 Monaten vollständig sichtbar.</p>
@@ -2386,28 +1399,14 @@ img { display: block; max-width: 100%; }
     <div class="faq-item">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Welche Risiken oder Komplikationen sind bei einer Augenlidkorrektur möglich?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-intro">Ich lege bei jeder Augenlidstraffung großen Wert auf vollständige, ehrliche Aufklärung. Die Risiken sind gering und können durch entsprechende Vorsichtsmaßnahmen weitestgehend minimiert werden.</p>
         <div class="faq-risk-scroll">
-          <div class="faq-risk-card">
-            <span class="faq-risk-cat">Häufig · Vorübergehend</span>
-            <h4 class="faq-risk-title">Schwellung &amp; Blutergüsse</h4>
-            <p class="faq-risk-text">Klingen nach 1–2 Wochen deutlich ab. Regelmäßiges Kühlen mit Gel-Pads hilft.</p>
-          </div>
-          <div class="faq-risk-card">
-            <span class="faq-risk-cat">Häufig · Vorübergehend</span>
-            <h4 class="faq-risk-title">Leichte Schmerzen &amp; Verfärbungen</h4>
-            <p class="faq-risk-text">Gut beherrschbar, klingen in den ersten Tagen ab. Verfärbungen dürfen nach Fadenzug kaschiert werden.</p>
-          </div>
-          <div class="faq-risk-card">
-            <span class="faq-risk-cat">Sehr selten</span>
-            <h4 class="faq-risk-title">Narbenbildung &amp; Asymmetrie</h4>
-            <p class="faq-risk-text">Gering bei fachgerechter Technik. Narbe liegt in der natürlichen Lidfalte.</p>
-          </div>
+          <div class="faq-risk-card"><span class="faq-risk-cat">Häufig · Vorübergehend</span><h4 class="faq-risk-title">Schwellung &amp; Blutergüsse</h4><p class="faq-risk-text">Klingen nach 1–2 Wochen deutlich ab. Regelmäßiges Kühlen mit Gel-Pads hilft.</p></div>
+          <div class="faq-risk-card"><span class="faq-risk-cat">Häufig · Vorübergehend</span><h4 class="faq-risk-title">Leichte Schmerzen &amp; Verfärbungen</h4><p class="faq-risk-text">Gut beherrschbar, klingen in den ersten Tagen ab. Verfärbungen dürfen nach Fadenzug kaschiert werden.</p></div>
+          <div class="faq-risk-card"><span class="faq-risk-cat">Sehr selten</span><h4 class="faq-risk-title">Narbenbildung &amp; Asymmetrie</h4><p class="faq-risk-text">Gering bei fachgerechter Technik. Narbe liegt in der natürlichen Lidfalte.</p></div>
         </div>
       </div>
     </div>
@@ -2415,9 +1414,7 @@ img { display: block; max-width: 100%; }
     <div class="faq-item">
       <button class="faq-q-btn" onclick="toggleFaq(this)">
         <span class="faq-q-text">Kann ich die Augenlidstraffung mit anderen Eingriffen kombinieren?</span>
-        <div class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
-        </div>
+        <div class="faq-icon-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
       </button>
       <div class="faq-answer">
         <p class="faq-answer-text">Ja – und oft ergibt die Kombination erst das wirklich harmonische Gesamtergebnis. Häufige Kombinationen sind: Augenlidstraffung + Augenbrauenlifting, Augenlidstraffung + Facelift, oder Ober- und Unterlidstraffung in einer Operation. Was in Ihrem Fall sinnvoll ist, besprechen wir gemeinsam in der Beratung.</p>
@@ -2432,63 +1429,39 @@ img { display: block; max-width: 100%; }
      KONTAKT
      ============================================================ -->
 <section class="contact-section" id="kontakt">
-  <span class="section-eyebrow">Ihr nächster Schritt</span>
+  <span class="t-eyebrow" style="justify-content:center; color:rgba(197,154,82,0.65);">Ihr nächster Schritt</span>
   <h2 class="contact-h2">Ihr Weg zu <em>natürlicher Ästhetik</em> beginnt hier.</h2>
   <p class="contact-intro">Kostenlose, unverbindliche Erstberatung – persönlich mit Dr. Hodorkovski. Kein Druck, keine Verkaufsabsicht. Antwort innerhalb von 24 Stunden.</p>
 
-  <div class="contact-success" id="contact-success">
-    Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.
-  </div>
+  <div class="contact-success" id="contact-success">Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.</div>
 
   <form class="contact-form" id="contact-form" onsubmit="submitForm(event)">
     <div class="form-row">
-      <div class="form-group">
-        <label>Vorname</label>
-        <input type="text" placeholder="Maria" />
-      </div>
-      <div class="form-group">
-        <label>Nachname</label>
-        <input type="text" placeholder="Müller" />
-      </div>
+      <div class="form-group"><label>Vorname</label><input type="text" placeholder="Maria" /></div>
+      <div class="form-group"><label>Nachname</label><input type="text" placeholder="Müller" /></div>
     </div>
-    <div class="form-group">
-      <label>E-Mail</label>
-      <input type="email" placeholder="ihre@email.de" />
-    </div>
-    <div class="form-group">
-      <label>Telefon</label>
-      <input type="tel" placeholder="+49 711 ..." />
-    </div>
+    <div class="form-group"><label>E-Mail</label><input type="email" placeholder="ihre@email.de" /></div>
+    <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+49 711 ..." /></div>
     <div class="form-group">
       <label>Gewünschte Behandlung</label>
       <select>
         <option value="" disabled selected>Bitte wählen ...</option>
         <optgroup label="Gesicht">
-          <option>Augenlidstraffung</option>
-          <option>Faltenbehandlung / Botox</option>
-          <option>Lippen aufspritzen</option>
-          <option>Facelift / Mini-Facelift</option>
-          <option>Jawline Unterspritzung</option>
-          <option>Sonstiges Gesicht</option>
+          <option>Augenlidstraffung</option><option>Faltenbehandlung / Botox</option>
+          <option>Lippen aufspritzen</option><option>Facelift / Mini-Facelift</option>
+          <option>Jawline Unterspritzung</option><option>Sonstiges Gesicht</option>
         </optgroup>
         <optgroup label="Brust">
-          <option>Brustvergrößerung</option>
-          <option>Bruststraffung</option>
-          <option>Brustverkleinerung</option>
-          <option>Implantatwechsel</option>
+          <option>Brustvergrößerung</option><option>Bruststraffung</option>
+          <option>Brustverkleinerung</option><option>Implantatwechsel</option>
         </optgroup>
         <optgroup label="Körper">
-          <option>Bauchdeckenstraffung</option>
-          <option>Fettabsaugung</option>
-          <option>Körperstraffung</option>
+          <option>Bauchdeckenstraffung</option><option>Fettabsaugung</option><option>Körperstraffung</option>
         </optgroup>
         <option>Noch unsicher – Beratung gewünscht</option>
       </select>
     </div>
-    <div class="form-group">
-      <label>Nachricht (optional)</label>
-      <textarea rows="3" placeholder="Ihre Fragen oder Anliegen ..."></textarea>
-    </div>
+    <div class="form-group"><label>Nachricht (optional)</label><textarea rows="3" placeholder="Ihre Fragen oder Anliegen ..."></textarea></div>
     <button class="btn-submit" type="submit">Anfrage absenden</button>
   </form>
 
@@ -2499,9 +1472,7 @@ img { display: block; max-width: 100%; }
 </section>
 
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- FOOTER -->
 <footer class="treat-footer">
   <div class="footer-logo">UNIKAT AESTHETIK</div>
   <div class="footer-sub">Dr. med. Hodorkovski · Plastische &amp; Ästhetische Chirurgie</div>
@@ -2515,108 +1486,80 @@ img { display: block; max-width: 100%; }
 </footer>
 
 
-<!-- ============================================================
-     STICKY BAR
-     ============================================================ -->
+<!-- STICKY BAR -->
 <div class="sticky-cta" id="sticky-cta">
   <a href="#kontakt" class="sticky-main">Beratung anfragen</a>
   <a href="tel:+4971190769390" class="sticky-call">☎ Anrufen</a>
 </div>
 
 
-<!-- ============================================================
-     JAVASCRIPT
-     ============================================================ -->
 <script>
-  // --- NAV hide/show on scroll ---
-  let lastScrollY = 0;
+  // NAV
+  let lastY = 0;
   const nav = document.getElementById('main-nav');
-
   window.addEventListener('scroll', () => {
-    const currentY = window.scrollY;
-    if (currentY < lastScrollY || currentY < 60) {
-      nav.classList.remove('hidden');
-    } else {
-      nav.classList.add('hidden');
-    }
-    lastScrollY = currentY;
+    const y = window.scrollY;
+    nav.classList.toggle('hidden', y > lastY && y > 60);
+    lastY = y;
   }, { passive: true });
 
-  // --- Sticky CTA hide when contact visible ---
+  // Sticky CTA
   const stickyCta = document.getElementById('sticky-cta');
-  const contactSection = document.getElementById('kontakt');
-  if (contactSection) {
-    const observer = new IntersectionObserver(entries => {
-      stickyCta.classList.toggle('hidden', entries[0].isIntersecting);
-    }, { threshold: 0.05 });
-    observer.observe(contactSection);
+  const contactSec = document.getElementById('kontakt');
+  if (contactSec) {
+    new IntersectionObserver(e => {
+      stickyCta.classList.toggle('hidden', e[0].isIntersecting);
+    }, { threshold: 0.05 }).observe(contactSec);
   }
 
-  // --- FAQ accordion ---
+  // FAQ
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    // close all
+    const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => {
       i.classList.remove('open');
-      const iconWrap = i.querySelector('.faq-icon-wrap');
-      iconWrap.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>';
+      i.querySelector('.faq-icon-wrap').innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>';
     });
-    // open clicked if was closed
-    if (!isOpen) {
+    if (!wasOpen) {
       item.classList.add('open');
-      const iconWrap = item.querySelector('.faq-icon-wrap');
-      iconWrap.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14"/></svg>';
+      item.querySelector('.faq-icon-wrap').innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/></svg>';
     }
   }
 
-  // --- Vita toggle ---
-  function toggleVita(btn) {
-    const vitaList = document.getElementById('vita-list');
-    const arrow = document.getElementById('vita-arrow');
-    vitaList.classList.toggle('open');
-    arrow.classList.toggle('open');
+  // Vita
+  function toggleVita() {
+    document.getElementById('vita-list').classList.toggle('open');
+    document.getElementById('vita-arrow').classList.toggle('open');
   }
 
-  // --- Contact form ---
+  // Form
   function submitForm(e) {
     e.preventDefault();
     document.getElementById('contact-form').style.display = 'none';
     document.getElementById('contact-success').classList.add('visible');
   }
 
-  // --- Praxis auto-scroll carousel ---
-  const praxisCarousel = document.getElementById('praxis-carousel');
-  if (praxisCarousel) {
-    setInterval(() => {
-      const maxScroll = praxisCarousel.scrollWidth - praxisCarousel.clientWidth;
-      const firstCard = praxisCarousel.firstElementChild;
-      const cardWidth = firstCard ? firstCard.offsetWidth + 14 : 300;
-      if (praxisCarousel.scrollLeft >= maxScroll - 10) {
-        praxisCarousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        praxisCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
-    }, 4000);
-  }
+  // Praxis carousel
+  const pc = document.getElementById('praxis-carousel');
+  if (pc) setInterval(() => {
+    const max = pc.scrollWidth - pc.clientWidth;
+    const w = (pc.firstElementChild?.offsetWidth || 300) + 14;
+    pc.scrollLeft >= max - 10 ? pc.scrollTo({ left:0, behavior:'smooth' }) : pc.scrollBy({ left:w, behavior:'smooth' });
+  }, 4000);
 
-  // --- Kennen-Sie-Das auto-scroll (stops on touch) ---
-  const kennenCarousel = document.getElementById('kennen-carousel');
-  if (kennenCarousel) {
-    let kennenInteracted = false;
-    kennenCarousel.addEventListener('touchstart', () => kennenInteracted = true, { passive: true });
-    kennenCarousel.addEventListener('mousedown', () => kennenInteracted = true, { passive: true });
-
+  // Kennen carousel
+  const kc = document.getElementById('kennen-carousel');
+  if (kc) {
+    let touched = false;
+    kc.addEventListener('touchstart', () => touched = true, { passive: true });
+    kc.addEventListener('mousedown', () => touched = true, { passive: true });
     setInterval(() => {
-      if (kennenInteracted) return;
-      const maxScroll = kennenCarousel.scrollWidth - kennenCarousel.clientWidth;
-      const firstCard = kennenCarousel.firstElementChild;
-      const cardWidth = firstCard ? firstCard.offsetWidth + 16 : 300;
-      if (kennenCarousel.scrollLeft >= maxScroll - 10) {
-        kennenCarousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        kennenCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
+      if (touched) return;
+      const max = kc.scrollWidth - kc.clientWidth;
+      const w = (kc.firstElementChild?.offsetWidth || 300) + 14;
+      kc.scrollLeft >= max - 10 ? kc.scrollTo({ left:0, behavior:'smooth' }) : kc.scrollBy({ left:w, behavior:'smooth' });
     }, 3000);
   }
 </script>
