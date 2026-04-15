@@ -5,11 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <title>Augenlidstraffung Stuttgart – Dr. Hodorkovski | UNIKAT ÄSTHETIK</title>
 <meta name="description" content="Augenlidstraffung in Stuttgart – Schlupflider & Tränensäcke korrigieren. Facharzt Dr. med. Hodorkovski. Natürliche Ergebnisse, persönliche Beratung." />
+
+<!-- PRELOAD LCP HERO IMAGE FOR PAGESPEED -->
+<link rel="preload" as="image" href="https://res.cloudinary.com/dkbegf5yh/image/upload/q_auto/f_auto/v1776254801/Gemini_Generated_Image_3sas4k3sas4k3sas_1_jrrsxd.png" fetchpriority="high" />
+
+<!-- GOOGLE FONTS OPTIMIZATION (ASYNC) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-<style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" media="print" onload="this.media='all'" />
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" />
+</noscript>
 
+<style>
 /* ============================================================
    DESIGN TOKENS
    ============================================================ */
@@ -1130,6 +1139,9 @@ img { display: block; max-width: 100%; }
   .doctor-img-fade { background: linear-gradient(to right, transparent 0%, transparent 50%, var(--bg-dark) 100%); }
   .doctor-content { margin-top: 0; padding: 60px 60px 60px 0; text-align: center; }
   .doctor-pills { justify-content: center; }
+  .doctor-vita-toggle { width: 100%; max-width: 340px; margin: 0 auto; }
+  .vita-list { width: 100%; max-width: 340px; margin: 0 auto; text-align: left; }
+  .doctor-content .btn-ghost-dark { width: 100%; max-width: 340px; margin-left: auto !important; margin-right: auto !important; }
 
   /* Fakten */
   .fakten-section .t-h2 { margin-bottom: 48px !important; }
@@ -1143,6 +1155,7 @@ img { display: block; max-width: 100%; }
   .ablauf-section { padding: 80px 60px; }
   .ablauf-h2 { margin-bottom: 48px !important; }
   .ablauf-timeline { flex-direction: row; align-items: flex-start; }
+  .ablauf-cta { display: flex; flex-direction: column; align-items: center; margin-top: 64px; }
 
   /* Nachsorge */
   .nachsorge-scroll { grid-template-columns: repeat(3, 1fr); }
@@ -1185,6 +1198,31 @@ img { display: block; max-width: 100%; }
   .eligible-scroll { grid-template-columns: repeat(4, 1fr); }
   .hero-wrap { margin: 0 48px 80px; }
   .dark-container { margin: 0 auto 80px; }
+
+  /* Desktop Card Alignment Optimization */
+  .eligible-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .eligible-card-h3 {
+    min-height: 3.4rem; /* Forces 2-line height for all headlines */
+  }
+  .eligible-card-desc {
+    flex-grow: 1; /* Absorbs variable text lengths */
+  }
+  .eligible-suitable {
+    min-height: 88px; /* Normalizes the 2-3 line differences */
+  }
+  .eligible-benefit {
+    min-height: 125px; /* Normalizes the 3-4 line differences */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .eligible-price-row {
+    margin-top: auto;
+  }
 }
 
 </style>
@@ -1194,7 +1232,7 @@ img { display: block; max-width: 100%; }
 <!-- NAV -->
 <nav class="ua-nav" id="main-nav">
   <div class="nav-logo">
-    <img src="https://unikataesthetik.de/wp-content/uploads/2025/06/plastische-aesthetische-chirurgie-stuttgart-logo_white.svg" alt="Unikat Ästhetik" />
+    <img src="https://unikataesthetik.de/wp-content/uploads/2025/06/plastische-aesthetische-chirurgie-stuttgart-logo_white.svg" alt="Unikat Ästhetik" width="150" height="24" />
   </div>
   <div class="nav-burger">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1215,6 +1253,8 @@ img { display: block; max-width: 100%; }
       src="https://res.cloudinary.com/dkbegf5yh/image/upload/q_auto/f_auto/v1776254801/Gemini_Generated_Image_3sas4k3sas4k3sas_1_jrrsxd.png"
       alt="Augenlidstraffung Stuttgart – Dr. Hodorkovski"
       onerror="this.src='https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600'"
+      width="1432" height="805"
+      fetchpriority="high"
     />
     <div class="hero-img-fade-bottom"></div>
     <div class="hero-img-fade-top"></div>
@@ -1240,9 +1280,9 @@ img { display: block; max-width: 100%; }
       </a>
       <div class="hero-trust-row">
         <div class="trust-avatars">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100&h=100" alt="" />
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100&h=100" alt="" />
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100&h=100" alt="" />
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100&h=100" alt="Patient 1" width="100" height="100" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100&h=100" alt="Patient 2" width="100" height="100" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100&h=100" alt="Patient 3" width="100" height="100" loading="lazy" />
         </div>
         <div class="trust-score">
           <div class="trust-score-top">
@@ -1268,21 +1308,21 @@ img { display: block; max-width: 100%; }
   </div>
   <div class="kennen-scroll" id="kennen-carousel">
     <div class="kennen-card">
-      <div class="kennen-card-img"><img src="https://res.cloudinary.com/dkbegf5yh/image/upload/q_auto/f_auto/v1776270029/1_xfonit.png" alt="Müder Blick" loading="lazy" /></div>
+      <div class="kennen-card-img"><img src="https://res.cloudinary.com/dkbegf5yh/image/upload/q_auto/f_auto/v1776270029/1_xfonit.png" alt="Müder Blick" loading="lazy" width="400" height="300" /></div>
       <span class="card-eyebrow">Problem 01</span>
       <h3 class="card-h3">Müder Blick</h3>
       <div class="card-rule"></div>
       <p class="card-body">Ein erschöpfter Ausdruck lässt Sie oft müde wirken, obwohl Sie sich eigentlich fit und wach fühlen. Gerade die Augenpartie kann dem Gesicht ungewollt Schwere nehmen.</p>
       </div>
     <div class="kennen-card">
-      <div class="kennen-card-img"><img src="https://res.cloudinary.com/dkbegf5yh/image/upload/q_auto/f_auto/v1776270029/2_awfroe.png" alt="Schwere Oberlider" loading="lazy" /></div>
+      <div class="kennen-card-img"><img src="https://res.cloudinary.com/dkbegf5yh/image/upload/q_auto/f_auto/v1776270029/2_awfroe.png" alt="Schwere Oberlider" loading="lazy" width="400" height="300" /></div>
       <span class="card-eyebrow">Problem 02</span>
       <h3 class="card-h3">Schwere Oberlider</h3>
       <div class="card-rule"></div>
       <p class="card-body">Wenn Oberlider absinken, wirkt der Blick schnell gedrückt und weniger offen. Das verändert die Ausstrahlung oft stärker, als vielen bewusst ist.</p>
     </div>
     <div class="kennen-card">
-      <div class="kennen-card-img"><img src="https://res.cloudinary.com/dkbegf5yh/image/upload/q_auto/f_auto/v1776270029/3_mv18jm.png" alt="Tränensäcke" loading="lazy" /></div>
+      <div class="kennen-card-img"><img src="https://res.cloudinary.com/dkbegf5yh/image/upload/q_auto/f_auto/v1776270029/3_mv18jm.png" alt="Tränensäcke" loading="lazy" width="400" height="300" /></div>
       <span class="card-eyebrow">Problem 03</span>
       <h3 class="card-h3">Tränensäcke &amp; Unterlidtaschen</h3>
       <div class="card-rule"></div>
@@ -1361,7 +1401,7 @@ img { display: block; max-width: 100%; }
      ============================================================ -->
 <div class="doctor-band dark-container">
   <div class="doctor-img-area">
-    <img src="https://unikataesthetik.de/wp-content/uploads/2025/07/dr-hodorkovski-stuttgart-plastische-aesthetische-chirurgie-unikat-aesthetik_kk-1.webp" alt="Dr. med. Igor Hodorkovski" loading="lazy" />
+    <img src="https://unikataesthetik.de/wp-content/uploads/2025/07/dr-hodorkovski-stuttgart-plastische-aesthetische-chirurgie-unikat-aesthetik_kk-1.webp" alt="Dr. med. Igor Hodorkovski" loading="lazy" width="800" height="1000" />
     <div class="doctor-img-fade"></div>
   </div>
   <div class="doctor-content">
@@ -1478,9 +1518,9 @@ img { display: block; max-width: 100%; }
   </div>
   <div class="nachsorge-note">
     <div class="team-avatars">
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/praxis-managerin-stuttgart-e1760862555668.jpg" alt="Teammitglied" loading="lazy" />
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/07/dr-hodorkovski-stuttgart-plastische-aesthetische-chirurgie-unikat-aesthetik_kk-1.webp" alt="Dr. Hodorkovski" class="avatar-main" loading="lazy" />
-      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/afshin_rahmany-280x320-1-e1760862638668.jpg" alt="Teammitglied" loading="lazy" />
+      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/praxis-managerin-stuttgart-e1760862555668.jpg" alt="Teammitglied" loading="lazy" width="100" height="100" />
+      <img src="https://unikataesthetik.de/wp-content/uploads/2025/07/dr-hodorkovski-stuttgart-plastische-aesthetische-chirurgie-unikat-aesthetik_kk-1.webp" alt="Dr. Hodorkovski" class="avatar-main" loading="lazy" width="120" height="120" />
+      <img src="https://unikataesthetik.de/wp-content/uploads/2025/10/afshin_rahmany-280x320-1-e1760862638668.jpg" alt="Teammitglied" loading="lazy" width="100" height="100" />
     </div>
     <h4>Persönliche Begleitung</h4>
     <p>Dr. Hodorkovski und sein Team sind während der gesamten Heilungsphase jederzeit für Sie erreichbar.</p>
@@ -1529,17 +1569,17 @@ img { display: block; max-width: 100%; }
 
   <div class="praxis-scroll" id="praxis-carousel">
     <div class="praxis-video-wrap">
-      <iframe id="praxis-video" width="560" height="315" src="https://www.youtube.com/embed/0mevQzaeegI?si=eCN3ChdNNc_Ah1rL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe id="praxis-video" loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/0mevQzaeegI?si=eCN3ChdNNc_Ah1rL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/empfangsbereich-facharztpraxis-unikataesthetik-stuttgart.webp" alt="Empfangsbereich" loading="lazy" /></div>
-    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/beratung-plastische-aesthetische-chirurgie-dr-hodorkovski.webp" alt="Beratungszimmer" loading="lazy" /></div>
-    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/warteraum-praxis-aesthetische-medizin-dr-hodorkovski-stuttgart.webp" alt="Wartebereich" loading="lazy" /></div>
-    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/aesthetische-behandlung-dr-hodorkovski-stuttgart-unikat-aesthetik.webp" alt="Behandlungszimmer" loading="lazy" /></div>
-    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/aesthetische-medizin-beratung-plastischer-aesthetischer-chirurg-dr-hodorkovski-stuttgart.webp" alt="Medizinische Beratung" loading="lazy" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/empfangsbereich-facharztpraxis-unikataesthetik-stuttgart.webp" alt="Empfangsbereich" loading="lazy" width="600" height="450" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/beratung-plastische-aesthetische-chirurgie-dr-hodorkovski.webp" alt="Beratungszimmer" loading="lazy" width="600" height="450" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/warteraum-praxis-aesthetische-medizin-dr-hodorkovski-stuttgart.webp" alt="Wartebereich" loading="lazy" width="600" height="450" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/aesthetische-behandlung-dr-hodorkovski-stuttgart-unikat-aesthetik.webp" alt="Behandlungszimmer" loading="lazy" width="600" height="450" /></div>
+    <div class="praxis-img-wrap"><img src="https://unikataesthetik.de/wp-content/uploads/2025/10/aesthetische-medizin-beratung-plastischer-aesthetischer-chirurg-dr-hodorkovski-stuttgart.webp" alt="Medizinische Beratung" loading="lazy" width="600" height="450" /></div>
   </div>
 
   <div class="map-wrapper">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2628.761918342203!2d9.176465611382457!3d48.78018617132174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db35b1d1bcad%3A0x6b63bc5843cc11dc!2sK%C3%B6nigstra%C3%9Fe%2016%2C%2070173%20Stuttgart!5e0!3m2!1sde!2sde!4v1715000000000!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2628.761918342203!2d9.176465611382457!3d48.78018617132174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db35b1d1bcad%3A0x6b63bc5843cc11dc!2sK%C3%B6nigstra%C3%9Fe%2016%2C%2070173%20Stuttgart!5e0!3m2!1sde!2sde!4v1715000000000!5m2!1sde!2sde" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" width="100%" height="100%" style="border:none;"></iframe>
     <div class="map-overlay">
       <h4>Hier finden Sie uns</h4>
       <p>Königstr. 16 (über dem Douglas)<br>70173 Stuttgart</p>
