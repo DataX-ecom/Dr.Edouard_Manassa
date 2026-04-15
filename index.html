@@ -1090,6 +1090,117 @@ img { display: block; max-width: 100%; }
 }
 .sticky-call:active { transform: scale(0.97); background: rgba(197,154,82,0.1); border-color: var(--gold); }
 
+/* ============================================================
+   DESKTOP RESPONSIVE (Tablets & Desktops)
+   ============================================================ */
+@media (min-width: 768px) {
+  body { max-width: 100%; }
+  .ua-nav { max-width: 100%; padding: 16px 48px; }
+  
+  .t-h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
+  .scroll-header { max-width: 800px; margin: 0 auto 48px; text-align: center; }
+  .t-eyebrow { justify-content: center; }
+  .t-eyebrow::before { display: none; }
+
+  /* Hero */
+  .hero-wrap { margin: 0 32px 64px; border-radius: 0 0 var(--r-container) var(--r-container); }
+  .hero-image-area { height: 65vh; min-height: 550px; }
+  .hero-img-fade-bottom { background: linear-gradient(to top, #0b0908 0%, rgba(11,9,8,0.4) 40%, transparent 100%); }
+  .hero-content { max-width: 900px; margin: -200px auto 0; padding: 0 48px 64px; align-items: center; text-align: center; }
+  .hero-h1 { font-size: 3.5rem; }
+  .hero-h1 span { font-size: 3.2rem; }
+  .hero-lead { font-size: 19px; max-width: 650px; }
+  .hero-cta-wrap { flex-direction: row; justify-content: center; gap: 20px; }
+  .btn-primary-hero { width: auto; padding: 18px 36px; }
+
+  /* Scroll Container Overrides */
+  .kennen-scroll, .eligible-scroll, .praxis-scroll, .nachsorge-scroll, .reviews-scroll {
+    display: grid;
+    overflow-x: visible;
+    padding: 0 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 24px;
+  }
+  .kennen-card, .eligible-card, .praxis-img-wrap, .praxis-video-wrap, .nachsorge-card, .review-card {
+    width: 100%; margin: 0;
+  }
+
+  /* Sections Layout */
+  .kennen-section, .eligible-section, .einblick-section, .fakten-section, .praxis-section, .faq-section, .reviews-section {
+    padding: 80px 0;
+  }
+  
+  .kennen-scroll { grid-template-columns: repeat(3, 1fr); }
+  .eligible-scroll { grid-template-columns: repeat(2, 1fr); }
+  
+  /* Dark Containers */
+  :root { --r-container: 48px; }
+  .dark-container { max-width: 1200px; margin: 0 auto 80px; }
+
+  /* Doctor */
+  .doctor-band { display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding-bottom: 0; }
+  .doctor-img-area { height: 100%; min-height: 600px; }
+  .doctor-img-fade { background: linear-gradient(to right, transparent 0%, transparent 50%, var(--bg-dark) 100%); }
+  .doctor-content { margin-top: 0; padding: 60px 60px 60px 0; }
+
+  /* Fakten */
+  .fakten-grid { grid-template-columns: repeat(4, 1fr); max-width: 1200px; margin: 0 auto; padding: 0 24px; gap: 20px; }
+
+  /* Einblick */
+  .einblick-items { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 40px auto 0; padding: 0 24px; gap: 24px; }
+
+  /* Ablauf */
+  .ablauf-section { padding: 80px 60px; }
+  .ablauf-timeline { flex-direction: row; align-items: flex-start; }
+  .ablauf-timeline::before { top: 17px; left: 0; width: 100%; height: 1px; bottom: auto; background: linear-gradient(to right, var(--gold-line) 0%, rgba(197,154,82,0.06) 100%); }
+  .ablauf-step { flex-direction: column; flex: 1; }
+  .ablauf-step-content { padding-top: 16px; }
+  .ablauf-cta { display: flex; flex-direction: column; align-items: center; margin-top: 60px; }
+  .btn-ablauf { width: auto; padding: 0 48px; display: inline-flex; }
+
+  /* Nachsorge */
+  .nachsorge-scroll { grid-template-columns: repeat(3, 1fr); }
+  .nachsorge-note { max-width: 900px; margin: 48px auto 0; flex-direction: row; text-align: left; }
+  .team-avatars { margin-bottom: 0; margin-right: 32px; }
+
+  /* Reviews */
+  .reviews-header { max-width: 800px; margin: 0 auto 48px; text-align: center; }
+  .reviews-rating-bar { justify-content: center; }
+  .reviews-scroll { grid-template-columns: repeat(3, 1fr); }
+  .reviews-footer { text-align: center; margin-top: 40px; }
+  .btn-outline-light { display: inline-block; width: auto; }
+
+  /* Praxis */
+  .praxis-scroll { grid-template-columns: repeat(3, 1fr); }
+  .map-wrapper { max-width: 1200px; margin: 60px auto 0; height: 450px; }
+
+  /* FAQ */
+  .faq-header { max-width: 800px; margin: 0 auto 48px; text-align: center; }
+  .faq-list { max-width: 800px; margin: 0 auto; }
+
+  /* Contact */
+  .contact-section { padding: 80px 48px 60px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; margin-bottom: 0; }
+  .contact-form { max-width: 600px; margin: 0 auto 32px; }
+  .contact-alt { flex-direction: row; justify-content: center; gap: 24px; }
+  .contact-link { width: auto; padding: 14px 32px; }
+
+  /* Footer */
+  .treat-footer { max-width: 1200px; margin: 0 auto 80px; padding: 60px 48px; display: grid; grid-template-columns: 1fr 1fr; align-items: end; border-radius: 0 0 var(--r-container) var(--r-container); }
+  .footer-sub { margin-bottom: 8px; }
+  .footer-links { justify-content: flex-end; margin-bottom: 0; }
+  .footer-copy { grid-column: 1 / -1; margin-top: 48px; padding-top: 24px; text-align: center; }
+
+  /* Sticky Bar auf Desktop ausblenden */
+  .sticky-cta { display: none !important; }
+}
+
+@media (min-width: 1024px) {
+  .eligible-scroll { grid-template-columns: repeat(4, 1fr); }
+  .hero-wrap { margin: 0 48px 80px; }
+  .dark-container { margin: 0 auto 80px; }
+}
+
 </style>
 </head>
 <body>
